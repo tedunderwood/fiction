@@ -1,6 +1,6 @@
 metafile = '/Users/tunder/Dropbox/fiction/meta/genremeta.csv'
 
-tagstoget = ['random', 'det100', 'locdetmyst', 'locdetective']
+tagstoget = ['grandom', 'pbgothic']
 
 import SonicScrewdriver as utils
 import csv, os, datetime

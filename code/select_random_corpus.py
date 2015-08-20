@@ -134,9 +134,10 @@ fieldstowrite = ['docid', 'recordid', 'oclc', 'locnum', 'author', 'imprint', 'da
 
 sourcemetafile = "/Users/tunder/Dropbox/fiction/meta/genremeta.csv"
 
-randomtag = "random"
 targetphrase = input("Comma-separated list of target genres: ")
 targettags = [x.strip() for x in targetphrase.split(',')]
+
+randomtag = input('Random tag to use for this run? ')
 
 targetvollist, randomvollist = get_metasets(sourcemetafile, targettags, randomtag)
 

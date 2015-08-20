@@ -42,20 +42,34 @@ with open(metaout, encoding = 'utf-8') as f:
 def search_author(authorwords):
     global all_docids, authordict, metadata
     has_all_names = set(all_docids)
+    titlewords = set()
     for word in authorwords:
         word = word.lower()
         if word in authordict:
             hasthisword = authordict[word]
             print(len(hasthisword))
             has_all_names = has_all_names.intersection(hasthisword)
+        elif word.startswith('_'):
+            titlewords.add(word.replace('_', ''))
+
+    if len(titlewords) > 0:
+        filteredids = set()
+        for docid in has_all_names:
+            passes = True
+            thistitle = metadata[docid]['title'].lower().split()
+            for word in titlewords:
+                if word not in thistitle:
+                    passes = False
+            if passes:
+                filteredids.add(docid)
+        has_all_names = filteredids
 
     numberofmatches = len(has_all_names)
-
 
     if numberofmatches > 0 and numberofmatches < 500:
         for match in has_all_names:
             row = metadata[match]
-            fields = [row['HTid'], str(row['date']), row['author'], row['title']]
+            fields = [row['HTid'], str(row['date']), row['author'], row['title'], row['enumcron']]
             print(" | ".join(fields))
     elif numberofmatches < 1:
         print("No matches.")
@@ -69,7 +83,7 @@ def add_to_ficgenre(docid, existingfile, tagas):
         writer = csv.DictWriter(f, fieldnames = outfieldnames)
         o = dict()
         j = metadata[docid]
-        fields = [j['HTid'], str(j['date']), j['author'], j['title']]
+        fields = [j['HTid'], str(j['date']), j['author'], j['title'], j['enumcron']]
         print(" | ".join(fields))
         o['docid'] = utils.clean_pairtree(j['HTid'])
         o['recordid'] = j['recordid']

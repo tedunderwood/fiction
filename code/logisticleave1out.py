@@ -561,11 +561,11 @@ if __name__ == '__main__':
     # classpath = '/Users/tunder/Dropbox/GenreProject/python/reception/fiction/masterficmeta.csv'
     # outputpath = '/Users/tunder/Dropbox/GenreProject/python/reception/fiction/predictions.csv'
 
-    # sourcefolder = '../data/'
-    sourcefolder = '/Volumes/TARDIS/US_Novel_Corpus/scificounts/'
+    sourcefolder = '../data/'
+    # sourcefolder = '/Volumes/TARDIS/US_Novel_Corpus/scificounts/'
     extension = '.fic.tsv'
     # classpath = '../meta/genremeta.csv'
-    classpath = '../meta/scifimeta2.csv'
+    classpath = '../meta/genremeta.csv'
     outputpath = '../results/ficpredictions' + str(datetime.date.today()) + '.csv'
 
     # We can simply exclude volumes from consideration on the basis on any
@@ -578,7 +578,7 @@ if __name__ == '__main__':
     excludeabove = dict()
     excludebelow = dict()
 
-    excludebelow['firstpub'] = 1840
+    excludebelow['firstpub'] = 1700
     excludeabove['firstpub'] = 2000
     sizecap = 500
 
@@ -591,7 +591,7 @@ if __name__ == '__main__':
 
     ## THRESHOLDS
 
-    pastthreshold = 1800
+    pastthreshold = 1700
     futurethreshold = 2000
     donottraintag = 'null tag'
 
