@@ -483,7 +483,7 @@ nyp.33433074955091,2104589,23642675,,"Radcliffe, Ann Ward,",London;T. Hookham;17
 nnc1.cu58506756,8434485,9590696,,"Radcliffe, Ann Ward,","Philadelphia;Reprinted and sold by Thomas Bradford, book-seller and stationer, No. 8, South Front street.;1795.",1795,1764,1791,,,The romance of the forest,uk,f,pbgothic
 mdp.39015063950102,781722,44887870,,"Radcliffe, Ann Ward,","London;Longman, Hurst, Rees & Orme;1806.",1806,1764,1794,v.2,,The mysteries of Udolpho,uk,f,pbgothic
 uva.x000498882,9780276,19769848,,"Godwin, William,",New York;Harper and Brothers;1856.,1856,1756,1794,V.1-2,,The adventures of Caleb Williams,uk,m,pbgothic
-njp.32101062743727,9042425,13635486,,"Roche, Regina Maria,",Exeter [N.H.;J. & B. Williams;1828.,1828,1764,1764,v.3,,The children of the abbey,ir,f,pbgothic
+njp.32101062743727,9042425,13635486,,"Roche, Regina Maria,",Exeter [N.H.;J. & B. Williams;1828.,1828,1764,1796,v.3,,The children of the abbey,ir,f,pbgothic
 nyp.33433074874748,8665865,6566039,,"Lewis, M. G.",London;J. Bell;1796.,1796,1775,1796,v. 3,,The monk,uk,m,pbgothic
 mdp.39015004880715,540357,26687518,,"Dickens, Charles,",London;New York;Macmillan and co.;1908.,1908,1812,1841,,,The old curiosity shop,uk,m,pbgothic
 nyp.33433074955109,2104589,23642675,,"Radcliffe, Ann Ward,",London;T. Hookham;1792.,1792,1764,1790,v. 1,,A Sicilian romance,uk,f,pbgothic
@@ -525,27 +525,78 @@ uc2.ark+=13960=t2h70nx9q,7705645,78798411,,"MacDonald, George,","London;Daldy, I
 uc2.ark+=13960=t9862rx2r,7705645,78798411,,"MacDonald, George,","London;Daldy, Isbister, & Co.;1874.",1874,1824,1858,v.2,,Phantastes,uk,m,pbgothic
 mdp.39015038723360,122875,2673386,PZ3.C697Wo 10,"Collins, Wilkie,",New York;The Century co.;1906.,1906,1824,1860,,,The woman in white,uk,m,pbgothic
 nyp.33433074945779,8663981,291965,PZ3.C697.Ar2,"Collins, Wilkie,",New York;Harper & Brothers;1873,1873,1824,1866,,,Armadale,uk,m,pbgothic
-uc1.b250127,006502425,5515317,,"Le Fanu, Joseph Sheridan,",London;R. Bentley;1864.,1864,1814,1864,v.1,,Uncle Silas,ir,m,pbgothic
-uc1.b250128,006502425,5515317,,"Le Fanu, Joseph Sheridan,",London;R. Bentley;1864.,1864,1814,1864,v.2,,Uncle Silas,ir,m,pbgothic
-uc1.b250129,006502425,5515317,,"Le Fanu, Joseph Sheridan,",London;R. Bentley;1864.,1864,1814,1864,v.3,,Uncle Silas,ir,m,pbgothic
-uva.x000237148,009780471,20658959,,"Dickens, Charles,","Boston;Houghton, Mifflin and company;1881.",1881,1812,1865,,,Our mutual friend,uk,m,pbgothic
-inu.30000007695723,006059136,05237816,PZ3.L518I,"Le Fanu, Joseph Sheridan,",London;R. Bentley & son;1886.,1886,1814,1872,,,In a glass darkly,ir,m,pbgothic
-mdp.39015026244999,000123462,37217567,,"Collins, Wilkie,",Toronto;Chicago [etc.;Rose-Belford publishing company;1878.,1878,1824,1878,,,The haunted hotel,uk,m,pbgothic
-mdp.39015063559390,000321854,09086569,,"Oliphant,",London;Macmillan and co.;1883.,1883,1828,1882,,,A little pilgrim in the unseen,uk,f,pbgothic
-coo.31924013476498,011405492,63963369,,"Haggard, H. Rider",London;New York;Cassell;1912.,1912,1856,1885,,,King Solomon's mines,uk,m,pbgothic
-mdp.39015059642994,000123543,04470724,,"Stevenson, Robert Louis,",New York;C. Scribner's Sons;1903.,1903,1850,1886,,,Strange case of Dr. Jekyll and Mr. Hyde,uk,m,pbgothic
-nyp.33433074866686,006156115,00421426,,"Kipling, Rudyard,",Philadelphia;H. Altemus;c1898,1898,1865,1888,,,Plain tales from the hills,uk,m,pbgothic
-uc1.b4104961,000590565,05772680,,"Kipling, Rudyard,",New York;H. M. Caldwell company;c1899,1899,1865,1888,,,The phantom rickshaw,uk,m,pbgothic
-uc1.b3325448,006131665,02155052,,"Lee, Vernon,",London;New York;Lane;1906.,1906,1856,1890,,,Hauntings,uk,f,pbgothic
-coo.31924014157121,011406079,18107497,,"Wilde, Oscar,",New York;Brentano's;1908,1908,1854,1891,,,The picture of Dorian Gray,ir,m,pbgothic
-uc1.b3578934,006678259,3268651,,"Bierce, Ambrose,",New York;United States Book Co.;1891.,1891,1842,1891,,,Tales of soldiers and civilians,us,m,pbgothic
-njp.32101013566920,008884012,1928290,PZ3.B479I,"Bierce, Ambrose,",New York and;London;G. P. Putnam's sons;1898.,1898,1842,1892,,,In the midst of life;,us,m,pbgothic
-uva.x000885514,009789429,3265761,PZ3.B479C2,"Bierce, Ambrose,",Washington;The Neale Publishing Company;1903.,1903,1842,1893,,,Can such things be?,us,m,pbgothic
-uc1.b4104774,000286078,01724064,PZ3.C812Sor,"Corelli, Marie,",Philadelphia;J. B. Lippincott company;1896.,1896,1855,1895,,,The sorrows of Satan;,uk,f,pbgothic
-inu.39000002156706,006058078,06388485,,"Benson, Arthur Christopher,",London;Isbister;1903.,1903,1862,1903,,,The hill of trouble and other stories,uk,m,pbgothic
-uc2.ark+=13960=t1pg1k81k,007661701,7557147,PZ3.J2355Th,"James, M. R.","New York;Longmans, Green & Co.;London;E. Arnold;1919.",1919,1862,1919,,,A thin ghost and others,uk,m,pbgothic
-uc1.32106001980371,001692458,03692943,PR6007.U6G7 1911,"Dunsany, Edward John Moreton Drax Plunkett,",London;The Pegana press;1911.,1911,1878,1905,,,The gods of Pegāna,ir,m,pbgothic
-uc1.b3578940,006678263,15217345,,"Blackwood, Algernon,",London;Eveleigh Nash;1915.,1915,1869,1906,,,The empty house,uk,m,pbgothic
-inu.30000011752437,006058720,03304072,,"Wharton, Edith,",London;Macmillan and Co.;1910.,1910,1862,1910,,,Tales of men and ghosts,us,f,pbgothic
-uc1.b3578339,006674546,822499,,"Crawford, F. Marion",New York;Macmillan;1911,1911,1854,1911,,,Wandering ghosts,us,m,pbgothic
-mdp.39015013429249,000622799,23922457,,"Cabell, James Branch,",New York;R. M. McBride & co.;1923.,1923,1879,1919,,,Jurgen,us,m,pbgothic
+uc1.b250127,6502425,5515317,,"Le Fanu, Joseph Sheridan,",London;R. Bentley;1864.,1864,1814,1864,v.1,,Uncle Silas,ir,m,pbgothic
+uc1.b250128,6502425,5515317,,"Le Fanu, Joseph Sheridan,",London;R. Bentley;1864.,1864,1814,1864,v.2,,Uncle Silas,ir,m,pbgothic
+uc1.b250129,6502425,5515317,,"Le Fanu, Joseph Sheridan,",London;R. Bentley;1864.,1864,1814,1864,v.3,,Uncle Silas,ir,m,pbgothic
+uva.x000237148,9780471,20658959,,"Dickens, Charles,","Boston;Houghton, Mifflin and company;1881.",1881,1812,1865,,,Our mutual friend,uk,m,pbgothic
+inu.30000007695723,6059136,5237816,PZ3.L518I,"Le Fanu, Joseph Sheridan,",London;R. Bentley & son;1886.,1886,1814,1872,,,In a glass darkly,ir,m,pbgothic
+mdp.39015026244999,123462,37217567,,"Collins, Wilkie,",Toronto;Chicago [etc.;Rose-Belford publishing company;1878.,1878,1824,1878,,,The haunted hotel,uk,m,pbgothic
+mdp.39015063559390,321854,9086569,,"Oliphant,",London;Macmillan and co.;1883.,1883,1828,1882,,,A little pilgrim in the unseen,uk,f,pbgothic
+coo.31924013476498,11405492,63963369,,"Haggard, H. Rider",London;New York;Cassell;1912.,1912,1856,1885,,,King Solomon's mines,uk,m,pbgothic
+mdp.39015059642994,123543,4470724,,"Stevenson, Robert Louis,",New York;C. Scribner's Sons;1903.,1903,1850,1886,,,Strange case of Dr. Jekyll and Mr. Hyde,uk,m,pbgothic
+nyp.33433074866686,6156115,421426,,"Kipling, Rudyard,",Philadelphia;H. Altemus;c1898,1898,1865,1888,,,Plain tales from the hills,uk,m,pbgothic
+uc1.b4104961,590565,5772680,,"Kipling, Rudyard,",New York;H. M. Caldwell company;c1899,1899,1865,1888,,,The phantom rickshaw,uk,m,pbgothic
+uc1.b3325448,6131665,2155052,,"Lee, Vernon,",London;New York;Lane;1906.,1906,1856,1890,,,Hauntings,uk,f,pbgothic
+coo.31924014157121,11406079,18107497,,"Wilde, Oscar,",New York;Brentano's;1908,1908,1854,1891,,,The picture of Dorian Gray,ir,m,pbgothic
+uc1.b3578934,6678259,3268651,,"Bierce, Ambrose,",New York;United States Book Co.;1891.,1891,1842,1891,,,Tales of soldiers and civilians,us,m,pbgothic
+njp.32101013566920,8884012,1928290,PZ3.B479I,"Bierce, Ambrose,",New York and;London;G. P. Putnam's sons;1898.,1898,1842,1892,,,In the midst of life;,us,m,pbgothic
+uva.x000885514,9789429,3265761,PZ3.B479C2,"Bierce, Ambrose,",Washington;The Neale Publishing Company;1903.,1903,1842,1893,,,Can such things be?,us,m,pbgothic
+uc1.b4104774,286078,1724064,PZ3.C812Sor,"Corelli, Marie,",Philadelphia;J. B. Lippincott company;1896.,1896,1855,1895,,,The sorrows of Satan;,uk,f,pbgothic
+inu.39000002156706,6058078,6388485,,"Benson, Arthur Christopher,",London;Isbister;1903.,1903,1862,1903,,,The hill of trouble and other stories,uk,m,pbgothic
+uc2.ark+=13960=t1pg1k81k,7661701,7557147,PZ3.J2355Th,"James, M. R.","New York;Longmans, Green & Co.;London;E. Arnold;1919.",1919,1862,1919,,,A thin ghost and others,uk,m,pbgothic
+uc1.32106001980371,1692458,3692943,PR6007.U6G7 1911,"Dunsany, Edward John Moreton Drax Plunkett,",London;The Pegana press;1911.,1911,1878,1905,,,The gods of Pegāna,ir,m,pbgothic
+uc1.b3578940,6678263,15217345,,"Blackwood, Algernon,",London;Eveleigh Nash;1915.,1915,1869,1906,,,The empty house,uk,m,pbgothic
+inu.30000011752437,6058720,3304072,,"Wharton, Edith,",London;Macmillan and Co.;1910.,1910,1862,1910,,,Tales of men and ghosts,us,f,pbgothic
+uc1.b3578339,6674546,822499,,"Crawford, F. Marion",New York;Macmillan;1911,1911,1854,1911,,,Wandering ghosts,us,m,pbgothic
+mdp.39015013429249,622799,23922457,,"Cabell, James Branch,",New York;R. M. McBride & co.;1923.,1923,1879,1919,,,Jurgen,us,m,pbgothic
+mdp.39015078572263,1420444,57015433,,"Campe, Joachim Heinrich,",London;J. Stockdale;1788.,1788,1746,1780,v.1-2,"Voyages, Imaginary",The new Robinson Crusoe;,ge,m,grandom
+mdp.39015051156498,282013,66267484,,"Banim, John,",London;W. Simpkin and R. Marshall;1826.,1826,1798,1826,v.3,,Tales,ir,m,grandom
+njp.32101066479765,8929179,654829907,,"Combe, William,","London;Printed at the Logographic Press, and sold by J. Walter ... and the principal booksellers in town and country;1791.",1791,1742,1791,v.1-2,,The devil upon two sticks in England,uk,m,grandom
+nyp.33433075768253,8667986,13354135,,"Wilkins, George,","London;Longman, Rees, Orme, Brown and Green;1826.",1826,1785,1826,,English fiction,The convert,uk,m,grandom
+njp.32101074629542,9023042,43079743,,"Lavallée, Joseph,",London;Printed for the author;1790.,1790,1747,1790,vol.1,,The negro equalled by few Europeans;,fr,m,grandom
+uc2.ark+=13960=t5t728t8q,7685802,994380,PR3316.A4C3 1796,"Burney, Fanny,","London;T. Payne, T. Cadell, Jun., and W. Davies;1796.",1796,1752,1796,v.3,,"Camilla: or, A picture of youth",uk,f,grandom
+dul1.ark+=13960=t3vt2js1t,10942285,13274424,,"Bennett,",Dublin;White;1786.,1786,,1786,v.1,"Publisher;Dublin;1786;Ireland;Place;Provenance;Butler, Mrs;White, Luke","Anna; or, Memoirs of a Welch heiress",uk,,grandom
+uiuo.ark+=13960=t1rf6b61z,8723671,4903083,,"Opie, Amelia Alderson,","London;Longman, Hurst, Rees, Orme, and Brown;1820.",1820,1769,1820,v.2,,Tales of the heart,uk,f,grandom
+ucm.5324200594,9654708,,,"Scott, Walter,",Paris;Baudry's European Library;1838.,1838,1771,1821,,,Kenilworth,uk,m,grandom
+mdp.39015006997806,780065,22465631,,"Sewell, Elizabeth Missing,","London;Printed for Longman, Brown, Green, and Longmans;1846.",1846,1815,1846,v.2,,Gertrude,uk,f,grandom
+uc2.ark+=13960=t7hq42c97,6672945,5369471,,"Dickens, Charles,",Philadelphia;T.B. Peterson;1844,1844,1812,1844,,,Martin Chuzzlewit,uk,m,grandom
+nyp.33433074911771,8663613,7021200,,"Robinson, Mary Darby,",London;Printed for T. N. Longman and O. Rees;1799.,1799,1758,1799,v. 4,English fiction,The false friend,uk,f,grandom
+mdp.39015024230610,1796037,5236729,,"Genlis, Stéphanie Félicité,",London;Printed for G. Robinson;1785.,1785,1746,1785,v.4,,Tales of the castle;,fr,f,grandom
+mdp.39015063556271,5232730,13352959,PR5115.O3N4,"Opie, Amelia Alderson,",London;Longman;1818.,1818,1769,1818,v.1,,New tales,uk,f,grandom
+uiuo.ark+=13960=t58d0ds3h,8723823,56003792,,"Knight, Legh.",London;Chapman and Hall;1868.,1868,,1868,v.1,,Tonic bitters,uk,m,grandom
+dul1.ark+=13960=t6446jc6s,10943923,22883408,,,"Naples, Printed;London, Reprinted;and sold by R. Baldwin [+ 7 others;1764.",1764,,1764,v.2,"Italy;Anville, Miss d';Publisher;London;Naples;Place;Nidray, John;Baldwin, R;Provenance;Nidray, Charles;England;1764","The memoirs of Miss D'Arville; or, The Italian female philosopher",uk,,grandom
+dul1.ark+=13960=t6834qb4k,10942313,31480481,,"Berkeley, George Monck,","London;For J. Forbes, C. Elliot and and T. Kay, P. M'Queen , T. and J. Egerton, Shepperdson and Reynold, C. Stalker [etc.;1788.",1788,1763,1788,v.1,"Publisher;London;Wright, C;Place;Provenance;England;1788;Forbes, J",Heloise: or The siege of Rhodes,uk,m,grandom
+nnc1.0037104152,8398357,6702182,,"Cumberland, Richard,",London;Printed for Charles Dilly;1798.,1798,1732,1795,v.3,,Henry,uk,m,grandom
+mdp.39015063759552,284012,2567940,,"Burney, Sarah Harriet,",London;Printed for H. Colburn & co.;1820.,1820,1772,1816,v.3,,Tales of fancy,uk,f,grandom
+hvd.hwjtfk,9719254,11743362,,"Cooper, James Fenimore,",Philadelphia;Carey & Lea;1832 [c1824,1832,1789,1824,v.1,,The pilot;,us,m,grandom
+uc1.b254212,6504961,13377964,PR5703.V43,"Varty-Smith, Augusta A.",London;R. Bentley;1821.,1821,,1821,v. 1,,Matthew Tindale,uk,f,grandom
+uc1.b3326097,7922865,3945332,,"Hook, Theodore Edward,",Paris;Baudry's European Library;1840.,1840,1788,1840,,,"Cousin Geoffrey, the old bachelor;",uk,m,grandom
+nyp.33433074878889,8666267,6298715,,"Lover, Samuel,",New York;F. M. Lupton;between 1837 and 1860].,1837,1797,1837,,Ireland;History;1760-1820;Fiction,Rory O'More,ir,m,grandom
+nyp.33433075840177,8671920,12901139,,"Lesuire, Robert Martin,",London;Printed by D. Leach for T. Davies;1764.,1764,1737,1760,,Social life and customs;Great Britain;18th century,The savages of Europe,fr,m,grandom
+mdp.39015063931474,245028,23625332,PZ3.G954M,"Gunning,",London;J. Bell;1794.,1794,1740,1794,v.3,,Memoirs of Mary,uk,f,grandom
+nnc1.1002330709,8405386,35122360,,"Moser, Joseph,",London;1794.,1794,1748,1794,v.2,,Turkish tales,uk,m,grandom
+njp.32101038161780,8722917,4551747,,"Lewis, Alethea,",London;Printed for Henry Colburn;1816.,1816,1749,1816,vol.3,,Rhoda,uk,f,grandom
+hvd.hw3q0s,9706391,10438442,PQ2039.A45,"Rousseau, Jean-Jacques,",Philadelphia;Printed for Samuel Longcope.;M.DCC.XCVI. [1796,1796,1712,1761,v.3,,Eloisa: or A series of original letters,fr,m,grandom
+uc1.b3290572,6128720,16887275,,"Ward, R. Plumer",London;H. Colburn;1827.,1827,1765,1827,v. 4,,De Vere,uk,m,grandom
+nyp.33433074937438,8664338,13242846,,"Disraeli, Benjamin,",New York;Harper;1832.,1832,1804,1832,v. 1,English fiction,Contarini Fleming;,uk,m,grandom
+nyp.33433074868807,8670619,37312214,,"James, G. P. R.",New York;Harper & Brothers;1838.,1838,1799,1838,v. 1,,The robber,uk,m,grandom
+mdp.39015063967478,779533,66895091,,"Galt, John,",Edinburgh;Printed for W. Balckwood [etc.;1820.,1820,1779,1820,v.3,,The earthquake;,uk,m,grandom
+uc2.ark+=13960=t82j6cs08,5777344,1113056,DA880.H6G6,"Grant, Anne MacVicar,","London;Longman, Hurst, Rees & Orme;1807.",1807,1755,1807,v.1,,Letters from the mountains;,uk,f,grandom
+njp.32101067634046,8961437,10879910,PZ3.H145S,"Hall, James,",Philadelphia;Key and Biddle;1833.,1833,1793,1833,,,The soldier's bride and other tales,us,m,grandom
+mdp.39015021250124,282559,6630561,,"Bennett,",London;Printed for W. Lane;1794.,1794,,1794,v.1,,"Ellen, Countess of Castle Howel",uk,,grandom
+nyp.33433074918784,8663985,5237679,,"White, James,",London;Printed by J. Crowder for G.G.J. and J. Robinson;1790.,1790,,1790,v. 1,"1340-1399;John;of Gaunt, Duke of Lancaster;Fiction","The adventures of John of Gaunt, Duke of Lancaster",uk,m,grandom
+nnc1.1002365251,7922816,24987502,,"Sinclair, Catherine,",Edinburgh;W. Whyte and Co.;1841.,1841,1800,1841,v.1,,Modern flirtations,uk,f,grandom
+njp.32101007059791,2104490,2841712,,"James, G. P. R.",London;Saunders and Otley;1843.,1843,1799,1843,v.1,Robin Hood (Legendary character),Forest days;,uk,m,grandom
+nyp.33433074955331,8663523,16105885,,Henrietta.,London;Printed for J. Bew ...;1777.,1777,,1777,v. 2,English fiction,Letters from Henrietta to Morvina,uk,,grandom
+uiuo.ark+=13960=t8pc3d497,8719495,34087352,,"Harris, Alexander,","London;Smith, Elder and Co.;1849;(London;Stewart and Murray)",1849,1805,1849,v.2,,The emigrant family ;,au,m,grandom
+uiuo.ark+=13960=t2s475w45,8718341,13312718,,"MacCabe, William Bernard,",London;T.C. Newby;1851.,1851,1801,1851,v.3,,Bertha,ir,m,grandom
+uiuo.ark+=13960=t3vt1zh5r,8405108,21238914,,"Cobbold, Richard,",London;H. Colburn;1847.,1847,1797,1847,v.2,"Fiction;Primitive and early church, ca. 30-600;Church history",Zenon,uk,m,grandom
+uc2.ark+=13960=t9f47kt3k,1023708,367165,PR 4706S52 1847,"Froude, James Anthony,",London;J. Ollivier;1847.,1847,1818,1847,,,Shadows of the clouds,uk,m,grandom
+uiuo.ark+=13960=t7pn9mm7s,8720842,1451923,,"Manning, Anne,",London;Richard Bentley;1858.,1858,1807,1858,v.2,,The ladies of Bever Hollow,uk,f,grandom
+nyp.33433022846707,7923007,10334594,,"Myers, P. Hamilton",New York;Putnam;1850.,1850,1812,1850,,,The King of the Hurons,us,m,grandom
+uc2.ark+=13960=t6154fk9b,7665257,1855837,PZ3.L998My,"Lytton, Edward Bulwer Lytton,",Edinburgh;W. Blackwood;1853.,1853,1803,1853,v.4,,"""My novel,""",uk,m,grandom
+nyp.33433082170576,6155929,11601574,,"Arthur, T. S.",Philadelphia;Henry F. Anners;1847.,1847,1809,1847,,,Lovers and husbands,us,m,grandom
+nyp.33433074920608,8663992,11850259,,"Austin, Alfred,",London;J.F. Hope;1858.,1858,1835,1858,v. 2,,Five years of it,uk,m,grandom
+uc1.b3324403,6130930,10088557,,"Lawrence, George A.",Boston;Ticknor & Fields;1860.,1860,1827,1860,,,Sword and gown,uk,m,grandom
+uc1.b248744,6501566,3790961,,"Eastlake, Elizabeth,",London;J. Murray;1846.,1846,1809,1843,,,Livonian tales,uk,f,grandom
+uc2.ark+=13960=t8df6mw4h,7651549,2914131,,"Arthur, T. S.",Philadelphia;J. W. Bradley;c1850.,1850,1809,1850,,,Tales of domestic life,us,m,grandom
