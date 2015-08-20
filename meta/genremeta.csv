@@ -32,7 +32,7 @@ mdp.39015085433426,5069382,4122645,,"Carson, James.",New York;Cupples & Leon;c19
 mdp.39076002720709,9930755,213054717,,"Chapman, Allen.",New York;Chatterton-Peck Co.;c1900.,1900,,1900,,Orphans;Detective and mystery stories;False imprisonment;Conduct of life;Fathers and sons;Teenage boys;Country life;Brothers;Juvenile fiction;New York (State),"Boys of Spring Hill, or, Bound to rise ;",,,locdetmyst
 uc1.32106001930137,7123380,993828,,"Chesterton, G. K.",New York;J. Lane;1911.,1911,1874,1911,,"Clergy;Catholics;Detective and mystery stories, English;England;Brown, Father (Fictitious character);Fiction",The innocence of Father Brown,uk,m,det100 | locdetmyst
 nyp.33433074970710,8667899,8661270,,"Christie, Agatha,","London;New York;John Lane;1921, c1920.",1920,1890,1920,,,The mysterious affair at Stiles,uk,f,det100
-inu.30000007708815,6057734,876882,PZ3.C697Mo2,"Collins, Wilkie,",New York;Harper & brothers;1868.,1868,1824,1868,,,The moonstone,uk,m,det100
+inu.30000007708815,6057734,876882,PZ3.C697Mo2,"Collins, Wilkie,",New York;Harper & brothers;1868.,1868,1824,1868,,,The moonstone,uk,m,det100 | pbgothic
 uiuo.ark+=13960=t7cr65585,8722974,12076816,,"Corelli, Marie,",London;Richard Bentley;1886.,1886,,,v.2,"Science fiction, English",A romance of two worlds,,,locscifi
 nyp.33433074818778,8658697,10311195,,"Cowan, Frank,","Greensburg, Pa.;Tribune Press;188-?",1880,,,,"Science fiction, American",Revi-Lona,,,locscifi
 dul1.ark+=13960=t3zs3df24,7509390,4355055,PS1534.D35S8,"De Mille, James,",New York;Harper & Brothers;1888.,1888,,,,"Utopias;Science fiction, Canadian;19th century;Sea stories",A strange manuscript found in a copper cylinder,,,locscifi
@@ -479,9 +479,73 @@ uc2.ark+=13960=t1td9p949,7670886,3916924,,"Reeve, Clara,",London;E. and C. Dilly
 mdp.39015039369650,167757,32136573,,"Lee, Sophia,",London;T. Cadell and W. Davies;1804.,1804,1750,1785,v.2,,The recess;,uk,f,pbgothic
 uiuo.ark+=13960=t9h41nx14,8724075,629922,,"Beckford, William,","London;Printed for W. Clarke, New Bond street;1816.",1816,1760,1786,,,Vathek,uk,m,pbgothic
 nyp.33433074911532,1022801,7085107,PR3688.S4E55,"Smith, Charlotte,",London;T. Cadell;1789.,1788,1749,1788,v. 4,,Emmeline,uk,f,pbgothic
-nyp.33433074955091,002104589,23642675,,"Radcliffe, Ann Ward,",London;T. Hookham;1792.,1792,1764,1790,v. 2,,A Sicilian romance,uk,f,pbgothic
-nnc1.cu58506756,008434485,9590696,,"Radcliffe, Ann Ward,","Philadelphia;Reprinted and sold by Thomas Bradford, book-seller and stationer, No. 8, South Front street.;1795.",1795,1764,1791,,,The romance of the forest,uk,f,pbgothic
-mdp.39015063950102,000781722,44887870,,"Radcliffe, Ann Ward,","London;Longman, Hurst, Rees & Orme;1806.",1806,1764,1794,v.2,,The mysteries of Udolpho,uk,f,pbgothic
-uva.x000498882,009780276,19769848,,"Godwin, William,",New York;Harper and Brothers;1856.,1856,1756,1794,V.1-2,,The adventures of Caleb Williams,uk,m,pbgothic
-njp.32101062743727,009042425,13635486,,"Roche, Regina Maria,",Exeter [N.H.;J. & B. Williams;1828.,1828,1764,1764,v.3,,The children of the abbey,ir,f,pbgothic
-nyp.33433074874748,008665865,6566039,,"Lewis, M. G.",London;J. Bell;1796.,1796,1775,1796,v. 3,,The monk,uk,m,pbgothic
+nyp.33433074955091,2104589,23642675,,"Radcliffe, Ann Ward,",London;T. Hookham;1792.,1792,1764,1790,v. 2,,A Sicilian romance,uk,f,pbgothic
+nnc1.cu58506756,8434485,9590696,,"Radcliffe, Ann Ward,","Philadelphia;Reprinted and sold by Thomas Bradford, book-seller and stationer, No. 8, South Front street.;1795.",1795,1764,1791,,,The romance of the forest,uk,f,pbgothic
+mdp.39015063950102,781722,44887870,,"Radcliffe, Ann Ward,","London;Longman, Hurst, Rees & Orme;1806.",1806,1764,1794,v.2,,The mysteries of Udolpho,uk,f,pbgothic
+uva.x000498882,9780276,19769848,,"Godwin, William,",New York;Harper and Brothers;1856.,1856,1756,1794,V.1-2,,The adventures of Caleb Williams,uk,m,pbgothic
+njp.32101062743727,9042425,13635486,,"Roche, Regina Maria,",Exeter [N.H.;J. & B. Williams;1828.,1828,1764,1764,v.3,,The children of the abbey,ir,f,pbgothic
+nyp.33433074874748,8665865,6566039,,"Lewis, M. G.",London;J. Bell;1796.,1796,1775,1796,v. 3,,The monk,uk,m,pbgothic
+mdp.39015004880715,540357,26687518,,"Dickens, Charles,",London;New York;Macmillan and co.;1908.,1908,1812,1841,,,The old curiosity shop,uk,m,pbgothic
+nyp.33433074955109,2104589,23642675,,"Radcliffe, Ann Ward,",London;T. Hookham;1792.,1792,1764,1790,v. 1,,A Sicilian romance,uk,f,pbgothic
+njp.32101051650776,8899606,4321242,PR5202.M9 1828,"Radcliffe, Ann Ward,",Philadelphia;J. J. Woodward;1828.,1828,1764,1794,vol.1,,The mysteries of Udolpho,uk,f,pbgothic
+nyp.33433074911508,1022801,7085107,PR3688.S4E55,"Smith, Charlotte,",London;T. Cadell;1789.,1788,1749,1788,v. 1,,Emmeline,uk,f,pbgothic
+nyp.33433074874300,8665865,6566039,,"Lewis, M. G.",London;J. Bell;1796.,1796,1775,1796,v. 1,,The monk,uk,m,pbgothic
+mdp.39015005076883,584495,819179,PZ3.B814 vol.1,"Brown, Charles Brockden,",Philadelphia;D. McKay;1887,1887,1771,1798,,,"Wieland; or, The transformation",us,m,pbgothic
+mdp.39015003931113,392197,62082920,,"Godwin, William,","London;H. Colburn and R. Bentley; [etc., etc.;1832.",1832,1756,1799,,,St. Leon: a tale of the sixteenth century,uk,m,pbgothic
+hvd.hwpn81,9720312,12429749,,"Maturin, Charles Robert,",Paris;Truchy's French and English Library;1828;(Paris;Goetschy),1828,1782,1816,,,"Bertram, or, The castle of St-Aldobrand",ir,m,pbgothic
+njp.32101037977574,8889025,777049387,,"Dacre, Charlotte,",London;T. Cadell and W. Davies;1807.,1807,1771,1807,vol.3-4,,The libertine;,uk,f,pbgothic
+uc1.31158008377706,439042,1215156,,"Austen, Jane,","London;Toronto;J. M. Dent & sons, ltd.;New York;E. P. Dutton & co.;1922.",1922,1775,1818,,,Northanger abbey,uk,f,pbgothic
+uva.x000960744,9776004,8523153,PS2066.A1 1873,"Irving, Washington,",New York;G.P. Putnam;1868,1873,1783,1820,,,"The sketch-book of Geoffrey Crayon, gent. [pseud.]",us,m,pbgothic
+mdp.39015021040004,1910357,4418502,,"Maturin, Charles Robert,",London;R. Bentley & son;1892.,1892,1782,1820,v.1,,Melmoth the wanderer,ir,m,pbgothic
+mdp.39015021039998,1910357,4418502,,"Maturin, Charles Robert,",London;R. Bentley & son;1892.,1892,1782,1820,v.2,,Melmoth the wanderer,ir,m,pbgothic
+mdp.39015021039980,1910357,4418502,,"Maturin, Charles Robert,",London;R. Bentley & son;1892.,1892,1782,1821,v.3,,Melmoth the wanderer,ir,m,pbgothic
+uc1.b3575696,6677558,2810804,,"Radcliffe, Ann Ward,",London;H. Colburn;1826.,1826,1764,1826,v.1,"History;Henry III, 1216-1272;Great Britain;Fiction",Gaston de Blondeville,uk,f,pbgothic
+uc1.b3575698,6677558,2810804,,"Radcliffe, Ann Ward,",London;H. Colburn;1826.,1826,1764,1826,v.3,"History;Henry III, 1216-1272;Great Britain;Fiction",Gaston de Blondeville,uk,f,pbgothic
+nyp.33433074937610,8664083,223417,,"Lytton, Edward Bulwer Lytton,",New York;J. & J. Harper;1830.,1830,1803,1827,,,Falkland,uk,m,pbgothic
+nyp.33433081585105,8644958,5797357,,"Irving, Washington,",Paris;Baudry's European Library;1840.,1840,1783,1832,,,Tales of the Alhambra,us,m,pbgothic
+njp.32101032308387,8888080,8909779,,"Lytton, Edward Bulwer Lytton,",Philadelphia;J.B. Lippincott;1881.,1881,1803,1832,,,Eugene Aram,uk,m,pbgothic
+uc2.ark+=13960=t1mg7hw3f,7648454,3727345,PZ3.L998G6,"Lytton, Edward Bulwer Lytton,",London;New York;Routledge;188-,1880,1803,1833,,,Godolphin,uk,m,pbgothic
+mdp.39015002313487,478831,1846344,,"Hawthorne, Nathaniel,","London;J. M. Dent & sons, ltd.;New York;E. P. Dutton & co.;1915",1915,1804,1837,,,Twice-told tales,us,m,pbgothic
+mdp.39015000551799,540236,13280368,PZ3.D55O115,"Dickens, Charles,",New York;Hurd and Houghton;1867.,1867,1812,1838,,,Oliver Twist,uk,m,pbgothic
+uc1.31822038205001,10824291,3280190,PZ3.P752N2,"Poe, Edgar Allan,",London;Wiley and Putnam;1838,1838,1809,1838,,,"The narrative of Arthur Gordon Pym [pseud.] of Nantucket, North America",us,m,pbgothic
+nyp.33433074919402,8663847,36143063,,"Ainsworth, William Harrison,",London;New York;G. Routledge;1858.,1858,1805,1840,,"Lady;English fiction;1537-1554;Grey, Jane;Fiction",The Tower of London,uk,m,pbgothic
+njp.32101068601341,8973659,6629051,,"Poe, Edgar Allan,",Leipzig;B. Tauchnitz;1884.,1884,1809,1843,,,Tales by Edgar Allan Poe,us,m,pbgothic
+njp.32101075374379,9026153,15496734,PR5221.R35M88 1845,"Reynolds, George W. M.",London;G. Vickers;1845-1848.,1845,1814,1844,v.1,,The mysteries of London,uk,m,pbgothic
+uc1.32106010644463,8323033,6338680,,"Reynolds, George W. M.",London;G. Vickers;1846-48.,1846,1814,1846,v.4,,The mysteries of London,uk,m,pbgothic
+uiuo.ark+=13960=t2j683k08,7585723,4420260,PZ3.R336My 2,"Reynolds, George W. M.",London;J. Dicks;1850-56].,1850,1814,1850,v.3-4,,The mysteries of the court of London,uk,m,pbgothic
+inu.30000060903741,6057971,11412156,,"Ainsworth, William Harrison,",London;New York;G. Routledge;188-?].,1880,1805,1849,,,The Lancashire witches,uk,m,pbgothic
+mdp.39015004274992,478557,274628,,"Hawthorne, Nathaniel,","Boston;New York;Houghton, Mifflin company;c1882",1882,1804,1846,,,Mosses from an old manse,us,m,pbgothic
+mdp.39076006220961,9913820,4238315,,"Brontë, Charlotte,",Edinburgh;J. Grant;1908.,1907,1816,1847,v.1,,Jane Eyre,uk,f,pbgothic
+mdp.39076006220979,9913820,4238315,,"Brontë, Charlotte,",Edinburgh;J. Grant;1908.,1907,1816,1847,v.2,,Jane Eyre,uk,f,pbgothic
+nyp.33433074931118,420967,7611990,,"Brontë, Emily,","New York;Harper & Brothers, Publishers, 82 Cliff Street;1848.",1848,1818,1847,,,Wuthering Heights,uk,f,pbgothic
+uva.x000180089,9793718,34554465,PZ3.H318Sc20,"Hawthorne, Nathaniel,","Boston, New York;Houghton, Mifflin and co.;1889.",1889,1804,1850,,,The scarlet letter,us,m,pbgothic
+uc2.ark+=13960=t2r49vz0v,7699745,8198683,,"Hawthorne, Nathaniel,","Boston;Houghton, Mifflin;1893, [c1883",1883,1804,1851,,,The house of the seven gables,us,m,pbgothic
+mdp.49015001286492,4511771,78080726,,"Brontë, Charlotte,","London;Smith, Elder;1905.",1905,1816,1853,,,Villette,uk,f,pbgothic
+uc2.ark+=13960=t2h70nx9q,7705645,78798411,,"MacDonald, George,","London;Daldy, Isbister, & Co.;1874.",1874,1824,1858,v.1,,Phantastes,uk,m,pbgothic
+uc2.ark+=13960=t9862rx2r,7705645,78798411,,"MacDonald, George,","London;Daldy, Isbister, & Co.;1874.",1874,1824,1858,v.2,,Phantastes,uk,m,pbgothic
+mdp.39015038723360,122875,2673386,PZ3.C697Wo 10,"Collins, Wilkie,",New York;The Century co.;1906.,1906,1824,1860,,,The woman in white,uk,m,pbgothic
+nyp.33433074945779,8663981,291965,PZ3.C697.Ar2,"Collins, Wilkie,",New York;Harper & Brothers;1873,1873,1824,1866,,,Armadale,uk,m,pbgothic
+uc1.b250127,006502425,5515317,,"Le Fanu, Joseph Sheridan,",London;R. Bentley;1864.,1864,1814,1864,v.1,,Uncle Silas,ir,m,pbgothic
+uc1.b250128,006502425,5515317,,"Le Fanu, Joseph Sheridan,",London;R. Bentley;1864.,1864,1814,1864,v.2,,Uncle Silas,ir,m,pbgothic
+uc1.b250129,006502425,5515317,,"Le Fanu, Joseph Sheridan,",London;R. Bentley;1864.,1864,1814,1864,v.3,,Uncle Silas,ir,m,pbgothic
+uva.x000237148,009780471,20658959,,"Dickens, Charles,","Boston;Houghton, Mifflin and company;1881.",1881,1812,1865,,,Our mutual friend,uk,m,pbgothic
+inu.30000007695723,006059136,05237816,PZ3.L518I,"Le Fanu, Joseph Sheridan,",London;R. Bentley & son;1886.,1886,1814,1872,,,In a glass darkly,ir,m,pbgothic
+mdp.39015026244999,000123462,37217567,,"Collins, Wilkie,",Toronto;Chicago [etc.;Rose-Belford publishing company;1878.,1878,1824,1878,,,The haunted hotel,uk,m,pbgothic
+mdp.39015063559390,000321854,09086569,,"Oliphant,",London;Macmillan and co.;1883.,1883,1828,1882,,,A little pilgrim in the unseen,uk,f,pbgothic
+coo.31924013476498,011405492,63963369,,"Haggard, H. Rider",London;New York;Cassell;1912.,1912,1856,1885,,,King Solomon's mines,uk,m,pbgothic
+mdp.39015059642994,000123543,04470724,,"Stevenson, Robert Louis,",New York;C. Scribner's Sons;1903.,1903,1850,1886,,,Strange case of Dr. Jekyll and Mr. Hyde,uk,m,pbgothic
+nyp.33433074866686,006156115,00421426,,"Kipling, Rudyard,",Philadelphia;H. Altemus;c1898,1898,1865,1888,,,Plain tales from the hills,uk,m,pbgothic
+uc1.b4104961,000590565,05772680,,"Kipling, Rudyard,",New York;H. M. Caldwell company;c1899,1899,1865,1888,,,The phantom rickshaw,uk,m,pbgothic
+uc1.b3325448,006131665,02155052,,"Lee, Vernon,",London;New York;Lane;1906.,1906,1856,1890,,,Hauntings,uk,f,pbgothic
+coo.31924014157121,011406079,18107497,,"Wilde, Oscar,",New York;Brentano's;1908,1908,1854,1891,,,The picture of Dorian Gray,ir,m,pbgothic
+uc1.b3578934,006678259,3268651,,"Bierce, Ambrose,",New York;United States Book Co.;1891.,1891,1842,1891,,,Tales of soldiers and civilians,us,m,pbgothic
+njp.32101013566920,008884012,1928290,PZ3.B479I,"Bierce, Ambrose,",New York and;London;G. P. Putnam's sons;1898.,1898,1842,1892,,,In the midst of life;,us,m,pbgothic
+uva.x000885514,009789429,3265761,PZ3.B479C2,"Bierce, Ambrose,",Washington;The Neale Publishing Company;1903.,1903,1842,1893,,,Can such things be?,us,m,pbgothic
+uc1.b4104774,000286078,01724064,PZ3.C812Sor,"Corelli, Marie,",Philadelphia;J. B. Lippincott company;1896.,1896,1855,1895,,,The sorrows of Satan;,uk,f,pbgothic
+inu.39000002156706,006058078,06388485,,"Benson, Arthur Christopher,",London;Isbister;1903.,1903,1862,1903,,,The hill of trouble and other stories,uk,m,pbgothic
+uc2.ark+=13960=t1pg1k81k,007661701,7557147,PZ3.J2355Th,"James, M. R.","New York;Longmans, Green & Co.;London;E. Arnold;1919.",1919,1862,1919,,,A thin ghost and others,uk,m,pbgothic
+uc1.32106001980371,001692458,03692943,PR6007.U6G7 1911,"Dunsany, Edward John Moreton Drax Plunkett,",London;The Pegana press;1911.,1911,1878,1905,,,The gods of Pegāna,ir,m,pbgothic
+uc1.b3578940,006678263,15217345,,"Blackwood, Algernon,",London;Eveleigh Nash;1915.,1915,1869,1906,,,The empty house,uk,m,pbgothic
+inu.30000011752437,006058720,03304072,,"Wharton, Edith,",London;Macmillan and Co.;1910.,1910,1862,1910,,,Tales of men and ghosts,us,f,pbgothic
+uc1.b3578339,006674546,822499,,"Crawford, F. Marion",New York;Macmillan;1911,1911,1854,1911,,,Wandering ghosts,us,m,pbgothic
+mdp.39015013429249,000622799,23922457,,"Cabell, James Branch,",New York;R. M. McBride & co.;1923.,1923,1879,1919,,,Jurgen,us,m,pbgothic
