@@ -243,7 +243,7 @@ mdp.39015049217741,207878,2541507,,"Doyle, Arthur Conan,",New York;Harper & Bros
 NottingHM,,,,"Felix, Charles, pseud.",,1863,,1863,,,Notting Hill Mystery,uk,m,blcrime
 RecollectionsAD,,,,"Russell, William,",,1859,,1859,,,Recollections of a Detective Police-Officer,uk,m,det100
 RedThumbMark,,,,"Freeman, R. Austin,",,1907,1862,1907,,,The Red Thumb Mark,uk,m,det100
-nyp.33433074954748,008668049,37223227,,"Dickens, Charles,",London;A. and C. Black;1904.,1904,1812,1853,,,Bleak house,uk,m,det100
+nyp.33433074954748,8668049,37223227,,"Dickens, Charles,",London;A. and C. Black;1904.,1904,1812,1853,,,Bleak house,uk,m,det100
 nyp.33433074866413,8669074,37256980,,"Kipling, Rudyard,","New York;Doubleday, Page & Co.;1908.",1908,1865,1898,,,The day's work,uk,m,random
 mdp.39015030365178,2139204,6841493,,"Lafargue, Paul,",Chicago;C. H. Kerr & company;1904 [1903,1904,1842,1903,,,The sale of an appetite,fr,m,random
 uc1.31822033251729,7255477,37069539,PR8208.O719F38 1922,"Forrest, Michael D","Kensington, Sydney;Sacred Heart Monastery;1922",1922,1883,1922,,Missions;Catholic Church;Fiction;Papua New Guinea,Father Justin,au,m,random
@@ -264,213 +264,224 @@ nyp.33433075843544,8675986,37627191,PZ3.T344Y,"Theuriet, André,",Chicago;Laird 
 uc2.ark+=13960=t7tm74c51,1427113,23533090,,"Orcutt, William Dana,",London;Heinemann;1904.,1904,1870,1904,,"sieur de;La Salle, Robert Cavelier;Fiction;1643-1687",Robert Cavelier,us,m,random
 nyp.33433074870282,449471,2359966,PZ3.H498St,"Hewlett, Maurice,","New York;Dodd, Mead and company;1907.",1907,1861,1907,,,The stooping lady,uk,m,random
 nyp.33433075766463,8670000,37301807,,"Perrin, Alice,",London;Chatto & Windus;1908.,1908,1867,1908,,,The stronger claim,uk,f,random
-00010245,226,,,"Rinehart, Mary Roberts,",New York George H. Doran Co. 1925,1925,1876,1925,,,The red lamp,us,,chimyst
-00010065,189,,,"Burnett, W. R.",New York Literary Guild of America 1929,1929,1899,1929,,,Little Caesar,us,,chimyst
-00011225,18,,,"Connington, J. J.",Boston Little 1928,1928,1880,1928,,,Tragedy at Ravensthorpe,uk,,chimyst
-00011143,19,,,"Crofts, Freeman Wills,",New York T. Seltzer 1925,1925,1879,1925,,,Inspector French's greatest case,ir,,chimyst
-00004504,29,,,"Wells, Carolyn,",Philadelphia; London J.B. Lippincott Co. 1920,1920,-194,1920,,,Raspberry jam,us,,chimyst
-00011109,25,,,"Le Queux, William,",New York Macaulay Co. 1923,1923,1864,1923,,,The voice from the void,uk,,chimyst
-00011033,383,,,"Sayers, Dorothy L.",New York Harper & Bros. 1928,1928,1893,1928,,,The unpleasantness at the Bellona Club,uk,,chimyst
-00011260,18,,,"Fletcher, J. S.",Garden City; N.Y. George H. Doran Co. 1929,1929,1863,1929,,,Paradise court,uk,,chimyst
-00004524,140,,,"Burke, Thomas,",New York George H. Doran Co. 1921,1921,1886,1921,,,More Limehouse nights,us,,chimyst
-00010012,163,,,"Hecht, Ben,",New York Boni & Liveright 1923,1923,1894,1923,,,The Florentine dagger,us,,chimyst
-00010309,36,,,"Keeler, Harry Stephen,",New York E.P. Dutton 1929,1929,1890,1929,,,The spectacles of Mr. Cagliostro,us,,chimyst
-00011255,64,,,"Christie, Agatha,","New York Dodd, Mead & Co. 1929",1929,1890,1929,,,The Seven dials mystery,uk,,chimyst
-00011162,26,,,"Chesterton, G. K.",Leipzig B. Tauchnitz 1926,1926,1874,1926,,,The incredulity of Father Brown,uk,,chimyst
-00010243,64,,,"Hill, Grace Livingston,",Philadelphia; London J.B. Lippincott Co. 1925,1925,1865,1925,,,Ariel Custer,us,,chimyst
-00011019,69,,,"Christie, Agatha,","New York Dodd, Mead 1924",1924,1890,1924,,,The man in the brown suit,uk,,chimyst
-00010214,16,,,"Stringer, Arthur,",Toronto McClell& & Stewart 1923,1923,1874,1923,,,Phantom wires,us,,chirandom
-00010293,65,,,"Larsen, Nella,",New York; London Alfred A. Knopf 1928,1928,,1928,,,Quicksand,us,,chirandom
-00004486,32,,,"Richmond, Grace S.","Garden City; New York Doubleday, Page & Co. 1920",1920,1866,1920,,,The bells of St. John's,us,,chirandom
-00011220,13,,,"Blackwood, Algernon,",London Macmillan Co. 1928,1928,1869,1928,,,The human chord,uk,,chirandom
-00010294,268,,,"McKay, Claude,",New York Harper & Bros. 1928,1928,1890,1928,,,Home to Harlem,us,,chirandom
-00011214,52,,,"Young, E. H.","New York Harcourt, Brace & Co. 1927",1927,1880,1927,,,Moor fires,uk,,chirandom
-00004549,33,,,"Durkin, Douglas 1884-  (Douglas Leader),",Toronto Musson Book Co. 1921,1921,,1921,,,The Lobstick trail,us,,chirandom
-00010036,711,,,"Lewis, Sinclair,","New York Harcourt, Brace & Co. 1925",1925,1885,1925,,,Arrowsmith,us,,chirandom
-00010289,270,,,"Hill, Grace Livingston,",New York Grosset & Dunlap 1928,1928,1865,1928,,,Blue ruin,us,,chirandom
-00011016,551,,,"Bennett, Arnold,",New York George H. Doran Co. 1923,1923,1867,1923,,,Riceyman Steps,uk,,chirandom
-00004668,67,,,"Dwight, H. G.","Garden City; N.Y. Doubleday, Page & Co. 1922",1922,1875,1922,,,Stamboul nights,us,,chirandom
-00011137,39,,,"Sinclair, Bertrand W.","Boston Little, Brown, & Co. 1924",1924,1881,1924,,,The inverted pyramid,ca,,chirandom
-00011036,242,,,"West, Rebecca,",Garden City; N.Y. George H. Doran Co. 1929,1929,1892,1929,,,Harriet Hume,uk,,chirandom
-00011224,13,,,"Connington, J. J.","Boston Little, Brown 1928",1928,1880,1928,,,Mystery at Lynden Sands,uk,,chirandom
-00011124,826,,,"Galsworthy, John,",New York Charles Scribner's Sons 1924,1924,1867,1924,,,The white monkey,uk,,chirandom
-00011486,79,,,"Christie, Agatha,","New York Dodd, Mead 1936",1936,1890,1936,,,Murder in Mesopotamia,uk,,chimyst
-00010527,66,,,"Queen, Ellery,",New York Frederick A. Stokes Co. 1937,1937,,1937,,,The door between,us,,chimyst
-00011444,67,,,"Oppenheim, E. Phillips,","Boston Little, Brown, & Co. 1934",1934,1866,1934,,,The man without nerves,uk,,chimyst
-00011344,23,,,"Upfield, Arthur W.",London Hutchinson & Co. 1931,1931,1888,1931,,,The sands of Windee,uk,,chimyst
-00011634,38,,,"Wentworth, Patricia,",Philadelphia Lippincott 1939,1939,,1939,,,Lonesome road,uk,,chimyst
-00011429,36,,,"Freeman, R. Austin,",London Hodder & Stoughton 1934,1934,1862,1934,,,For the defence: Dr. Thorndyke,uk,,chimyst
-00011601,71,,,"Christie, Agatha,"," Leicester, Ulverscroft 1939",1939,1890,1939,,,Murder is easy,uk,,chimyst
-00010533,37,,,"Stout, Rex,","New York; Toronto Farrar & Rinehart, Inc. 1937",1937,1886,1937,,,The red box,us,,chimyst
-00011520,22,,,"Allingham, Margery,",London Hodder & Stoughton 1937,1937,1904,1937,,,The case of the late Pig,uk,,chimyst
-00011562,54,,,"Blake, Nicholas,",New York; London Harper & Bros. 1938,1938,1904,1938,,,The beast must die,uk,,chimyst
-00011289,20,,,"Connington, J. J.","Boston Little, Brown, & Co. 1930",1930,1880,1930,,,The eye in the museum,uk,,chimyst
-00010401,12,,,"Cain, Paul,",Garden City; N.Y. George H. Doran Co. 1933,1933,,1933,,,Fast one,us,,chimyst
-00010449,22,,,"Palmer, Stuart,",Garden City; N.Y. George H. Doran Co. 1934,1934,1905,1934,,,The puzzle of the silver Persian,us,,chimyst
-00010358,12,,,"Palmer, Stuart,",New York Brentano's 1931,1931,1905,1931,,,The penguin pool murder,us,,chimyst
-00011533,44,,,"Innes, Michael,", North Yorkshire : House of Stratus 1937,1937,1906,1937,,,Hamlet: revenge!,uk,,chimyst
-00010351,255,,,"Hill, Grace Livingston,",New York Grosset & Dunlap 1931,1931,1865,1931,,,Kerry,us,,chirandom
-00010367,52,,,"West, Nathanael,",New York; Paris Contact editionsontact editions 1931,1931,1903,1931,,,The dream life of Balso Snell,us,,chirandom
-00010477,300,,,"Marquis, Don,",Garden City; New York George H. Doran Co. 1935,1935,1878,1935,,,The lives and times of archy & mehitabel,us,,chirandom
-00010326,283,,,"Dos Passos, John,",New York; London Harper & Bros. 1930,1930,1896,1930,,,The 42nd parallel,us,,chirandom
-00010376,44,,,"Cather, Willa,",Boston; New York Houghton Mifflin Co. 1932,1932,1873,1932,,,The song of the lark,us,,chirandom
-00011455,19,,,"Wheatley, Dennis,",New York E.P. Dutton 1934,1934,1897,1934,,,Black August,uk,,chirandom
-00011506,9,,,"Oppenheim, E. Phillips,",London Hodder & Stoughton 1936,1936,1866,1936,,,The bird of paradise,uk,,chirandom
-00011618,11,,,"Monsarrat, Nicholas,",London Cassell 1939,1939,1910,1939,,,This is the schoolroom,uk,,chirandom
-00011038,463,,,"Tomlinson, H. M.",New York Harper & Bros. 1930,1930,1873,1930,,,All our yesterdays,uk,,chirandom
-00011341,138,,,"Strong, L. A. G.",New York Alfred A. Knopf 1931,1931,1896,1931,,,The garden,uk,,chirandom
-00010408,235,,,"Hill, Grace Livingston,",New York Grosset & Dunlap 1933,1933,1865,1933,,,The beloved stranger,us,,chirandom
-00011450,46,,,"Van der Post, Laurens,",London Leonard & Virginia Woolf at the Hogarth Press 1934,1934,,1934,,,In a province,??,,chirandom
-00010416,42,,,"Queen, Ellery,",New York F.A. Stokes Co. 1933,1933,,1933,,,The American gun mystery,us,,chirandom
-00010333,539,,,"Hughes, Langston,",New York Alfred A. Knopf 1930,1930,1902,1930,,,Not without laughter,us,,chirandom
-00011052,168,,,"Isherwood, Christopher,",London L. & Virginia Woolf at the Hogarth Press 1935,1935,1904,1935,,,Mr. Norris changes trains,uk,,chirandom
-00010782,71,,,"Lockridge, Richard,",New York E.P. Dutton 1945,1945,1898,1945,,,Death in the mind,us,,chimyst
-00010665,19,,,"Gardner, Erle Stanley,",New York Detective Book Club 1942,1942,1889,1942,,,The case of the empty tin,us,,chimyst
-00010622,23,,,"Reilly, Helen,",New York Random House 1940,1940,1890,1940,,,The dead can tell,us,,chimyst
-00010822,27,,,"Miller, Wade,","New York Farrar, Straus & Co. 1946",1946,,1946,,,Deadly weapon,us,,chimyst
-00010919,324,,,"Stout, Rex,",New York Viking Press 1948,1948,1886,1948,,,And be a villain,us,,chimyst
-00011674,124,,,"Christie, Agatha,","New York Dodd, Mead & Co. 1941",1941,1890,1941,,,Evil under the sun,uk,,chimyst
-00010956,387,,,"Queen, Ellery,","Boston Little, Brown 1949",1949,,1949,,,Cat of many tails,us,,chimyst
-00011851,33,,,"Crispin, Edmund,",Philadelphia J.B. Lippincott Co. 1948,1948,1921,1948,,,Love lies bleeding,uk,,chimyst
-00010790,163,,,"Queen, Ellery,","Boston Little, Brown 1945",1945,,1945,,,The murderer is a fox,us,,chimyst
-00010844,54,,,"Coxe, George Harmon,",New York Alfred A. Knopf 1947,1947,1901,1947,,,Fashioned for murder,us,,chimyst
-00011650,36,,,"Freeman, R. Austin,","New York Dodd, Mead & Co. 1940",1940,1862,1940,,,Mr. Polton explains,uk,,chimyst
-00010723,118,,,"Queen, Ellery,","Boston Little, Brown & Co. 1943",1943,,1943,,,There was an old woman,us,,chimyst
-00010814,51,,,"Fair, A. A.",New York W. Morrow 1946,1946,1889,1946,,,Crows can't count,us,,chimyst
-00010791,595,,,"Rinehart, Mary Roberts,","New York; Toronto Farrar & Rinehart, Inc. 1945",1945,1876,1945,,,The yellow room,us,,chimyst
-00011705,15,,,"Connington, J. J.","Boston Little, Brown & Co. 1942",1942,1880,1942,,,No past is dead,uk,,chimyst
-00011897,22,,,"Wheatley, Dennis,",London Hutchinsn 1949,1949,1897,1949,,,The rising storm,uk,,chirandom
-00011680,13,,,"Heyer, Georgette,",London Hodder & Stoughton 1941,1941,1902,1941,,,Envious Casca,uk,,chirandom
-00010724,129,,,"Rand, Ayn,",Philadelphia Blakiston Co. 1943,1943,,1943,,,The fountainhead,us,,chirandom
-00011665,112,,,"Stevenson, D. E.","New York Farrar & Rinehart, Inc. 1940",1940,1892,1940,,,Mrs. Tim of the regiment,uk,,chirandom
-00011639,44,,,"Ambler, Eric,",New York Alfred A. Knopf 1940,1940,1909,1940,,,Journey into fear,uk,,chirandom
-00011787,46,,,"Wheatley, Dennis,",London Hutchinson 1945,1945,1897,1945,,,The man who missed the war,uk,,chirandom
-00011652,507,,,"Goudge, Elizabeth,","New York Coward-McCann, Inc. 1940",1940,1900,1940,,,The bird in the tree,uk,,chirandom
-00010833,1575,,,"Warren, Robert Penn,","New York Harcourt, Brace & Co. 1946",1946,1905,1946,,,All the king's men,us,,chirandom
-00010169,83,,,"Grant, Dorothy Fremont,","New York; Toronto Longmans, Green & Co. 1944",1944,1900,1944,,,Margaret Brent: adventurer,us,,chirandom
-00010673,78,,,"Lovelace, Maud Hart,",New York Thomas Y. Crowell Co. 1942,1942,1892,1942,,,Betsy and Tacy Go Over the big hill,us,,chirandom
-00010840,75,,,"Buck, Pearl S.",New York J. Day Co. 1947,1947,1892,1947,,,The angry wife,us,,chirandom
-00010617,1502,,,"McCullers, Carson,",Boston Houghton Mifflin Co. 1940,1940,1917,1940,,,The heart is a lonely hunter,us,,chirandom
-00010637,368,,,"Fast, Howard,","New York Duell, Sloan & Pearce 1941",1941,1914,1941,,,The last frontier,us,,chirandom
-00011810,15,,,"Mitchell, Gladys,",London M. Joseph 1946,1946,1901,1946,,,Here comes a chopper,uk,,chirandom
-00011884,13,,,"Gask, Arthur,",London Herbert Jenkins 1949,1949,1872,1949,,,The storm breaks,uk,,chirandom
-00020386,68,,,"McBain, Ed,",New York Simon & Schuster 1959,1959,1926,1959,,,King's ransom,us,,chimyst
-00020093,95,,,"Davis, Mildred B,",New York Simon & Schuster 1953,1953,,1953,,,They buried a man,us,,chimyst
-00011009,23,,,"Spillane, Mickey,",New York E.P. Dutton 1950,1950,1918,1950,,,Vengeance is mine!,us,,chimyst
-00020035,258,,,"Stout, Rex,",New York Viking Press 1951,1951,1886,1951,,,Murder by the book,us,,chimyst
-00020261,524,,,"Stout, Rex,",New York Viking Press 1956,1956,1886,1956,,,Might as well be dead,us,,chimyst
-00020080,32,,,"Webb, Jack,",New York Rinehart 1952,1952,1916,1952,,,The big sin,us,,chimyst
-00011907,16,,,"Crispin, Edmund,",London V. Gollancz 1950,1950,1921,1950,,,Frequent hearses,uk,,chimyst
-00020036,93,,,"Taylor, Phoebe Atwood,","Boston Little, Brown 1951",1951,1909,1951,,,Diplomatic corpse,us,,chimyst
-00020343,426,,,"Queen, Ellery,",New York Simon & Schuster 1958,1958,,1958,,,The finishing stroke,us,,chimyst
-00011010,463,,,"Stout, Rex,",New York Viking Press 1950,1950,1886,1950,,,In the best families,us,,chimyst
-00011917,320,,,"Greene, Graham,",New York Viking Press 1950,1950,1904,1950,,,The third man,uk,,chimyst
-00020108,53,,,"MacDonald, John D.",New York Fawcett Publications 1953,1953,1916,1953,,,The neon jungle,us,,chimyst
-00020286,72,,,"Lacy, Ed,",New York Harper & Bros. 1957,1957,,1957,,,Room to swing,us,,chimyst
-00011930,52,,,"Upfield, Arthur W.","Garden City; N.Y. Doubleday, Page & Co. 1950",1950,1888,1950,,,The bachelors of Broken Hill,uk,,chimyst
-00020007,67,,,"Crane, Frances,",New York Random House 1951,1951,,1951,,,The polkadot murder,us,,chimyst
-00011914,12,,,"Gask, Arthur,", Jenkins 1950,1950,,1950,,,The silent dead,uk,,chirandom
-00020077,195,,,"Spencer, Elizabeth,","New York Dodd, Mead & Co. 1952",1952,1921,1952,,,This crooked way,us,,chirandom
-00011910,72,,,"Forester, C. S.","Boston Little, Brown 1950",1950,1899,1950,,,Mr. Midshipman Hornblower,uk,,chirandom
-00020159,95,,,"Pace, Mildred Mastin,",New York Whittlesey House 1954,1954,,1954,,,Home is where the heart is,us,,chirandom
-00020240,32,,,"MacDonald, John D."," Greenwich, Conn. : Fawcett Publications 1956",1956,1916,1956,,,You live once,us,,chirandom
-00020294,561,,,"Nabokov, Vladimir Vladimirovich,",New York McGraw-Hill 1957,1957,1899,1957,,,Pnin,us,,chirandom
-00011012,121,,,"Suhl, Yuri,",New York Macmillan Co. 1950,1950,1908,1950,,,One foot in America,us,,chirandom
-00020139,68,,,"Heinlein, Robert A.",New York; N.Y. . : Ace Books 1954,1954,,1954,,,The star beast,us,,chirandom
-00020207,71,,,"Williams, Charles,",New York Macmillan Co. 1955,1955,1909,1955,,,Scorpion Reef,us,,chirandom
-00020279,99,,,"Heinlein, Robert A.",New York Charles Scribner's Sons 1957,1957,1907,1957,,,Citizen of the galaxy,us,,chirandom
-00023477,1105,,,"Lofts, Norah,","Garden City; N.Y. Doubleday, Page & Co. 1954",1954,1904,1954,,,Bless this house,uk,,chirandom
-00020367,67,,,"Dick, Philip K,",Philadelphia Lippincott 1959,1959,,1959,,,Time out of joint,us,,chirandom
-00020071,114,,,"McCoy, Horace,",New York D. Appleton & Co. 1952,1952,1897,1952,,,Scalpel,us,,chirandom
-00020076,44,,,"Sohl, Jerry,",New York Rinehart 1952,1952,,1952,,,The haploids,us,,chirandom
-00020135,245,,,"Fast, Howard,",New York Blue Heron Press 1954,1954,1914,1954,,,Silas Timberman,us,,chirandom
-00020768,605,,,"Westlake, Donald E,",New York Random House 1967,1967,,1967,,,God save the mark,us,,chimyst
-00020716,130,,,"Spillane, Mickey,",New York E.P. Dutton 1966,1966,1918,1966,,,The by-pass control,us,,chimyst
-00020618,695,,,"Ball, John Dudley,",New York Harper & Bros. 1965,1965,1911,1965,,,In the heat of the night,us,,chimyst
-00020834,380,,,"McBain, Ed,","Garden City; N.Y. Doubleday, Page & Co. 1969",1969,1926,1969,,,Shotgun,us,,chimyst
-00020734,367,,,"Ellin, Stanley,",New York Random House 1967,1967,,1967,,,House of cards,us,,chimyst
-00020465,189,,,"McBain, Ed,",New York Simon & Schuster 1961,1961,1926,1961,,,Lady: lady: I did it!,us,,chimyst
-00020674,516,,,"Ball, John Dudley,",New York Harper & Bros. 1966,1966,1911,1966,,,The cool cottontail,us,,chimyst
-00020748,134,,,"McCloy, Helen,","New York Dodd, Mead 1967",1967,,1967,,,The further side of fear,us,,chimyst
-00020523,201,,,"Shannon, Dell,",New York Morrow 1962,1962,1921,1962,,,Knave of hearts,us,,chimyst
-00020601,167,,,"McBain, Ed,",New York Simon & Schuster 1964,1964,1926,1964,,,Ax,us,,chimyst
-00020853,160,,,"Stark, Richard,",New York Macmillan Co. 1969,1969,1933,1969,,,The blackbird,us,,chimyst
-00020412,99,,,"MacDonald, John D.",New York Simon & Schuster 1960,1960,1916,1960,,,The end of the night,us,,chimyst
-00020664,625,,,"Stout, Rex,",New York Viking 1965,1965,1886,1965,,,The doorbell rang,us,,chimyst
-00020534,350,,,"Caldwell, Taylor,","Garden City; N.Y. Doubleday, Page & Co. 1963",1963,1900,1963,,,The late Clara Beame,us,,chimyst
-00020597,102,,,"MacDonald, John D.",New York Fawcett Gold Medal 1964,1964,1916,1964,,,Nightmare in pink,us,,chimyst
-00020459,68,,,"Leiber, Fritz,",New York Ace Books 1961,1961,1910,1961,,,The big time,us,,chirandom
-00020647,156,,,"Michener, James A."," Greenwich, Conn. : Fawcett 1965",1965,1907,1965,,,The source,us,,chirandom
-00020544,363,,,"Kerouac, Jack,","New York Farrar, Straus & Co. 1963",1963,1922,1963,,,Visions of Gerard,us,,chirandom
-00020739,154,,,"Harrison, Harry,","Garden City; N.Y. Doubleday, Page & Co. 1967",1967,1925,1967,,,The technicolor time machine,us,,chirandom
-00020680,366,,,"Cohen, Leonard,",New York Viking Press 1966,1966,1934,1966,,,Beautiful losers,us,,chirandom
-00020548,1493,,,"MacInnes, Helen,","New York Harcourt, Brace & Co. 1963",1963,1907,1963,,,The Venetian affair,us,,chirandom
-00020594,70,,,"L'Amour, Louis,",New York Bantam Books 1964,1964,1908,1964,,,Mojave crossing,us,,chirandom
-00020746,262,,,"Matthews, Jack,","New York Harcourt, Brace & Co. 1967",1967,,1967,,,Hanger Stout: awake!,us,,chirandom
-00023513,434,,,"Macken, Walter,",New York Macmillan Co. 1964,1964,1915,1964,,,The scorching wind,ir,,chirandom
-00020737,132,,,"Fox, Paula,","New York Harcourt, Brace & Co. 1967",1967,,1967,,,Poor George,us,,chirandom
-00020812,1269,,,"Breslin, Jimmy,",New York Viking Press 1969,1969,,1969,,,The gang that couldn't shoot straight,us,,chirandom
-00020752,526,,,"Nathan, Robert,",New York Alfred A. Knopf 1967,1967,1894,1967,,,Stonecliff,us,,chirandom
-00020782,342,,,"L'Amour, Louis,",New York; Toronto Bantam Booksantam Books 1968,1968,1908,1968,,,Down the long hills,us,,chirandom
-00020569,59,,,"Anderson, William C.",New York Crown Publishers 1964,1964,1920,1964,,,Adam M-1,us,,chirandom
-00020476,735,,,"Vonnegut, Kurt,",New York Medal Books 1961,1961,,1961,,,Mother Night,us,,chirandom
-00021070,140,,,"Wambaugh, Joseph,",Boston G.K. Hall 1972,1972,,1972,,,The blue knight,us,,chimyst
-00021421,196,,,"Faust, Ron,",Indianapolis Bobbs-Merrill 1977,1977,,1977,,,The wolf in the clouds,us,,chimyst
-00021219,523,,,"Shannon, Dell,",New York Morrow 1974,1974,1921,1974,,,Crime file,us,,chimyst
-00023541,1344,,,"MacLean, Alistair,","Garden City; N.Y. Doubleday, Page & Co. 1971",1971,1922,1971,,,Bear Island,uk,,chimyst
-00021536,670,,,"Jevons, Marshall,"," Glen Ridge, N.J. : T. Horton 1978",1978,,1978,,,Murder at the margin,us,,chimyst
-00021533,375,,,"Hjortsberg, William,","New York Harcourt, Brace & Co. 1978",1978,1941,1978,,,Falling angel,us,,chimyst
-00021345,790,,,"McBain, Ed,",New York Random House 1976,1976,1926,1976,,,So long as you both shall live,us,,chimyst
-00021152,293,,,"Williams, Charles,",New York Putnam 1973,1973,1909,1973,,,Man on a leash,us,,chimyst
-00021539,321,,,"Kaminsky, Stuart M,",New York St. Martin's Press 1978,1978,,1978,,,You bet your life,us,,chimyst
-00021560,134,,,"Mcdonald, Gregory,",New York Avon 1978,1978,1937,1978,,,Fletch's fortune,us,,chimyst
-00020996,253,,,"Thomas, Ross,",New York Morrow 1971,1971,1926,1971,,,The fools in town are on our side,us,,chimyst
-00021257,679,,,"Gifford, Thomas,",New York Putnam 1975,1975,,1975,,,The wind chill factor,us,,chimyst
-00021569,429,,,"Sanchez, Thomas,",New York E.P. Dutton 1978,1978,,1978,,,Zoot-suit murders,us,,chimyst
-00021191,136,,,"Ludlum, Robert,",New York Dell 1974,1974,1927,1974,,,The Matlock paper,us,,chimyst
-00021640,780,,,"MacLeod, Charlotte,","Garden City; N.Y. Doubleday, Page & Co. 1979",1979,,1979,,,The family vault,us,,chimyst
-00021608,332,,,"Coffman, Virginia,",New York Arbor House 1979,1979,,1979,,,Dinah Faire,us,,chirandom
-00021458,550,,,"Niven, Larry,",Chicago Playboy Press 1977,1977,,1977,,,Lucifer's hammer,us,,chirandom
-00021072,2678,,,"Welty, Eudora,",New York Random House 1972,1972,1909,1972,,,The optimist's daughter,us,,chirandom
-00021111,321,,,"Kurtz, Katherine,",New York Ballantine Books 1973,1973,,1973,,,High Deryni,us,,chirandom
-00021313,443,,,"Dickson, Gordon R,","Garden City; N.Y. Doubleday, Page & Co. 1976",1976,,1976,,,The dragon and the George,us,,chirandom
-00021685,149,,,"Zebrowski, George,",New York Harper & Bros. 1979,1979,1945,1979,,,Macrolife,us,,chirandom
-00021054,229,,,"Rechy, John,",New York Viking Press 1972,1972,,1972,,,The fourth angel,us,,chirandom
-00021202,748,,,"Nin, Anais,",Chicago Swallow Press 1974,1974,1903,1974,,,Cities of the interior,us,,chirandom
-00021080,356,,,"Bova, Ben,",New York Walker 1973,1973,1932,1973,,,Forward in time,us,,chirandom
-00023538,803,,,"Cookson, Catherine,",Indianapolis Bobbs-Merrill 1971,1971,,1971,,,The dwelling place,uk,,chirandom
-00021166,198,,,"Duncan, Lois,",New York Dell Pub. Co. 1974,1974,1934,1974,,,Down a dark hall,us,,chirandom
-00021024,113,,,"Hall, Richard,",New York Delacorte Press 1972,1972,1931,1972,,,Long George Alley,us,,chirandom
-00021025,366,,,"Harrison, Harry,",New York Charles Scribner's Sons 1972,1972,1925,1972,,,Stonehenge,us,,chirandom
-00021407,2516,,,"Cheever, John,",New York Alfred A. Knopf 1977,1977,,1977,,,Falconer,us,,chirandom
-00021549,568,,,"Llywelyn, Morgan,",Boston Houghton Mifflin Co. 1978,1978,,1978,,,The wind from Hastings,us,,chirandom
-00022407,868,,,"Perry, Thomas,",New York Charles Scribner's Sons 1985,1985,1947,1985,,,Big fish,us,,chimyst
-00022761,768,,,"Pronzini, Bill,",New York St. Martin's Press 1987,1987,,1987,,,The lighthouse,us,,chimyst
-00022098,973,,,"MacLeod, Charlotte,","Garden City; N.Y. Doubleday, Page & Co. 1983",1983,,1983,,,The Bilbao looking glass,us,,chimyst
-00021725,142,,,"Gifford, Barry,", Berkeley : Creative Arts Book Co. 1980,1980,1946,1980,,,Port Tropique,us,,chimyst
-00022895,483,,,"Hall, Parnell,",New York D.I. Fine 1988,1988,,1988,,,Favor,us,,chimyst
-00022249,918,,,"Peters, Elizabeth,",New York Congdon & Weed : Distributed by St. Martin's Press 1984,1984,1927,1984,,,Die for love,us,,chimyst
-00022507,358,,,"Gorman, Edward,",New York St. Martin's Press 1986,1986,,1986,,,Murder straight up,us,,chimyst
-00022519,601,,,"Hiaasen, Carl,",New York Putnam 1986,1986,,1986,,,Tourist season,us,,chimyst
-00022544,276,,,"Maxwell, A. E,","Garden City; N.Y. Doubleday, Page & Co. 1986",1986,,1986,,,The frog and the scorpion,us,,chimyst
-00023579,875,,,"Peters, Ellis,",New York Morrow 1981,1981,1913,1981,,,Saint Peter's Fair,uk,,chimyst
-00022875,819,,,"Ellroy, James,",New York Mysterious Press 1988,1988,1948,1988,,,The big nowhere,us,,chimyst
-00021828,492,,,"DeAndrea, William L,","Garden City; N.Y. Doubleday, Page & Co. 1981",1981,,1981,,,Killed in the act,us,,chimyst
-00022902,466,,,"Healy, J. F. 1948-  (Jeremiah F.),",New York Harper & Bros. 1988,1988,,1988,,,Swan dive,us,,chimyst
-00022728,763,,,"Lutz, John,",New York Henry Holt & Co. 1987,1987,1939,1987,,,Scorcher,us,,chimyst
-00022351,427,,,"Grafton, Sue,",New York Henry Holt & Co. 1985,1985,,1985,,,B is for burglar,us,,chimyst
-00022597,873,,,"Weaver, Will,",New York; N.Y. . : Simon & Schuster 1986,1986,,1986,,,Red earth: white earth,us,,chirandom
-00022739,1634,,,"Michaels, Barbara,",New York Atheneum 1987,1987,1927,1987,,,Search the shadows,us,,chirandom
-00023070,286,,,"Dillard, J. M.  (Jeanne M.),",New York Pocket Books 1989,1989,,1989,,,Star trek V: the final frontier,us,,chirandom
-00022570,282,,,"Robards, Karen,",New York Warner Books 1986,1986,,1986,,,Loving Julia,us,,chirandom
-00021909,371,,,"Willis, Meredith Sue,",New York Charles Scribner's Sons 1981,1981,,1981,,,Higher ground,us,,chirandom
-00022742,551,,,"Nichols, John Treadwell,",New York Henry Holt & Co. 1987,1987,1940,1987,,,American blood,us,,chirandom
-00022708,3147,,,"King, Stephen,","New York; N.Y. ., U.S.A. : Viking 1987",1987,1947,1987,,,Misery,us,,chirandom
-00021821,392,,,"Cherryh, C. J,",New York Daw Books 1981,1981,,1981,,,Downbelow station,us,,chirandom
-00022068,436,,,"Dyer, Wayne W,",New York Simon & Schuster 1983,1983,,1983,,,Gifts from Eykis,us,,chirandom
-00022320,237,,,"Cherryh, C. J,",New York Y : DAW Books 1985,1985,,1985,,,The kif strike back,us,,chirandom
-00023167,1892,,,"Price, Eugenia,","New York Doubleday, Page & Co. 1989",1989,,1989,,,Stranger in Savannah,us,,chirandom
-00023049,227,,,"Busbee, Shirlee,",Boston; Mass. s. : G.K. Hall 1989,1989,,1989,,,Midnight masquerade,us,,chirandom
-00021751,258,,,"Leavitt, Caroline,",New York Seaview Books 1980,1980,,1980,,,Meeting Rozzy halfway,us,,chirandom
-00022169,573,,,"Childress, Mark,",New York Alfred A. Knopf 1984,1984,,1984,,,A world made of fire,us,,chirandom
-00022821,2328,,,"Asimov, Isaac,","New York Doubleday, Page & Co. 1988",1988,1920,1988,,,Prelude to Foundation,us,,chirandom
+10245,226,,,"Rinehart, Mary Roberts,",New York George H. Doran Co. 1925,1925,1876,1925,,,The red lamp,us,,chimyst
+10065,189,,,"Burnett, W. R.",New York Literary Guild of America 1929,1929,1899,1929,,,Little Caesar,us,,chimyst
+11225,18,,,"Connington, J. J.",Boston Little 1928,1928,1880,1928,,,Tragedy at Ravensthorpe,uk,,chimyst
+11143,19,,,"Crofts, Freeman Wills,",New York T. Seltzer 1925,1925,1879,1925,,,Inspector French's greatest case,ir,,chimyst
+4504,29,,,"Wells, Carolyn,",Philadelphia; London J.B. Lippincott Co. 1920,1920,-194,1920,,,Raspberry jam,us,,chimyst
+11109,25,,,"Le Queux, William,",New York Macaulay Co. 1923,1923,1864,1923,,,The voice from the void,uk,,chimyst
+11033,383,,,"Sayers, Dorothy L.",New York Harper & Bros. 1928,1928,1893,1928,,,The unpleasantness at the Bellona Club,uk,,chimyst
+11260,18,,,"Fletcher, J. S.",Garden City; N.Y. George H. Doran Co. 1929,1929,1863,1929,,,Paradise court,uk,,chimyst
+4524,140,,,"Burke, Thomas,",New York George H. Doran Co. 1921,1921,1886,1921,,,More Limehouse nights,us,,chimyst
+10012,163,,,"Hecht, Ben,",New York Boni & Liveright 1923,1923,1894,1923,,,The Florentine dagger,us,,chimyst
+10309,36,,,"Keeler, Harry Stephen,",New York E.P. Dutton 1929,1929,1890,1929,,,The spectacles of Mr. Cagliostro,us,,chimyst
+11255,64,,,"Christie, Agatha,","New York Dodd, Mead & Co. 1929",1929,1890,1929,,,The Seven dials mystery,uk,,chimyst
+11162,26,,,"Chesterton, G. K.",Leipzig B. Tauchnitz 1926,1926,1874,1926,,,The incredulity of Father Brown,uk,,chimyst
+10243,64,,,"Hill, Grace Livingston,",Philadelphia; London J.B. Lippincott Co. 1925,1925,1865,1925,,,Ariel Custer,us,,chimyst
+11019,69,,,"Christie, Agatha,","New York Dodd, Mead 1924",1924,1890,1924,,,The man in the brown suit,uk,,chimyst
+10214,16,,,"Stringer, Arthur,",Toronto McClell& & Stewart 1923,1923,1874,1923,,,Phantom wires,us,,chirandom
+10293,65,,,"Larsen, Nella,",New York; London Alfred A. Knopf 1928,1928,,1928,,,Quicksand,us,,chirandom
+4486,32,,,"Richmond, Grace S.","Garden City; New York Doubleday, Page & Co. 1920",1920,1866,1920,,,The bells of St. John's,us,,chirandom
+11220,13,,,"Blackwood, Algernon,",London Macmillan Co. 1928,1928,1869,1928,,,The human chord,uk,,chirandom
+10294,268,,,"McKay, Claude,",New York Harper & Bros. 1928,1928,1890,1928,,,Home to Harlem,us,,chirandom
+11214,52,,,"Young, E. H.","New York Harcourt, Brace & Co. 1927",1927,1880,1927,,,Moor fires,uk,,chirandom
+4549,33,,,"Durkin, Douglas 1884-  (Douglas Leader),",Toronto Musson Book Co. 1921,1921,,1921,,,The Lobstick trail,us,,chirandom
+10036,711,,,"Lewis, Sinclair,","New York Harcourt, Brace & Co. 1925",1925,1885,1925,,,Arrowsmith,us,,chirandom
+10289,270,,,"Hill, Grace Livingston,",New York Grosset & Dunlap 1928,1928,1865,1928,,,Blue ruin,us,,chirandom
+11016,551,,,"Bennett, Arnold,",New York George H. Doran Co. 1923,1923,1867,1923,,,Riceyman Steps,uk,,chirandom
+4668,67,,,"Dwight, H. G.","Garden City; N.Y. Doubleday, Page & Co. 1922",1922,1875,1922,,,Stamboul nights,us,,chirandom
+11137,39,,,"Sinclair, Bertrand W.","Boston Little, Brown, & Co. 1924",1924,1881,1924,,,The inverted pyramid,ca,,chirandom
+11036,242,,,"West, Rebecca,",Garden City; N.Y. George H. Doran Co. 1929,1929,1892,1929,,,Harriet Hume,uk,,chirandom
+11224,13,,,"Connington, J. J.","Boston Little, Brown 1928",1928,1880,1928,,,Mystery at Lynden Sands,uk,,chirandom
+11124,826,,,"Galsworthy, John,",New York Charles Scribner's Sons 1924,1924,1867,1924,,,The white monkey,uk,,chirandom
+11486,79,,,"Christie, Agatha,","New York Dodd, Mead 1936",1936,1890,1936,,,Murder in Mesopotamia,uk,,chimyst
+10527,66,,,"Queen, Ellery,",New York Frederick A. Stokes Co. 1937,1937,,1937,,,The door between,us,,chimyst
+11444,67,,,"Oppenheim, E. Phillips,","Boston Little, Brown, & Co. 1934",1934,1866,1934,,,The man without nerves,uk,,chimyst
+11344,23,,,"Upfield, Arthur W.",London Hutchinson & Co. 1931,1931,1888,1931,,,The sands of Windee,uk,,chimyst
+11634,38,,,"Wentworth, Patricia,",Philadelphia Lippincott 1939,1939,,1939,,,Lonesome road,uk,,chimyst
+11429,36,,,"Freeman, R. Austin,",London Hodder & Stoughton 1934,1934,1862,1934,,,For the defence: Dr. Thorndyke,uk,,chimyst
+11601,71,,,"Christie, Agatha,"," Leicester, Ulverscroft 1939",1939,1890,1939,,,Murder is easy,uk,,chimyst
+10533,37,,,"Stout, Rex,","New York; Toronto Farrar & Rinehart, Inc. 1937",1937,1886,1937,,,The red box,us,,chimyst
+11520,22,,,"Allingham, Margery,",London Hodder & Stoughton 1937,1937,1904,1937,,,The case of the late Pig,uk,,chimyst
+11562,54,,,"Blake, Nicholas,",New York; London Harper & Bros. 1938,1938,1904,1938,,,The beast must die,uk,,chimyst
+11289,20,,,"Connington, J. J.","Boston Little, Brown, & Co. 1930",1930,1880,1930,,,The eye in the museum,uk,,chimyst
+10401,12,,,"Cain, Paul,",Garden City; N.Y. George H. Doran Co. 1933,1933,,1933,,,Fast one,us,,chimyst
+10449,22,,,"Palmer, Stuart,",Garden City; N.Y. George H. Doran Co. 1934,1934,1905,1934,,,The puzzle of the silver Persian,us,,chimyst
+10358,12,,,"Palmer, Stuart,",New York Brentano's 1931,1931,1905,1931,,,The penguin pool murder,us,,chimyst
+11533,44,,,"Innes, Michael,", North Yorkshire : House of Stratus 1937,1937,1906,1937,,,Hamlet: revenge!,uk,,chimyst
+10351,255,,,"Hill, Grace Livingston,",New York Grosset & Dunlap 1931,1931,1865,1931,,,Kerry,us,,chirandom
+10367,52,,,"West, Nathanael,",New York; Paris Contact editionsontact editions 1931,1931,1903,1931,,,The dream life of Balso Snell,us,,chirandom
+10477,300,,,"Marquis, Don,",Garden City; New York George H. Doran Co. 1935,1935,1878,1935,,,The lives and times of archy & mehitabel,us,,chirandom
+10326,283,,,"Dos Passos, John,",New York; London Harper & Bros. 1930,1930,1896,1930,,,The 42nd parallel,us,,chirandom
+10376,44,,,"Cather, Willa,",Boston; New York Houghton Mifflin Co. 1932,1932,1873,1932,,,The song of the lark,us,,chirandom
+11455,19,,,"Wheatley, Dennis,",New York E.P. Dutton 1934,1934,1897,1934,,,Black August,uk,,chirandom
+11506,9,,,"Oppenheim, E. Phillips,",London Hodder & Stoughton 1936,1936,1866,1936,,,The bird of paradise,uk,,chirandom
+11618,11,,,"Monsarrat, Nicholas,",London Cassell 1939,1939,1910,1939,,,This is the schoolroom,uk,,chirandom
+11038,463,,,"Tomlinson, H. M.",New York Harper & Bros. 1930,1930,1873,1930,,,All our yesterdays,uk,,chirandom
+11341,138,,,"Strong, L. A. G.",New York Alfred A. Knopf 1931,1931,1896,1931,,,The garden,uk,,chirandom
+10408,235,,,"Hill, Grace Livingston,",New York Grosset & Dunlap 1933,1933,1865,1933,,,The beloved stranger,us,,chirandom
+11450,46,,,"Van der Post, Laurens,",London Leonard & Virginia Woolf at the Hogarth Press 1934,1934,,1934,,,In a province,??,,chirandom
+10416,42,,,"Queen, Ellery,",New York F.A. Stokes Co. 1933,1933,,1933,,,The American gun mystery,us,,chirandom
+10333,539,,,"Hughes, Langston,",New York Alfred A. Knopf 1930,1930,1902,1930,,,Not without laughter,us,,chirandom
+11052,168,,,"Isherwood, Christopher,",London L. & Virginia Woolf at the Hogarth Press 1935,1935,1904,1935,,,Mr. Norris changes trains,uk,,chirandom
+10782,71,,,"Lockridge, Richard,",New York E.P. Dutton 1945,1945,1898,1945,,,Death in the mind,us,,chimyst
+10665,19,,,"Gardner, Erle Stanley,",New York Detective Book Club 1942,1942,1889,1942,,,The case of the empty tin,us,,chimyst
+10622,23,,,"Reilly, Helen,",New York Random House 1940,1940,1890,1940,,,The dead can tell,us,,chimyst
+10822,27,,,"Miller, Wade,","New York Farrar, Straus & Co. 1946",1946,,1946,,,Deadly weapon,us,,chimyst
+10919,324,,,"Stout, Rex,",New York Viking Press 1948,1948,1886,1948,,,And be a villain,us,,chimyst
+11674,124,,,"Christie, Agatha,","New York Dodd, Mead & Co. 1941",1941,1890,1941,,,Evil under the sun,uk,,chimyst
+10956,387,,,"Queen, Ellery,","Boston Little, Brown 1949",1949,,1949,,,Cat of many tails,us,,chimyst
+11851,33,,,"Crispin, Edmund,",Philadelphia J.B. Lippincott Co. 1948,1948,1921,1948,,,Love lies bleeding,uk,,chimyst
+10790,163,,,"Queen, Ellery,","Boston Little, Brown 1945",1945,,1945,,,The murderer is a fox,us,,chimyst
+10844,54,,,"Coxe, George Harmon,",New York Alfred A. Knopf 1947,1947,1901,1947,,,Fashioned for murder,us,,chimyst
+11650,36,,,"Freeman, R. Austin,","New York Dodd, Mead & Co. 1940",1940,1862,1940,,,Mr. Polton explains,uk,,chimyst
+10723,118,,,"Queen, Ellery,","Boston Little, Brown & Co. 1943",1943,,1943,,,There was an old woman,us,,chimyst
+10814,51,,,"Fair, A. A.",New York W. Morrow 1946,1946,1889,1946,,,Crows can't count,us,,chimyst
+10791,595,,,"Rinehart, Mary Roberts,","New York; Toronto Farrar & Rinehart, Inc. 1945",1945,1876,1945,,,The yellow room,us,,chimyst
+11705,15,,,"Connington, J. J.","Boston Little, Brown & Co. 1942",1942,1880,1942,,,No past is dead,uk,,chimyst
+11897,22,,,"Wheatley, Dennis,",London Hutchinsn 1949,1949,1897,1949,,,The rising storm,uk,,chirandom
+11680,13,,,"Heyer, Georgette,",London Hodder & Stoughton 1941,1941,1902,1941,,,Envious Casca,uk,,chirandom
+10724,129,,,"Rand, Ayn,",Philadelphia Blakiston Co. 1943,1943,,1943,,,The fountainhead,us,,chirandom
+11665,112,,,"Stevenson, D. E.","New York Farrar & Rinehart, Inc. 1940",1940,1892,1940,,,Mrs. Tim of the regiment,uk,,chirandom
+11639,44,,,"Ambler, Eric,",New York Alfred A. Knopf 1940,1940,1909,1940,,,Journey into fear,uk,,chirandom
+11787,46,,,"Wheatley, Dennis,",London Hutchinson 1945,1945,1897,1945,,,The man who missed the war,uk,,chirandom
+11652,507,,,"Goudge, Elizabeth,","New York Coward-McCann, Inc. 1940",1940,1900,1940,,,The bird in the tree,uk,,chirandom
+10833,1575,,,"Warren, Robert Penn,","New York Harcourt, Brace & Co. 1946",1946,1905,1946,,,All the king's men,us,,chirandom
+10169,83,,,"Grant, Dorothy Fremont,","New York; Toronto Longmans, Green & Co. 1944",1944,1900,1944,,,Margaret Brent: adventurer,us,,chirandom
+10673,78,,,"Lovelace, Maud Hart,",New York Thomas Y. Crowell Co. 1942,1942,1892,1942,,,Betsy and Tacy Go Over the big hill,us,,chirandom
+10840,75,,,"Buck, Pearl S.",New York J. Day Co. 1947,1947,1892,1947,,,The angry wife,us,,chirandom
+10617,1502,,,"McCullers, Carson,",Boston Houghton Mifflin Co. 1940,1940,1917,1940,,,The heart is a lonely hunter,us,,chirandom
+10637,368,,,"Fast, Howard,","New York Duell, Sloan & Pearce 1941",1941,1914,1941,,,The last frontier,us,,chirandom
+11810,15,,,"Mitchell, Gladys,",London M. Joseph 1946,1946,1901,1946,,,Here comes a chopper,uk,,chirandom
+11884,13,,,"Gask, Arthur,",London Herbert Jenkins 1949,1949,1872,1949,,,The storm breaks,uk,,chirandom
+20386,68,,,"McBain, Ed,",New York Simon & Schuster 1959,1959,1926,1959,,,King's ransom,us,,chimyst
+20093,95,,,"Davis, Mildred B,",New York Simon & Schuster 1953,1953,,1953,,,They buried a man,us,,chimyst
+11009,23,,,"Spillane, Mickey,",New York E.P. Dutton 1950,1950,1918,1950,,,Vengeance is mine!,us,,chimyst
+20035,258,,,"Stout, Rex,",New York Viking Press 1951,1951,1886,1951,,,Murder by the book,us,,chimyst
+20261,524,,,"Stout, Rex,",New York Viking Press 1956,1956,1886,1956,,,Might as well be dead,us,,chimyst
+20080,32,,,"Webb, Jack,",New York Rinehart 1952,1952,1916,1952,,,The big sin,us,,chimyst
+11907,16,,,"Crispin, Edmund,",London V. Gollancz 1950,1950,1921,1950,,,Frequent hearses,uk,,chimyst
+20036,93,,,"Taylor, Phoebe Atwood,","Boston Little, Brown 1951",1951,1909,1951,,,Diplomatic corpse,us,,chimyst
+20343,426,,,"Queen, Ellery,",New York Simon & Schuster 1958,1958,,1958,,,The finishing stroke,us,,chimyst
+11010,463,,,"Stout, Rex,",New York Viking Press 1950,1950,1886,1950,,,In the best families,us,,chimyst
+11917,320,,,"Greene, Graham,",New York Viking Press 1950,1950,1904,1950,,,The third man,uk,,chimyst
+20108,53,,,"MacDonald, John D.",New York Fawcett Publications 1953,1953,1916,1953,,,The neon jungle,us,,chimyst
+20286,72,,,"Lacy, Ed,",New York Harper & Bros. 1957,1957,,1957,,,Room to swing,us,,chimyst
+11930,52,,,"Upfield, Arthur W.","Garden City; N.Y. Doubleday, Page & Co. 1950",1950,1888,1950,,,The bachelors of Broken Hill,uk,,chimyst
+20007,67,,,"Crane, Frances,",New York Random House 1951,1951,,1951,,,The polkadot murder,us,,chimyst
+11914,12,,,"Gask, Arthur,", Jenkins 1950,1950,,1950,,,The silent dead,uk,,chirandom
+20077,195,,,"Spencer, Elizabeth,","New York Dodd, Mead & Co. 1952",1952,1921,1952,,,This crooked way,us,,chirandom
+11910,72,,,"Forester, C. S.","Boston Little, Brown 1950",1950,1899,1950,,,Mr. Midshipman Hornblower,uk,,chirandom
+20159,95,,,"Pace, Mildred Mastin,",New York Whittlesey House 1954,1954,,1954,,,Home is where the heart is,us,,chirandom
+20240,32,,,"MacDonald, John D."," Greenwich, Conn. : Fawcett Publications 1956",1956,1916,1956,,,You live once,us,,chirandom
+20294,561,,,"Nabokov, Vladimir Vladimirovich,",New York McGraw-Hill 1957,1957,1899,1957,,,Pnin,us,,chirandom
+11012,121,,,"Suhl, Yuri,",New York Macmillan Co. 1950,1950,1908,1950,,,One foot in America,us,,chirandom
+20139,68,,,"Heinlein, Robert A.",New York; N.Y. . : Ace Books 1954,1954,,1954,,,The star beast,us,,chirandom
+20207,71,,,"Williams, Charles,",New York Macmillan Co. 1955,1955,1909,1955,,,Scorpion Reef,us,,chirandom
+20279,99,,,"Heinlein, Robert A.",New York Charles Scribner's Sons 1957,1957,1907,1957,,,Citizen of the galaxy,us,,chirandom
+23477,1105,,,"Lofts, Norah,","Garden City; N.Y. Doubleday, Page & Co. 1954",1954,1904,1954,,,Bless this house,uk,,chirandom
+20367,67,,,"Dick, Philip K,",Philadelphia Lippincott 1959,1959,,1959,,,Time out of joint,us,,chirandom
+20071,114,,,"McCoy, Horace,",New York D. Appleton & Co. 1952,1952,1897,1952,,,Scalpel,us,,chirandom
+20076,44,,,"Sohl, Jerry,",New York Rinehart 1952,1952,,1952,,,The haploids,us,,chirandom
+20135,245,,,"Fast, Howard,",New York Blue Heron Press 1954,1954,1914,1954,,,Silas Timberman,us,,chirandom
+20768,605,,,"Westlake, Donald E,",New York Random House 1967,1967,,1967,,,God save the mark,us,,chimyst
+20716,130,,,"Spillane, Mickey,",New York E.P. Dutton 1966,1966,1918,1966,,,The by-pass control,us,,chimyst
+20618,695,,,"Ball, John Dudley,",New York Harper & Bros. 1965,1965,1911,1965,,,In the heat of the night,us,,chimyst
+20834,380,,,"McBain, Ed,","Garden City; N.Y. Doubleday, Page & Co. 1969",1969,1926,1969,,,Shotgun,us,,chimyst
+20734,367,,,"Ellin, Stanley,",New York Random House 1967,1967,,1967,,,House of cards,us,,chimyst
+20465,189,,,"McBain, Ed,",New York Simon & Schuster 1961,1961,1926,1961,,,Lady: lady: I did it!,us,,chimyst
+20674,516,,,"Ball, John Dudley,",New York Harper & Bros. 1966,1966,1911,1966,,,The cool cottontail,us,,chimyst
+20748,134,,,"McCloy, Helen,","New York Dodd, Mead 1967",1967,,1967,,,The further side of fear,us,,chimyst
+20523,201,,,"Shannon, Dell,",New York Morrow 1962,1962,1921,1962,,,Knave of hearts,us,,chimyst
+20601,167,,,"McBain, Ed,",New York Simon & Schuster 1964,1964,1926,1964,,,Ax,us,,chimyst
+20853,160,,,"Stark, Richard,",New York Macmillan Co. 1969,1969,1933,1969,,,The blackbird,us,,chimyst
+20412,99,,,"MacDonald, John D.",New York Simon & Schuster 1960,1960,1916,1960,,,The end of the night,us,,chimyst
+20664,625,,,"Stout, Rex,",New York Viking 1965,1965,1886,1965,,,The doorbell rang,us,,chimyst
+20534,350,,,"Caldwell, Taylor,","Garden City; N.Y. Doubleday, Page & Co. 1963",1963,1900,1963,,,The late Clara Beame,us,,chimyst
+20597,102,,,"MacDonald, John D.",New York Fawcett Gold Medal 1964,1964,1916,1964,,,Nightmare in pink,us,,chimyst
+20459,68,,,"Leiber, Fritz,",New York Ace Books 1961,1961,1910,1961,,,The big time,us,,chirandom
+20647,156,,,"Michener, James A."," Greenwich, Conn. : Fawcett 1965",1965,1907,1965,,,The source,us,,chirandom
+20544,363,,,"Kerouac, Jack,","New York Farrar, Straus & Co. 1963",1963,1922,1963,,,Visions of Gerard,us,,chirandom
+20739,154,,,"Harrison, Harry,","Garden City; N.Y. Doubleday, Page & Co. 1967",1967,1925,1967,,,The technicolor time machine,us,,chirandom
+20680,366,,,"Cohen, Leonard,",New York Viking Press 1966,1966,1934,1966,,,Beautiful losers,us,,chirandom
+20548,1493,,,"MacInnes, Helen,","New York Harcourt, Brace & Co. 1963",1963,1907,1963,,,The Venetian affair,us,,chirandom
+20594,70,,,"L'Amour, Louis,",New York Bantam Books 1964,1964,1908,1964,,,Mojave crossing,us,,chirandom
+20746,262,,,"Matthews, Jack,","New York Harcourt, Brace & Co. 1967",1967,,1967,,,Hanger Stout: awake!,us,,chirandom
+23513,434,,,"Macken, Walter,",New York Macmillan Co. 1964,1964,1915,1964,,,The scorching wind,ir,,chirandom
+20737,132,,,"Fox, Paula,","New York Harcourt, Brace & Co. 1967",1967,,1967,,,Poor George,us,,chirandom
+20812,1269,,,"Breslin, Jimmy,",New York Viking Press 1969,1969,,1969,,,The gang that couldn't shoot straight,us,,chirandom
+20752,526,,,"Nathan, Robert,",New York Alfred A. Knopf 1967,1967,1894,1967,,,Stonecliff,us,,chirandom
+20782,342,,,"L'Amour, Louis,",New York; Toronto Bantam Booksantam Books 1968,1968,1908,1968,,,Down the long hills,us,,chirandom
+20569,59,,,"Anderson, William C.",New York Crown Publishers 1964,1964,1920,1964,,,Adam M-1,us,,chirandom
+20476,735,,,"Vonnegut, Kurt,",New York Medal Books 1961,1961,,1961,,,Mother Night,us,,chirandom
+21070,140,,,"Wambaugh, Joseph,",Boston G.K. Hall 1972,1972,,1972,,,The blue knight,us,,chimyst
+21421,196,,,"Faust, Ron,",Indianapolis Bobbs-Merrill 1977,1977,,1977,,,The wolf in the clouds,us,,chimyst
+21219,523,,,"Shannon, Dell,",New York Morrow 1974,1974,1921,1974,,,Crime file,us,,chimyst
+23541,1344,,,"MacLean, Alistair,","Garden City; N.Y. Doubleday, Page & Co. 1971",1971,1922,1971,,,Bear Island,uk,,chimyst
+21536,670,,,"Jevons, Marshall,"," Glen Ridge, N.J. : T. Horton 1978",1978,,1978,,,Murder at the margin,us,,chimyst
+21533,375,,,"Hjortsberg, William,","New York Harcourt, Brace & Co. 1978",1978,1941,1978,,,Falling angel,us,,chimyst
+21345,790,,,"McBain, Ed,",New York Random House 1976,1976,1926,1976,,,So long as you both shall live,us,,chimyst
+21152,293,,,"Williams, Charles,",New York Putnam 1973,1973,1909,1973,,,Man on a leash,us,,chimyst
+21539,321,,,"Kaminsky, Stuart M,",New York St. Martin's Press 1978,1978,,1978,,,You bet your life,us,,chimyst
+21560,134,,,"Mcdonald, Gregory,",New York Avon 1978,1978,1937,1978,,,Fletch's fortune,us,,chimyst
+20996,253,,,"Thomas, Ross,",New York Morrow 1971,1971,1926,1971,,,The fools in town are on our side,us,,chimyst
+21257,679,,,"Gifford, Thomas,",New York Putnam 1975,1975,,1975,,,The wind chill factor,us,,chimyst
+21569,429,,,"Sanchez, Thomas,",New York E.P. Dutton 1978,1978,,1978,,,Zoot-suit murders,us,,chimyst
+21191,136,,,"Ludlum, Robert,",New York Dell 1974,1974,1927,1974,,,The Matlock paper,us,,chimyst
+21640,780,,,"MacLeod, Charlotte,","Garden City; N.Y. Doubleday, Page & Co. 1979",1979,,1979,,,The family vault,us,,chimyst
+21608,332,,,"Coffman, Virginia,",New York Arbor House 1979,1979,,1979,,,Dinah Faire,us,,chirandom
+21458,550,,,"Niven, Larry,",Chicago Playboy Press 1977,1977,,1977,,,Lucifer's hammer,us,,chirandom
+21072,2678,,,"Welty, Eudora,",New York Random House 1972,1972,1909,1972,,,The optimist's daughter,us,,chirandom
+21111,321,,,"Kurtz, Katherine,",New York Ballantine Books 1973,1973,,1973,,,High Deryni,us,,chirandom
+21313,443,,,"Dickson, Gordon R,","Garden City; N.Y. Doubleday, Page & Co. 1976",1976,,1976,,,The dragon and the George,us,,chirandom
+21685,149,,,"Zebrowski, George,",New York Harper & Bros. 1979,1979,1945,1979,,,Macrolife,us,,chirandom
+21054,229,,,"Rechy, John,",New York Viking Press 1972,1972,,1972,,,The fourth angel,us,,chirandom
+21202,748,,,"Nin, Anais,",Chicago Swallow Press 1974,1974,1903,1974,,,Cities of the interior,us,,chirandom
+21080,356,,,"Bova, Ben,",New York Walker 1973,1973,1932,1973,,,Forward in time,us,,chirandom
+23538,803,,,"Cookson, Catherine,",Indianapolis Bobbs-Merrill 1971,1971,,1971,,,The dwelling place,uk,,chirandom
+21166,198,,,"Duncan, Lois,",New York Dell Pub. Co. 1974,1974,1934,1974,,,Down a dark hall,us,,chirandom
+21024,113,,,"Hall, Richard,",New York Delacorte Press 1972,1972,1931,1972,,,Long George Alley,us,,chirandom
+21025,366,,,"Harrison, Harry,",New York Charles Scribner's Sons 1972,1972,1925,1972,,,Stonehenge,us,,chirandom
+21407,2516,,,"Cheever, John,",New York Alfred A. Knopf 1977,1977,,1977,,,Falconer,us,,chirandom
+21549,568,,,"Llywelyn, Morgan,",Boston Houghton Mifflin Co. 1978,1978,,1978,,,The wind from Hastings,us,,chirandom
+22407,868,,,"Perry, Thomas,",New York Charles Scribner's Sons 1985,1985,1947,1985,,,Big fish,us,,chimyst
+22761,768,,,"Pronzini, Bill,",New York St. Martin's Press 1987,1987,,1987,,,The lighthouse,us,,chimyst
+22098,973,,,"MacLeod, Charlotte,","Garden City; N.Y. Doubleday, Page & Co. 1983",1983,,1983,,,The Bilbao looking glass,us,,chimyst
+21725,142,,,"Gifford, Barry,", Berkeley : Creative Arts Book Co. 1980,1980,1946,1980,,,Port Tropique,us,,chimyst
+22895,483,,,"Hall, Parnell,",New York D.I. Fine 1988,1988,,1988,,,Favor,us,,chimyst
+22249,918,,,"Peters, Elizabeth,",New York Congdon & Weed : Distributed by St. Martin's Press 1984,1984,1927,1984,,,Die for love,us,,chimyst
+22507,358,,,"Gorman, Edward,",New York St. Martin's Press 1986,1986,,1986,,,Murder straight up,us,,chimyst
+22519,601,,,"Hiaasen, Carl,",New York Putnam 1986,1986,,1986,,,Tourist season,us,,chimyst
+22544,276,,,"Maxwell, A. E,","Garden City; N.Y. Doubleday, Page & Co. 1986",1986,,1986,,,The frog and the scorpion,us,,chimyst
+23579,875,,,"Peters, Ellis,",New York Morrow 1981,1981,1913,1981,,,Saint Peter's Fair,uk,,chimyst
+22875,819,,,"Ellroy, James,",New York Mysterious Press 1988,1988,1948,1988,,,The big nowhere,us,,chimyst
+21828,492,,,"DeAndrea, William L,","Garden City; N.Y. Doubleday, Page & Co. 1981",1981,,1981,,,Killed in the act,us,,chimyst
+22902,466,,,"Healy, J. F. 1948-  (Jeremiah F.),",New York Harper & Bros. 1988,1988,,1988,,,Swan dive,us,,chimyst
+22728,763,,,"Lutz, John,",New York Henry Holt & Co. 1987,1987,1939,1987,,,Scorcher,us,,chimyst
+22351,427,,,"Grafton, Sue,",New York Henry Holt & Co. 1985,1985,,1985,,,B is for burglar,us,,chimyst
+22597,873,,,"Weaver, Will,",New York; N.Y. . : Simon & Schuster 1986,1986,,1986,,,Red earth: white earth,us,,chirandom
+22739,1634,,,"Michaels, Barbara,",New York Atheneum 1987,1987,1927,1987,,,Search the shadows,us,,chirandom
+23070,286,,,"Dillard, J. M.  (Jeanne M.),",New York Pocket Books 1989,1989,,1989,,,Star trek V: the final frontier,us,,chirandom
+22570,282,,,"Robards, Karen,",New York Warner Books 1986,1986,,1986,,,Loving Julia,us,,chirandom
+21909,371,,,"Willis, Meredith Sue,",New York Charles Scribner's Sons 1981,1981,,1981,,,Higher ground,us,,chirandom
+22742,551,,,"Nichols, John Treadwell,",New York Henry Holt & Co. 1987,1987,1940,1987,,,American blood,us,,chirandom
+22708,3147,,,"King, Stephen,","New York; N.Y. ., U.S.A. : Viking 1987",1987,1947,1987,,,Misery,us,,chirandom
+21821,392,,,"Cherryh, C. J,",New York Daw Books 1981,1981,,1981,,,Downbelow station,us,,chirandom
+22068,436,,,"Dyer, Wayne W,",New York Simon & Schuster 1983,1983,,1983,,,Gifts from Eykis,us,,chirandom
+22320,237,,,"Cherryh, C. J,",New York Y : DAW Books 1985,1985,,1985,,,The kif strike back,us,,chirandom
+23167,1892,,,"Price, Eugenia,","New York Doubleday, Page & Co. 1989",1989,,1989,,,Stranger in Savannah,us,,chirandom
+23049,227,,,"Busbee, Shirlee,",Boston; Mass. s. : G.K. Hall 1989,1989,,1989,,,Midnight masquerade,us,,chirandom
+21751,258,,,"Leavitt, Caroline,",New York Seaview Books 1980,1980,,1980,,,Meeting Rozzy halfway,us,,chirandom
+22169,573,,,"Childress, Mark,",New York Alfred A. Knopf 1984,1984,,1984,,,A world made of fire,us,,chirandom
+22821,2328,,,"Asimov, Isaac,","New York Doubleday, Page & Co. 1988",1988,1920,1988,,,Prelude to Foundation,us,,chirandom
+njp.32101067487007,8958204,7121717,,"Walpole, Horace,","Edinburgh;Printed by James Ballantyne and Co., for John Ballantyne and Company, Edinburgh;London;Longman, Hurst, Rees, Orme, and Brown;1811.",1811,1717,1764,,,The castle of Otranto;,uk,m,pbgothic
+uc2.ark+=13960=t1td9p949,7670886,3916924,,"Reeve, Clara,",London;E. and C. Dilly;1778,1778,1729,1777,,,The old English baron,uk,f,pbgothic
+mdp.39015039369650,167757,32136573,,"Lee, Sophia,",London;T. Cadell and W. Davies;1804.,1804,1750,1785,v.2,,The recess;,uk,f,pbgothic
+uiuo.ark+=13960=t9h41nx14,8724075,629922,,"Beckford, William,","London;Printed for W. Clarke, New Bond street;1816.",1816,1760,1786,,,Vathek,uk,m,pbgothic
+nyp.33433074911532,1022801,7085107,PR3688.S4E55,"Smith, Charlotte,",London;T. Cadell;1789.,1788,1749,1788,v. 4,,Emmeline,uk,f,pbgothic
+nyp.33433074955091,002104589,23642675,,"Radcliffe, Ann Ward,",London;T. Hookham;1792.,1792,1764,1790,v. 2,,A Sicilian romance,uk,f,pbgothic
+nnc1.cu58506756,008434485,9590696,,"Radcliffe, Ann Ward,","Philadelphia;Reprinted and sold by Thomas Bradford, book-seller and stationer, No. 8, South Front street.;1795.",1795,1764,1791,,,The romance of the forest,uk,f,pbgothic
+mdp.39015063950102,000781722,44887870,,"Radcliffe, Ann Ward,","London;Longman, Hurst, Rees & Orme;1806.",1806,1764,1794,v.2,,The mysteries of Udolpho,uk,f,pbgothic
+uva.x000498882,009780276,19769848,,"Godwin, William,",New York;Harper and Brothers;1856.,1856,1756,1794,V.1-2,,The adventures of Caleb Williams,uk,m,pbgothic
+njp.32101062743727,009042425,13635486,,"Roche, Regina Maria,",Exeter [N.H.;J. & B. Williams;1828.,1828,1764,1764,v.3,,The children of the abbey,ir,f,pbgothic
+nyp.33433074874748,008665865,6566039,,"Lewis, M. G.",London;J. Bell;1796.,1796,1775,1796,v. 3,,The monk,uk,m,pbgothic

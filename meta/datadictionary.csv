@@ -1,0 +1,12 @@
+genretag,biggenre,meaning
+locghost,goth,LoC “ghost story”
+locdetmyst,myst,LoC “detective and mystery stories”
+lochorror,goth,LoC “horror tales”
+locdetective,myst,LoC “detectives”
+locscifi,scifi,LoC “science fiction”
+det100,myst,from “The First 100 Years of Detective Fiction 1841-1941” http://www.indiana.edu/~liblilly/etexts/detective/
+drop,drop,Including this tag guarantees that the vol will be dropped from all models.
+random,random,Marks the volume as a randomly-selected volume to be used only in negative sets. Random volumes can also bear other tags; this prevents them from being used in the negative set where that is the positive class.
+pbgothic,gothic,"Files listed as Gothic in chronology or table of contents of David Punter & Glennis Byton, _The Gothic._"
+chiscifi,scifi,Files carrying “science fiction” in their LoC genre tags in Chicago corpus.
+chiutopia,scifi,"Files carrying “utopia” in their LoC genre tags in Chicago, even if also scifi."
