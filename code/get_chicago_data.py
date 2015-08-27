@@ -10,7 +10,7 @@ metadata = dict()
 fieldstowrite = ['docid', 'recordid', 'oclc', 'locnum', 'author', 'imprint', 'date', 'birthdate', 'firstpub', 'enumcron', 'subjects', 'title', 'nationality', 'gender', 'genretags']
 
 categories = dict()
-categories = [('chimyst', 'mystery', 15), ('chihorror', 'horror', 5), ('chifantasy', 'fantas', 5), ('chiscifi', 'science fiction', 15), ('chiutopia', 'utopia', 5), ('chirandom', '<NONSENSE>', 22)]
+categories = [('chimyst', 'mystery', 15), ('chihorror', 'horror', 6), ('chifantasy', 'fantas', 5), ('chiscifi', 'science fiction', 15), ('chiutopia', 'utopia', 5), ('chirandom', '<NONSENSE>', 25)]
 
 lastcategory = len(categories) - 1
 
