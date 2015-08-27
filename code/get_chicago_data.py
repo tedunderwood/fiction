@@ -10,7 +10,7 @@ metadata = dict()
 fieldstowrite = ['docid', 'recordid', 'oclc', 'locnum', 'author', 'imprint', 'date', 'birthdate', 'firstpub', 'enumcron', 'subjects', 'title', 'nationality', 'gender', 'genretags']
 
 categories = dict()
-categories = [('chiscifi', 'science fiction', 15), ('chiutopia', 'utopia', 5), ('chirandom', 'NONSENSE', 20)]
+categories = [('chimyst', 'mystery', 15), ('chihorror', 'horror', 5), ('chifantasy', 'fantas', 5), ('chiscifi', 'science fiction', 15), ('chiutopia', 'utopia', 5), ('chirandom', '<NONSENSE>', 22)]
 
 lastcategory = len(categories) - 1
 
@@ -22,14 +22,18 @@ lastcategory = len(categories) - 1
 # The third element of each tuple is the number of volumes to be
 # randomly drawn in each decade from that category.
 
-decades = [1880, 1890, 1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980]
+decades = [1920, 1930, 1940, 1950, 1960, 1970, 1980]
 # These are the floors of the decades, so this reaches to 1989.
 
 members = dict()
+allmembers = dict()
 
 for category in categories:
     catname = category[0]
     members[catname] = dict()
+    allmembers[catname] = set()
+    # Members is a dictionary broken down by decade.
+    # Allmembers holds all members of that category for all decades.
     for dec in decades:
         members[catname][dec] = set()
 
@@ -57,36 +61,33 @@ with open('/Users/tunder/Dropbox/US_Novel_Corpus/master_list_04-02-15_wgenres.cs
 
             if idx == lastcategory:
 
-                # This is the last category. If the volume has not been specifically
-                # placed in some other category/categories, put it in this one.
+                # This is the last category -- the random set. All books get added to this
+                # category and have a chance of being selected. They may also be selected
+                # for some other category.
 
-                if not placedspecifically:
-                    members[catname][dec].add(docid)
 
-                else:
-                    continue
-                    # There is really no symptomatic string for the random category,
-                    # and we don't want to proceed to test for it.
+                members[catname][dec].add(docid)
+                allmembers[catname].add(docid)
 
             else:
                 # Try all the genre tags in the genre string.
                 for genre in genres:
                     if catsymptom in genre:
                         members[catname][dec].add(docid)
-                        placedspecifically = True
+                        allmembers[catname].add(docid)
                         break
                         # We break because there's no reason to add a volume
-                        # to a set more than once.
+                        # to the same set more than once.
 
-# We have volumes in sets associated with genre categories.
+# Now we have volumes in sets associated with genre categories.
 # Volumes can belong to more than one category.
 # We need to sample volumes and create lists of genre tags
 # for each volume.
 
 selectedvols = set()
-volumetags = dict()
+randomvols = set()
 
-for category in categories:
+for idx, category in enumerate(categories):
     catname = category[0]
     catN = category[2]
 
@@ -98,11 +99,29 @@ for category in categories:
         samp = random.sample(members[catname][dec], n)
         for docid in samp:
             selectedvols.add(docid)
-            volumetags[docid] = {catname}
-            for othercat in categories[: -1]:
-                othercatname = othercat[0]
-                if docid in members[othercatname][dec]:
-                    volumetags[docid].add(othercatname)
+            if idx == lastcategory:
+                randomvols.add(docid)
+                # We need to do this because there is otherwise no
+                # way of knowing which of the selected vols were also
+                # randomly selected.
+
+# Selectedvols is a set because it doesn't matter which
+# category you get selected *for*. We're always going
+# to add all the tags for all the groups you belong to.
+# Ran
+
+volumetags = dict()
+randomtag = categories[lastcategory][0]
+for docid in selectedvols:
+    if docid in randomvols:
+        volumetags[docid] = {randomtag}
+    else:
+        volumetags[docid] = set()
+
+    for cat in categories[: -1]:
+        catname = cat[0]
+        if docid in allmembers[catname]:
+            volumetags[docid].add(catname)
 
 
 outrows = list()
@@ -164,7 +183,7 @@ for anid in selectedvols:
 
     outrows.append(o)
 
-with open('/Users/tunder/Dropbox/fiction/meta/scifimeta.csv', mode='a', encoding = 'utf-8') as f:
+with open('/Users/tunder/Dropbox/fiction/meta/chicagometa.csv', mode='a', encoding = 'utf-8') as f:
     writer = csv.DictWriter(f, fieldnames = fieldstowrite)
     writer.writeheader()
     for row in outrows:
