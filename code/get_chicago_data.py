@@ -133,17 +133,18 @@ for anid in selectedvols:
     assert anid == docid
 
     zerostring = '0' * (8 - len(docid))
-    id2write = zerostring + docid
-    filename = '/Volumes/TARDIS/US_Novel_Corpus/NOVELS_1880-1990/' + id2write + '.txt'
+    id2read = zerostring + docid
+    filename = '/Volumes/TARDIS/US_Novel_Corpus/NOVELS_1880-1990/' + id2read + '.txt'
     if not os.path.isfile(filename):
         print(vol['TITLE'] + " | " + vol['AUTH_LAST'] + " | " + vol['PUBL_DATE'] + " | " + vol['genretags'])
         continue
 
-    outfilename = filename.replace('NOVELS_1880-1990', 'scifi')
+    outfilename = filename.replace('NOVELS_1880-1990', 'selected')
+    outfilename = outfilename.replace(id2read, docid)
     shutil.copyfile(filename, outfilename)
 
     o = dict()
-    o['docid'] = id2write
+    o['docid'] = docid
     o['recordid'] = vol['LIBRARIES']
     o['oclc'] = ''
     o['locnum'] = ''
