@@ -10,3 +10,4 @@ random,random,Marks the volume as a randomly-selected volume to be used only in 
 pbgothic,gothic,"Files listed as Gothic in chronology or table of contents of David Punter & Glennis Byton, _The Gothic._"
 chiscifi,scifi,Files carrying “science fiction” in their LoC genre tags in Chicago corpus.
 chiutopia,scifi,"Files carrying “utopia” in their LoC genre tags in Chicago, even if also scifi."
+grandom,random,"Files selected as a random control set to match the distribution of pbgothic. Mostly before 1860. No gothic obvs, but also no detective or SF; could be folded into random."
