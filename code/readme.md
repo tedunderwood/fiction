@@ -3,7 +3,11 @@ fiction/code
 
 fiction_browser.py
 ------------------
-Interactively selects fiction volumes in particular genres and adds them to metadata.
+Interactively selects fiction volumes in particular genres from HathiTrust metadata and adds them to metadata.
+
+tag_chicago_data.py
+-------------------
+An analogous browsing script for Chicago metadata.
 
 select_random_corpus.py
 -----------------------
