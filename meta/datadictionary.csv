@@ -1,13 +1,19 @@
 genretag,biggenre,meaning
 locghost,goth,LoC “ghost story”
-locdetmyst,myst,LoC “detective and mystery stories”
-lochorror,goth,LoC “horror tales”
-locdetective,myst,LoC “detectives”
+locdetmyst,crime,LoC “detective and mystery stories”
+lochorror,goth,"LoC ""horror tales"""
+locdetective,crime,LoC “detectives”
 locscifi,scifi,LoC “science fiction”
-det100,myst,from “The First 100 Years of Detective Fiction 1841-1941” http://www.indiana.edu/~liblilly/etexts/detective/
+det100,crime,from “The First 100 Years of Detective Fiction 1841-1941” http://www.indiana.edu/~liblilly/etexts/detective/
 drop,drop,Including this tag guarantees that the vol will be dropped from all models.
 random,random,Marks the volume as a randomly-selected volume to be used only in negative sets. Random volumes can also bear other tags; this prevents them from being used in the negative set where that is the positive class.
 pbgothic,gothic,"Files listed as Gothic in chronology or table of contents of David Punter & Glennis Byton, _The Gothic._"
 chiscifi,scifi,Files carrying “science fiction” in their LoC genre tags in Chicago corpus.
 chiutopia,scifi,"Files carrying “utopia” in their LoC genre tags in Chicago, even if also scifi."
 grandom,random,"Files selected as a random control set to match the distribution of pbgothic. Mostly before 1860. No gothic obvs, but also no detective or SF; could be folded into random."
+juvenile,,"Anything for a ""juvenile"" audience."
+crime,crime,Crime fiction that is not otherwise tagged as mystery / detective.
+hardboiled,crime,Novels widely recognized as hardboiled detective fiction; in practice I relied on https://www.miskatonic.org/rara-avis/biblio/checklist.html
+anatscifi,scifi,"Works mentioned by Brian Stableford in the pre-1923 history of SF in _Anatomy of Wonder,_ ed Neil Barron."
+femscifi,scifi,Pre-1950 utopias and science fiction by women drawn from http://digital.library.upenn.edu/women/_collections/utopias/utopias.html because the Stableford chapters in anatscifi are narrow
+newgate,crime,Newgate novels by common consent.

@@ -33,7 +33,7 @@ mdp.39076002720709,9930755,213054717,,"Chapman, Allen.",New York;Chatterton-Peck
 uc1.32106001930137,7123380,993828,,"Chesterton, G. K.",New York;J. Lane;1911.,1911,1874,1911,,"Clergy;Catholics;Detective and mystery stories, English;England;Brown, Father (Fictitious character);Fiction",The innocence of Father Brown,uk,m,det100 | locdetmyst
 nyp.33433074970710,8667899,8661270,,"Christie, Agatha,","London;New York;John Lane;1921, c1920.",1920,1890,1920,,,The mysterious affair at Stiles,uk,f,det100
 inu.30000007708815,6057734,876882,PZ3.C697Mo2,"Collins, Wilkie,",New York;Harper & brothers;1868.,1868,1824,1868,,,The moonstone,uk,m,det100 | pbgothic
-uiuo.ark+=13960=t7cr65585,8722974,12076816,,"Corelli, Marie,",London;Richard Bentley;1886.,1886,1855,1886,v.2,"Science fiction, English",A romance of two worlds,uk,f,locscifi
+uiuo.ark+=13960=t7cr65585,8722974,12076816,,"Corelli, Marie,",London;Richard Bentley;1886.,1886,1855,1886,v.2,"Science fiction, English",A romance of two worlds,uk,f,locscifi | femscifi
 nyp.33433074818778,8658697,10311195,,"Cowan, Frank,","Greensburg, Pa.;Tribune Press;188-?",1880,1844,1880,,"Science fiction, American",Revi-Lona,us,m,locscifi
 dul1.ark+=13960=t3zs3df24,7509390,4355055,PS1534.D35S8,"De Mille, James,",New York;Harper & Brothers;1888.,1888,1833,1888,,"Utopias;Science fiction, Canadian;19th century;Sea stories",A strange manuscript found in a copper cylinder,ca,m,locscifi | anatscifi
 mdp.39076002621501,9929809,12308040,,"Dickens, Charles,",London;Dent;New York;Dutton;1905,1905,,,,"Scrooge, Ebenezer (Fictitious character);Sick children;Christmas stories;Poor families;Ghost stories;Misers;England;Juvenile fiction",A Christmas carol in prose,,,locghost
@@ -412,10 +412,21 @@ mdp.39015001553547,630442,1161842,PZ3.L846Sc,"London, Jack,",New York;The Macmil
 nyp.33433074850961,8666750,8259737,,"Harper, Vincent.","New York;Doubleday, Page & Company;1905.",1905,,1905,,,The mortgage on the brain,us,m,anatscifi
 mdp.39015031332862,472226,8415311,PZ3.B45G,"Beresford, J. D.",London;W. Heinemann;1913.,1913,1873,1913,,,Goslings,uk,m,anatscifi
 coo.31924051019580,11405226,8518122,,"Doyle, Arthur Conan,","New York, N.Y.;Pyramid Books;c1912.",1912,1859,1912,,,The lost world,uk,m,anatscifi
-mdp.39015004200997,1774603,14770844,,"Shelley, Mary Wollstonecraft,","London;G. Routledge & sons, limited;1891.",1891,1797,1818,,,Frankenstein,uk,f,anatscifi
-dul1.ark+=13960=t41r7h934,10944411,982656,,"Shelley, Mary Wollstonecraft,","Philadelphia;Carey, Lea and Blanchard;1833.",1833,1797,1826,v.2,,The last man,uk,f,anatscifi
-uiuo.ark+=13960=t8x92v101,1692807,2554632,PZ3.S545L2,"Shelley, Mary Wollstonecraft,",London;H. Colburn;1826.,1826,uk,1826,v.3,,The last man,f,uk,anatscifi
+mdp.39015004200997,1774603,14770844,,"Shelley, Mary Wollstonecraft,","London;G. Routledge & sons, limited;1891.",1891,1797,1818,,,Frankenstein,uk,f,femscifi
+dul1.ark+=13960=t41r7h934,10944411,982656,,"Shelley, Mary Wollstonecraft,","Philadelphia;Carey, Lea and Blanchard;1833.",1833,1797,1826,v.2,,The last man,uk,f,femscifi
+uiuo.ark+=13960=t8x92v101,1692807,2554632,PZ3.S545L2,"Shelley, Mary Wollstonecraft,",London;H. Colburn;1826.,1826,uk,1826,v.3,,The last man,uk,f,femscifi
 uc2.ark+=13960=t2794143s,7652854,28946565,,"Burroughs, Edgar Rice,",New York;Grosset & Dunlap;1917,1917,1875,1912,,,A princess of Mars,us,m,anatscifi
 mdp.39015066036578,664119,9451665,,"Twain, Mark,",New York;Harper & brothers;1896.,1896,1835,1889,,,A Connecticut Yankee in King Arthur's court,us,m,anatscifi
 nyp.33433075746812,8667895,5208175,,"Shanks, Edward,",New York;F.A. Stokes;1920.,1920,1892,1920,,Time travel;Social life and customs;Great Britain;Fiction,The people of the ruins,uk,m,anatscifi
-dul1.ark+=13960=t16m3xm4f,10943531,6700740,,"Hamilton, Cicely,",London;Leonard Parsons;1922.,1922,1872,1922,,Utopias,Theodore savage,uk,f,anatscifi
+dul1.ark+=13960=t16m3xm4f,10943531,6700740,,"Hamilton, Cicely,",London;Leonard Parsons;1922.,1922,1872,1922,,Utopias,Theodore savage,uk,f,anatscifi | femscifi
+uc1.b3578887,6678235,6443351,PZ3.C6709Y,"Wait, Frona Eunice,",San Francisco;W. Doxey;1897.,1897,1859,1897,,,Yermah the Dorado,us,f,femscifi
+mdp.39015010330341,1986831,35955358,,"Cobbe, Frances Power,","London;Ward, Lock, and Tyler;1877",1877,1822,1877,,,The age of science,ir,f,femscifi
+inu.30000042750632,6060409,34015558,,"Ling, M. A. Moore Bentley","Sydney;Edwards, Dunlop & Co.;1901.",1901,1865,1901,,,A woman of Mars,au,f,femscifi
+hvd.32044014279723,630047,6756991,PZ3.L927M2,"Loudon,",London;H. Colburn;1828.,1828,1807,1827,v.1,,The mummy!,uk,f,femscifi
+mdp.39015030996832,42246,16389250,,"Ainsworth, William Harrison,",London;New York;Routledge;1878.,1878,1805,1834,,,Rookwood,uk,m,newgate
+dul1.ark+=13960=t9n30pf1s,10943726,11360969,,"Ainsworth, William Harrison,","London;G. Routledge & sons, ltd.;1898",1898,1805,1840,,"1702-1724;Sheppard, Jack;Fiction",Jack Sheppard ;,uk,m,newgate
+hvd.hwjme4,9730346,1980800,,"Dickens, Charles,",Leipzig;B. Tauchnitz;1843.,1843,1812,1837,,,Oliver Twist,uk,m,newgate
+wu.89100297621,9183449,637830,,"Lytton, Edward Bulwer Lytton,",London;Routledge;18--?,0,1803,1830,,,Paul Clifford,uk,m,newgate
+njp.32101032308387,8888080,8909779,,"Lytton, Edward Bulwer Lytton,",Philadelphia;J.B. Lippincott;1881.,1881,1803,1832,,,Eugene Aram,uk,m,newgate
+uiuo.ark+=13960=t44q88m18,8720331,13323862,,"Gaspey, Thomas,",London;H. Colburn;1828.,1828,1788,1828,v.1,,History of George Godfrey,m,m,newgate
+uiuo.ark+=13960=t15m6kw75,8720331,13323862,,"Gaspey, Thomas,",London;H. Colburn;1828.,1828,1788,1828,v.2,,History of George Godfrey,uk,m,newgate
