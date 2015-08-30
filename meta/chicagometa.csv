@@ -6,7 +6,7 @@ docid,recordid,oclc,locnum,author,imprint,date,birthdate,firstpub,enumcron,subje
 4497,,,,"Stringer, Arthur,",New York Grosset & Dunlap 1920,1920,1874,1920,,,The prairie omnibus,us,,chirandom
 4514,,,,"Bennett, John,",New York Century Co. 1921,1921,1865,1921,,Mothers and daughters;South Carolina -- Charleston;Happiness;Charleston (S.C.) -- History;Fantasy fiction;History;Charleston (S.C.);Soul,Madame Margot,us,,chifantasy
 4528,,,,"Burroughs, Edgar Rice,",New York Grosset & Dunlap 1921,1921,1875,1921,,"Science fiction;Science fiction, American",The mucker,us,,chiscifi
-4529,,,,"Byrne, Donn,",New York Century Co. 1921,1921,1889,1921,,,Messer Marco Polo,us,,chirandom | fantasy
+4529,,,,"Byrne, Donn,",New York Century Co. 1921,1921,1889,1921,,,Messer Marco Polo,us,,chirandom | chifantasy
 4599,,,,"Nathan, Robert,",New York R.M. McBride & Co. 1921,1921,1894,1921,,Teachers;United States;Country life -- United States;Country life;New England,Autumn,us,,chirandom
 4605,,,,"Putnam, Nina Wilcox,",New York George H. Doran Co. 1921,1921,1888,1921,,"Broadway (New York, N.Y.)",West Broadway,us,,chirandom
 4611,,,,"Sawyer, Ruth,",New York; London Harper & Bros. 1921,1921,1880,1921,,,The silver sixpence,us,,chirandom
@@ -52,14 +52,14 @@ docid,recordid,oclc,locnum,author,imprint,date,birthdate,firstpub,enumcron,subje
 10302,,,,"Burroughs, Edgar Rice,",New York Grosset & Dunlap 1929,1929,1875,1929,,"Science fiction;Science fiction, American",The monster men,us,,chiscifi
 10310,,,,"Kline, Otis Adelbert,",Chicago A.C. McClurg & Co. 1929,1929,,1929,,"Science fiction;Science fiction, American;Alien abduction;Venus (Planet)",The planet of peril,us,,chiscifi
 10312,,,,"Lewis, Sinclair,","New York Harcourt, Brace & Co. 1929",1929,1885,1929,,Retired executives -- United States;Americans -- Travel -- Europe;United States;Americans;Wives;Marriage;Satire;Married people;Adultery;Divorce;Domestic fiction;Americans -- Europe;Europe;Spouses;Retired executives,Dodsworth,us,,chirandom
-11100,,,,"Hammett, Dashiell,",New York; London Alfred A. Knopf 1929,1929,1894,1929,,Gangs;United States;Mystery fiction;Continental Op (Fictitious character),Red Harvest,us,m,chimyst | det100
+11100,,,,"Hammett, Dashiell,",New York; London Alfred A. Knopf 1929,1929,1894,1929,,Gangs;United States;Mystery fiction;Continental Op (Fictitious character),Red Harvest,us,m,chimyst | det100 | hardboiled
 11252,,,,"Berkeley, Anthony,",Garden City; N.Y. George H. Doran Co. 1929,1929,1893,1929,,Mystery fiction,The poisoned chocolates case,uk,,chimyst
 11255,,,,"Christie, Agatha,","New York Dodd, Mead & Co. 1929",1929,1890,1929,,"England;Police -- England;Police;Mystery fiction;Battle, Superintendent (Fictitious character)",The Seven dials mystery,uk,,chimyst
-11274,,,,"Shiel, M. P.",London V. Gollancz 1929,1929,1865,1929,,"Natural disasters;Science fiction -- Great Britain;Apocalyptic fantasies;Science fiction;End of the world;Science fiction, English",The purple cloud,uk,,chifantasy | chiscifi
+11274,,,,"Shiel, M. P.",London V. Gollancz 1929,1929,1865,1901,,"Natural disasters;Science fiction -- Great Britain;Apocalyptic fantasies;Science fiction;End of the world;Science fiction, English",The purple cloud,uk,,chifantasy | chiscifi
 11277,,,,"Wallace, Edgar,",London W. Collins 1929,1929,1875,1929,,,The lone house mystery,uk,,chirandom | chimyst
 10083,,,,"Burroughs, Edgar Rice,",New York Grosset & Dunlap 1930,1930,1875,1930,,"Adventure fiction;Tarzan (Fictitious character);Fantasy fiction;Science fiction;Fantasy fiction, American;Earth (Planet) -- Core",Tarzan at the earth's core,us,,chifantasy | chiscifi
 10086,,,,"Stratemeyer, Edward,","Boston Lothrop, Lee & Shepard Co. 1930",1930,1862,1930,,"Mexican War, 1846-1848",With Taylor on the Rio Grande,us,,chirandom
-10330,,,,"Hammett, Dashiell,",New York; London Alfred A. Knopf 1930,1930,1894,1930,,"Mystery fiction;Art;Spade, Sam (Fictitious character);California -- San Francisco;San Francisco (Calif.);Large type books",The Maltese falcon,us,m,chimyst | det100
+10330,,,,"Hammett, Dashiell,",New York; London Alfred A. Knopf 1930,1930,1894,1930,,"Mystery fiction;Art;Spade, Sam (Fictitious character);California -- San Francisco;San Francisco (Calif.);Large type books",The Maltese falcon,us,m,chimyst | det100 | hardboiled
 10336,,,,"Kline, Otis Adelbert,",Chicago A.C. McClurg 1930,1930,,1930,,"Science fiction;Science fiction, American;Extraterrestrial beings",Maza of the moon,us,,chiscifi
 10337,,,,"Kline, Otis Adelbert,",Chicago A.C. McClurg & Co. 1930,1930,,1930,,Science fiction;Venus (Planet),The prince of peril,us,,chiscifi
 11285,,,,"Berkeley, Anthony,",Garden City; N.Y. George H. Doran Co. 1930,1930,1893,1930,,"England -- London -- Piccadilly;Piccadilly (London, England);Mystery fiction",The Piccadilly murder,uk,,chimyst
@@ -127,7 +127,7 @@ docid,recordid,oclc,locnum,author,imprint,date,birthdate,firstpub,enumcron,subje
 10151,,,,"Atkinson, Eleanor,",New York Harper & Bros. 1940,1940,1863,1940,,Dogs;Skye terriers,Greyfriars Bobby,us,,chirandom
 10621,,,,"Rawson, Clayton,",New York G.P. Putnam's Son 1940,1940,1906,1940,,Magicians;Mystery fiction,The headless lady,us,,chimyst
 10622,,,,"Reilly, Helen,",New York Random House 1940,1940,1890,1940,,Scottish Americans;Police;Police -- New York (State) -- New York;Mystery fiction;New York (State) -- New York,The dead can tell,us,,chimyst
-11101,,,,"Chandler, Raymond","New York: Alfred A. Knopf, 1940",1940,1888,1940,,,Farewell My Lovely,us,m,det100
+11101,,,,"Chandler, Raymond","New York: Alfred A. Knopf, 1940",1940,1888,1940,,,Farewell My Lovely,us,m,det100 | hardboiled
 11664,,,,"Shute, Nevil","New York: Morrow, 1940",1940,1899,1940,,"World War, 1939-1945|Great Britain",Landfall,uk,m,chirandom
 10645,,,,"Merritt, Abraham,",New York; N.Y. . : Avon 1941,1941,1884,1941,,"Science fiction;Science fiction, American;China -- Tibet Autonomous Region;Tibet Autonomous Region (China)",The metal monster,us,,chiscifi
 11675,,,,"Christie, Agatha,","New York Dodd, Mead 1941",1941,1890,1941,,"England;Domestic fiction;Mystery fiction;Beresford, Tommy (Fictitious character)",N or M?,uk,,chimyst | chirandom
@@ -141,7 +141,7 @@ docid,recordid,oclc,locnum,author,imprint,date,birthdate,firstpub,enumcron,subje
 11703,,,,"Christie, Agatha,",London Published for the Crime Club by Collins 1942,1942,1890,1942,,,Five little pigs,uk,,chirandom | chimyst
 11709,,,,"Marsh, Ngaio,",New York Sheridan House 1942,1942,1895,1942,,"Alleyn, Roderick (Fictitious character);Police -- England;Police;Mystery fiction;England",A man lay dead,nz,,chimyst | chirandom
 11711,,,,"Stapledon, Olaf,",London Methuen 1942,1942,1886,1942,,Science fiction,Darkness and the light,uk,,chiscifi
-10700,,,,"Cain, James M.",New York; N.Y. . : Avon Book Co. 1943,1943,1892,1943,,California;Insurance crimes;Psychological fiction;Insurance agents;Guilt;Mystery fiction,Double indemnity,us,,chimyst
+10700,,,,"Cain, James M.",New York; N.Y. . : Avon Book Co. 1943,1943,1892,1943,,California;Insurance crimes;Psychological fiction;Insurance agents;Guilt;Mystery fiction,Double indemnity,us,,chimyst | hardboiled
 10723,,,,"Queen, Ellery,","Boston Little, Brown & Co. 1943",1943,,1943,,Mystery fiction;Novelists,There was an old woman,us,m,chimyst | det100
 11724,,,,"Green, Henry,","London: Hogarth Press, 1943",1943,1905,1943,,England|Fire fighters|Fire fighters -- England,Caught,uk,m,chirandom
 11730,,,,"Marsh, Ngaio,","Boston Little, Brown & Co. 1943",1943,1895,1943,,"Alleyn, Roderick (Fictitious character);Mystery fiction;Great Britain;New Zealand;Police;New Zealand fiction -- 20th century;Police -- New Zealand;Large type books",Colour scheme,nz,,chimyst | chirandom
@@ -153,7 +153,7 @@ docid,recordid,oclc,locnum,author,imprint,date,birthdate,firstpub,enumcron,subje
 11081,,,,"Joyce, James,",New York New Directions 1944,1944,1882,1944,,Young men -- Ireland -- Dublin;Dublin (Ireland);Autobiographical fiction;Bildungsromans;Fiction -- Irish;Ireland -- Dublin,Stephen hero,ir,,chirandom
 10765,,,,"Armstrong, Charlotte,","New York Coward-McCann, Inc. 1945",1945,1905,1945,,Mystery fiction,The innocent flower,us,,chimyst
 10774,,,,"Halliday, Brett,","New York Dodd, Mead & Co. 1945",1945,,1945,,"Shayne, Michael (Fictitious character);Mystery fiction;Detective and mystery stoies",Murder is my business,us,,chimyst
-10778,,,,"Hughes, Dorothy B. 1904-  (Dorothy Belle),","Cleveland, Ohio World Pub. Co. 1945",1945,,1945,,Band directors;Actresses;Journalists;Mystery fiction;Train attendants,Dread journey,us,,chimyst
+10778,,,,"Hughes, Dorothy B. 1904-  (Dorothy Belle),","Cleveland, Ohio World Pub. Co. 1945",1945,1904,1945,,Band directors;Actresses;Journalists;Mystery fiction;Train attendants,Dread journey,us,,chimyst | hardboiled
 10793,,,,"Stein, Gertrude,",New York Random House 1945,1945,1874,1945,,,Wars I have seen,us,,chirandom
 11778,,,,"Lewis, C. S.",London Bodley Head 1945,1945,1898,1945,,"Ransom, Elwin (Fictitious character);Extraterrestrial beings;Fantasy fiction, English;Fantasy fiction;Space flight;Interplanetary voyages;Science fiction;Science fiction, English",That hideous strength,uk,,chifantasy | chiscifi
 11782,,,,"Orwell, George,",London Secker & Warburg 1945,1945,1903,1945,,"Satires;Political fiction;Dictators;Utopias;Totalitarianism;Engelse fiksie;Totalitarismus;Satire, Engels;English fiction;Fables;Belletristische Darstellung;Satire;English fiction -- 20th century;Domestic animals;Tonkassette",Animal farm,uk,,chiutopia
@@ -175,7 +175,7 @@ docid,recordid,oclc,locnum,author,imprint,date,birthdate,firstpub,enumcron,subje
 11829,,,,"Hartley, L. P.","London: Putnam, 1947",1947,1895,1947,,Domestic fiction|Brothers and sisters,Eustace and Hilda,uk,,chirandom
 11836,,,,"Robins, Denise,"," Leicester, Eng. : Ulverscroft 1947",1947,1897,1947,,Large type books,More than love,uk,,chirandom
 10883,,,,"Brown, Fredric,",New York E.P. Dutton 1948,1948,1906,1948,,Chicago (Ill.);Mystery fiction;Private investigators -- Illinois -- Chicago;Illinois -- Chicago,The dead ringer,us,,chimyst
-10889,,,,"Chandler, Raymond,",London Penguin in association with Hamish Hamilton 1948,1948,1888,1939,,"Los Angeles (Calif.);Photoplay editions;Marlowe, Philip (Fictitious character);Mystery fiction;California -- Los Angeles",The big sleep,us,m,chimyst | det100
+10889,,,,"Chandler, Raymond,",London Penguin in association with Hamish Hamilton 1948,1948,1888,1939,,"Los Angeles (Calif.);Photoplay editions;Marlowe, Philip (Fictitious character);Mystery fiction;California -- Los Angeles",The big sleep,us,m,chimyst | det100 | hardboiled
 10911,,,,"Queen, Ellery,","Boston Little, Brown 1948",1948,,1948,,Sculptor;Amnesia;Mystery fiction;Novelists,Ten days' wonder,us,m,chimyst | chirandom | det100
 10916,,,,"Skinner, B. F.",New York Macmillan Co. 1948,1948,1904,1948,,Gesellschaft;Utopias;Utopian fiction;Utopies;USA,Walden Two,us,,chiutopia | chirandom
 10917,,,,"Smith, E. E.",Pa. Fantasy Press 1948,1948,1890,1948,,Science fiction;Space ships;Space warfare,Skylark three,us,,chiscifi
@@ -334,7 +334,7 @@ docid,recordid,oclc,locnum,author,imprint,date,birthdate,firstpub,enumcron,subje
 21079,,,,"Berryman, John,","New York Farrar, Straus & Giroux 1973",1973,1914,1973,,Psychological fiction;College teachers;Alcoholics;Alcoholics -- Rehabilitation,Recovery,us,,chirandom
 21088,,,,"Davis, Dorothy Salisbury,",New York Charles Scribner's Sons 1973,1973,,1973,,Mystery fiction,The little brothers,us,,chimyst | chirandom
 21094,,,,"Gardner, John,",New York Alfred A. Knopf 1973,1973,1933,1973,,Jason (Greek mythology);Fantasy fiction;Medea (Greek mythology);(880-01) Jason (Greek mythology);Historical fiction,Jason and Medeia,us,,chifantasy | chirandom
-21104,,,,"Himes, Chester B."," Chatham, N.J., Chatham Bookseller 1973",1973,1909,1959,,,The crazy kill,us,,chirandom | chimyst
+21104,,,,"Himes, Chester B."," Chatham, N.J., Chatham Bookseller 1973",1973,1909,1959,,,The crazy kill,us,,chirandom | chimyst | hardboiled
 21114,,,,"MacDonald, John D.",New York Lippincott & Crowell 1973,1973,1916,1973,,"Florida -- Fort Lauderdale;Fort Lauderdale (Fla.);McGee, Travis (Fictitious character);Mystery fiction",The scarlet ruse,us,,chimyst | chirandom
 21116,,,,"Malzberg, Barry N,",New York Random House 1973,1973,,1973,,"Science fiction;Science fiction, American;Authors",Herovit's world,us,,chiscifi | chirandom
 21126,,,,"Piercy, Marge,",New York; N.Y. . : Fawcett Crest 1973,1973,,1973,,United States;Married women -- United States;Married women,Small changes,us,,chirandom
