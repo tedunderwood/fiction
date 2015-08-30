@@ -46,12 +46,8 @@ A lot of work done. I recreated the whole Chicago corpus with a better randomiza
 
 But most importantly, reran logisticleave1out on the new dataset and identified 3 clear patterns that form the backbone of an article:
 
-1. Gothic definitely weaker than scifi, which is weaker than detective/crime. 76 / 86 / 90% accuracy over comparable time spans. But all of this holds over much longer timespans than Moretti predicts. Need apples-to-apples comparison to a Moretti-Jockers genre category.
+1. Gothic definitely weaker than scifi, which is weaker than detective/crime. 76 / 86 / 90% accuracy over comparable time spans. But all of this holds over much longer timespans than Moretti predicts. Need apples-to-apples comparison to a Moretti-Jockers genre category. This is largely what we might expect, and gives us confidence in the method, so that we have some chance of believing:
 
-This is largely what we might expect, and gives us confidence in the method, so that we have some chance of believing:
-
-2. The Rise and Fall of Genre -- proposed title. There's a very marked pattern where genres differentiate in the 19c, reach peak differentiation around 1940-50, and then reconverge. It's clearest with detective/crime fiction. But also holds e.g. with crime vs. scifi.
-
-The convergence is actually clearer than the differentiation. Probably has to do with increasing quotidian realism in genre fiction, but that's a speculation at this point.
+2. The Rise and Fall of Genre -- proposed title. There's a very marked pattern where genres differentiate in the 19c, reach peak differentiation around 1940-50, and then reconverge. It's clearest with detective/crime fiction. But also holds e.g. with crime vs. scifi. The convergence is actually clearer than the differentiation. Probably has to do with increasing quotidian realism in genre fiction, but that's a speculation at this point. Also, see "sanity check" above for an important source of doubt that needs to be explored.
 
 3. The overarching thesis, uniting 1 & 2: "genre" is not a historically stable analytic category.
