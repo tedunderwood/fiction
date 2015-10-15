@@ -147,8 +147,16 @@ def identify_class(negative_tags, positive_tags, docdict, categorytodivideon):
                 positive = True
 
         for tag in negative_tags:
-            if tag in tagset:
+            if tag in tagset and positive == False:
                 negative = True
+            elif tag in tagset and 'random' not in tag:
+                negative = True
+
+            # That bizarre little codicil means this:
+            # generally we call any work with a negative tag "negative"
+            # unless it was already tagged positive, and the only
+            # thing making it negative is a "random" tag, which after all
+            # is not incompatible with generic identity!!
 
     else:
         # in this case we assume that the category to divide on is
@@ -259,12 +267,12 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
 
                 closest_negative_idx = closest_idx(negative_metadata, this_positive, datetype)
                 closest_negative = negative_metadata.pop(closest_negative_idx)
-                print(closest_negative)
+                # print(closest_negative)
                 negatives.append(closest_negative['docid'])
 
-                print("MATCH this: " + str(this_positive['firstpub']) + " : " + this_positive['title'] + " " + this_positive['gender'])
-                print('with this: ' + str(closest_negative['firstpub']) + " : " + closest_negative['title'] + " " + closest_negative['gender'])
-                print()
+                # print("MATCH this: " + str(this_positive['firstpub']) + " : " + this_positive['title'] + " " + this_positive['gender'])
+                # print('with this: ' + str(closest_negative['firstpub']) + " : " + closest_negative['title'] + " " + closest_negative['gender'])
+                # print()
 
         else:
             # if we're dividing classes by date, we obvs don't want to
