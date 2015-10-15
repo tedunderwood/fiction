@@ -305,6 +305,7 @@ def create_model(paths, exclusions, trainthresholds, classifyconditions):
             if wordcounts[word] > 0:
                 vocablist.append(word)
 
+    numfeatures = len(vocablist)
 
     # vocablist = binormal_select(vocablist, positivecounts, negativecounts, totalposvols, totalnegvols, 3000)
     # Feature selection is deprecated. There are cool things
@@ -573,7 +574,9 @@ if __name__ == '__main__':
     sourcefolder = '../newdata/'
     extension = '.fic.tsv'
     classpath = '../meta/genremeta.csv'
-    outputpath = '../results/allSF' + str(datetime.date.today()) + '.csv'
+
+    modelname = input('Name of model? ')
+    outputpath = '../results/' + modelname + str(datetime.date.today()) + '.csv'
 
     # We can simply exclude volumes from consideration on the basis on any
     # metadata category we want, using the dictionaries defined below.
