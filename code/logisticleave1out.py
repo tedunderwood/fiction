@@ -292,16 +292,25 @@ def create_model(paths, exclusions, trainthresholds, classifyconditions):
                         # *documents* that contain a given word,
                         # so it's just +=1.
 
-    vocablist = [x[0] for x in wordcounts.most_common(numfeatures)]
+    # The feature list we use is defined by the top 10,000 words (by document
+    # frequency) in the whole corpus, and it will be the same for all models.
+    # However, we don't want to include words that actually occur zero times in
+    # the particular set we're modeling. So we check.
+
+    vocablist = []
+    with open('../lexicon/top10k.csv', encoding = 'utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            word = row['word'].strip()
+            if wordcounts[word] > 0:
+                vocablist.append(word)
+
 
     # vocablist = binormal_select(vocablist, positivecounts, negativecounts, totalposvols, totalnegvols, 3000)
     # Feature selection is deprecated. There are cool things
     # we could do with feature selection,
     # but they'd improve accuracy by 1% at the cost of complicating our explanatory task.
     # The tradeoff isn't worth it. Explanation is more important.
-    # So we just take the most common words (by number of documents containing them)
-    # in the whole corpus. Technically, I suppose, we could crossvalidate that as well,
-    # but *eyeroll*.
 
     # We need a list of indexes in orderedIDs to exclude.
 
@@ -375,7 +384,7 @@ def create_model(paths, exclusions, trainthresholds, classifyconditions):
     # Now do leave-one-out predictions.
     print('Beginning multiprocessing.')
 
-    pool = Pool(processes = 10)
+    pool = Pool(processes = 12)
     res = pool.map_async(modelingprocess.model_one_volume, sextuplets)
 
     # After all files are processed, write metadata, errorlog, and counts of phrases.
@@ -561,12 +570,10 @@ if __name__ == '__main__':
     # classpath = '/Users/tunder/Dropbox/GenreProject/python/reception/fiction/masterficmeta.csv'
     # outputpath = '/Users/tunder/Dropbox/GenreProject/python/reception/fiction/predictions.csv'
 
-    sourcefolder = '../data/'
-    # sourcefolder = '/Volumes/TARDIS/US_Novel_Corpus/scificounts/'
+    sourcefolder = '../newdata/'
     extension = '.fic.tsv'
-    # classpath = '../meta/genremeta.csv'
     classpath = '../meta/genremeta.csv'
-    outputpath = '../results/ficpredictions' + str(datetime.date.today()) + '.csv'
+    outputpath = '../results/allSF' + str(datetime.date.today()) + '.csv'
 
     # We can simply exclude volumes from consideration on the basis on any
     # metadata category we want, using the dictionaries defined below.
@@ -579,8 +586,8 @@ if __name__ == '__main__':
     excludebelow = dict()
 
     excludebelow['firstpub'] = 1700
-    excludeabove['firstpub'] = 2000
-    sizecap = 500
+    excludeabove['firstpub'] = 1990
+    sizecap = 1000
 
     # For more historically-interesting kinds of questions, we can limit the part
     # of the dataset that gets TRAINED on, while permitting the whole dataset to
@@ -601,10 +608,13 @@ if __name__ == '__main__':
     tagphrase = input("Comma-separated list of tags to include in the positive class: ")
     positive_tags = [x.strip() for x in tagphrase.split(',')]
     tagphrase = input("Comma-separated list of tags to include in the negative class: ")
-    negative_tags = [x.strip() for x in tagphrase.split(',')]
+    if tagphrase == 'r':
+        negative_tags = ['random', 'grandom', 'chirandom']
+    else:
+        negative_tags = [x.strip() for x in tagphrase.split(',')]
     datetype = "firstpub"
-    numfeatures = 3200
-    regularization = .00007
+    numfeatures = 10000
+    regularization = .000075
 
 
     paths = (sourcefolder, extension, classpath, outputpath)
