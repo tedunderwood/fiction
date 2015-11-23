@@ -1,7 +1,7 @@
-# logisticleave1out.py
+# logisticpredict.py
 #
-# Based on parallel_crossvalidate.py
-# from the paceofchange repo.
+# Based on logisticleave1out.py which was based on
+# parallel_crossvalidate.py from the paceofchange repo.
 #
 # Reads all volumes meeting a given set of criteria,
 # and uses a leave-one-out strategy to distinguish
@@ -15,6 +15,69 @@
 # in using a different metadata structure, and
 # especially a multi-tag folksonomic system for
 # identifying the positive and negative classes.
+#
+# The main class here is create_model().
+# It accepts three parameters, each of which is a tuple
+# that gets unpacked.
+#
+# There are unfortunately a lot of details in those tuples,
+# because I've written this script to be very flexible and
+# permit a lot of different kinds of modeling.
+#
+# paths unpacks into
+# sourcefolder, extension, metadatapath, outputpath, vocabpath
+# where
+# sourcefolder is the directory with data files
+# extension is the extension those files end with
+# metadatapath is the path to a metadata csv
+# outputpath is the path to a csv of results to be written
+# and vocabpath is the path to a file of words to be used
+#   as features for all models
+#
+# exclusions unpacks into
+# excludeif, excludeifnot, excludebelow, excludeabove, sizecap
+# where
+# all the "excludes" are dictionaries pairing a key (the name of a metadata
+#     column) with a value that should be excluded -- if it's present,
+#     absent, lower than this, or higher than this.
+# sizecap limits the number of vols in the positive class; randomly
+#      sampled if greater.
+#
+# classifyconditions unpacks into:
+# positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions
+# where
+# positive_tags is a list of tags to be included in the positive class
+# negative_tags is a list of tags to be selected for the negative class
+#     (unless volume also has a positive_tag, and note that the negative class
+#      is always selected to match the chronological distribution of the positive
+#      as closely as possible)
+# datetype is the date column to be used for chronological distribution
+# numfeatures can be used to limit the features in this model to top N;
+#      it is in practice not functional right now because I'm using all
+#      features in the vocab file -- originally selected by doc frequency in
+#      the whole corpus
+# regularization is a constant to be handed to scikit-learn (I'm using one
+#    established in previous experiments on a different corpus)
+# and testconditions ... is complex.
+#
+# The variable testconditions will be a set of tags. It may contain tags for classes
+# that are to be treated as a test set. Positive volumes will be assigned to
+# this set if they have no positive tags that are *not* in testconditions.
+# A corresponding group of negative volumes will at the same time
+# be assigned. It can also contain two integers to be interpreted as dates, a
+# pastthreshold and futurethreshold. Dates outside these thresholds will not
+# be used for training. If date thresholds are provided they must be provided
+# as a pair to clarify which one is the pastthreshold and which the future.
+# If you're only wanting to exclude volumes in the future, provide a past
+# threshold like "1."
+
+# All of these conditions exclude volumes from the training set, and place them
+# in a set that is used only for testing. But also note that these
+# exclusions are always IN ADDITION TO leave-one-out crossvalidation by author.
+
+# In other words, if an author w/ multiple volumes has only some of them excluded
+# from training by testconditions, it is *still* the case that the author will never
+# be in a training set when her own volumes are being predicted.
 
 import numpy as np
 import pandas as pd
@@ -195,18 +258,179 @@ def binormal_select(vocablist, positivecounts, negativecounts, totalpos, totalne
 
     return [x[1] for x in zipped[0:k]]
 
-def create_model(paths, exclusions, trainthresholds, classifyconditions):
+def confirm_testconditions(testconditions, positive_tags):
+
+    if len(testconditions) < 1:
+        print('The testconditions set has no elements.')
+        sys.exit(0)
+    else:
+        for elem in testconditions:
+            if elem in positive_tags or elem.isdigit():
+                # that's fine
+                continue
+            elif elem == '':
+                # also okay
+                continue
+            else:
+                print('Illegal element in testconditions.')
+                sys.exit(0)
+
+def get_volume_lists(volumeIDs, volumepaths, IDsToUse, metadict, datetype, positive_tags, testconditions, classdictionary):
+    '''
+    This function creates an ordered list of volume IDs included in this
+    modeling process, and an ordered list of volume-path tuples.
+
+    It also identifies positive volumes that are not to be included in a training set,
+    because they belong to a category that is being tested.
+    '''
+
+    volspresent = []
+    orderedIDs = []
+    donttrainset = set()
+
+    for volid, volpath in zip(volumeIDs, volumepaths):
+        if volid not in IDsToUse:
+            continue
+        else:
+            volspresent.append((volid, volpath))
+            orderedIDs.append(volid)
+
+    thresholds = []
+    for elem in testconditions:
+        if elem.isdigit():
+            thresholds.append(int(elem))
+
+    thresholds.sort()
+    if len(thresholds) == 2:
+        pastthreshold = thresholds[0]
+        futurethreshold = thresholds[1]
+    else:
+        pastthreshold = 0
+        futurethreshold = 3000
+        # we are unlikely to have any volumes before or after
+        # those dates
+
+    for volid in orderedIDs:
+        if classdictionary[volid] != 1:
+            continue
+            # On the first pass we only add positive volumes
+            # to donttrainset. Negative volumes handled in a
+            # separate function.
+
+        date = infer_date(metadict[volid], datetype)
+        if date < pastthreshold or date > futurethreshold:
+            donttrainset.add(volid)
+            continue
+
+        tagset = metadict[volid]['tagset']
+        hasexclusion = False
+        hasotherpositive = False
+
+        for tag in positive_tags:
+            if tag in tagset and not tag in testconditions:
+                hasotherpositive = True
+
+        for tag in testconditions:
+            if tag in tagset:
+                hasexclusion = True
+
+        if hasexclusion and not hasotherpositive:
+            donttrainset.add(volid)
+
+    return volspresent, orderedIDs, donttrainset
+
+def first_and_last(idset, metadict, datetype):
+    min = 3000
+    max = 0
+
+    for anid in idset:
+        date = metadict[anid][datetype]
+        if date < min:
+            min = date
+        if date > max:
+            max = date
+
+    return min, max
+
+def add_matching_negs(donttrainset, orderedIDs, classdictionary, metadict, datetype):
+
+    negatives = []
+
+    for anid in orderedIDs:
+        if classdictionary[anid] == 0:
+            negatives.append(metadict[anid])
+
+    matching_negatives = []
+
+    print(len(donttrainset))
+
+    for anid in donttrainset:
+        this_positive = metadict[anid]
+        closest_negative_idx = metafilter.closest_idx(negatives, this_positive, datetype)
+        closest_negative = negatives.pop(closest_negative_idx)
+        matching_negatives.append(closest_negative['docid'])
+
+    min, max = first_and_last(donttrainset, metadict, datetype)
+    if min > 0:
+        print("The set of volumes not to be trained on includes " + str(len(donttrainset)))
+        print("postive volumes, ranging from " + str(min) + " to " + str(max) + ".")
+        print()
+
+    min, max = first_and_last(matching_negatives, metadict, datetype)
+    if min > 0:
+        print("And also includes " + str(len(matching_negatives)))
+        print("negative volumes, ranging from " + str(min) + " to " + str(max) + ".")
+        print()
+
+    for negative in matching_negatives:
+        donttrainset.add(negative)
+
+    return donttrainset
+
+def get_docfrequency(volspresent, donttrainset):
+    '''
+    This function counts words in volumes. These wordcounts don't necessarily define
+    a feature set for modeling: at present, the limits of that set are defined primarily
+    by a fixed list shared across all models (top10k).
+    '''
+
+    wordcounts = Counter()
+
+    for volid, volpath in volspresent:
+        if volid in donttrainset:
+            continue
+        else:
+            with open(volpath, encoding = 'utf-8') as f:
+                for line in f:
+                    fields = line.strip().split('\t')
+                    if len(fields) > 2 or len(fields) < 2:
+                        # this is a malformed line; there are a few of them,
+                        # but not enough to be important -- ignore
+                        continue
+                    word = fields[0]
+                    if len(word) > 0 and word[0].isalpha():
+                        wordcounts[word] += 1
+                        # We're getting docfrequency (the number of documents that
+                        # contain this word), not absolute number of word occurrences.
+                        # So just add 1 no matter how many times the word occurs.
+
+    return wordcounts
+
+def create_model(paths, exclusions, classifyconditions):
     ''' This is the main function in the module.
     It can be called externally; it's also called
     if the module is run directly.
     '''
 
-    sourcefolder, extension, classpath, outputpath = paths
+    sourcefolder, extension, metadatapath, outputpath, vocabpath = paths
     excludeif, excludeifnot, excludebelow, excludeabove, sizecap = exclusions
-    pastthreshold, futurethreshold, donottraintag = trainthresholds
-    categorytodivideon, positive_tags, negative_tag, datetype, numfeatures, regularization = classifyconditions
+    positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions = classifyconditions
 
     verbose = False
+
+    # The following function confirms that the testconditions are legal.
+
+    confirm_testconditions(testconditions, positive_tags)
 
     if not sourcefolder.endswith('/'):
         sourcefolder = sourcefolder + '/'
@@ -232,64 +456,35 @@ def create_model(paths, exclusions, trainthresholds, classifyconditions):
             volumeIDs.append(volID)
             volumepaths.append(path)
 
-    metadict = metafilter.get_metadata(classpath, volumeIDs, excludeif, excludeifnot, excludebelow, excludeabove)
+    metadict = metafilter.get_metadata(metadatapath, volumeIDs, excludeif, excludeifnot, excludebelow, excludeabove)
 
     # Now that we have a list of volumes with metadata, we can select the groups of IDs
     # that we actually intend to contrast. If we want to us more or less everything,
     # this may not be necessary. But in some cases we want to use randomly sampled subsets.
 
-    IDsToUse, classdictionary = metafilter.label_classes(metadict, categorytodivideon, positive_tags, negative_tag, sizecap, datetype)
+    IDsToUse, classdictionary = metafilter.label_classes(metadict, "tagset", positive_tags, negative_tags, sizecap, datetype)
 
-    # make a vocabulary list and a volsize dict
-    wordcounts = Counter()
+    print()
+    min, max = first_and_last(IDsToUse, metadict, datetype)
+    if min > 0:
+        print("The whole corpus involved here includes " + str(len(IDsToUse)))
+        print("volumes, ranging in date from " + str(min) + " to " + str(max) + ".")
+        print()
 
-    volspresent = list()
-    orderedIDs = list()
+    # We now create an ordered list of id-path tuples for later use, and identify a set of
+    # positive ids that should never be used in training.
 
-    positivecounts = dict()
-    negativecounts = dict()
+    volspresent, orderedIDs, donttrainset = get_volume_lists(volumeIDs, volumepaths, IDsToUse, metadict, datetype, positive_tags, testconditions, classdictionary)
 
-    # At the same time we're going to create a set of volumes
-    # that should never be included in the training set.
+    # Extend the set of ids not to be used in training by identifying negative volumes that match
+    # the distribution of positive volumes.
 
-    donttrainset = set()
+    donttrainset = add_matching_negs(donttrainset, orderedIDs, classdictionary, metadict, datetype)
 
-    for volid, volpath in zip(volumeIDs, volumepaths):
-        if volid not in IDsToUse:
-            continue
-        else:
-            volspresent.append((volid, volpath))
-            orderedIDs.append(volid)
+    # Get a count of docfrequency for all words in the corpus. This is probably not needed and
+    # might be deprecated later.
 
-        # The following two if statements catch volumes that should
-        # be predicted but not trained on.
-
-        # We add them to the donttrain on set, and also 'continue' so
-        # they are not used to create vocabulary.
-
-        date = infer_date(metadict[volid], datetype)
-        if date < pastthreshold or date > futurethreshold:
-            donttrainset.add(volid)
-            continue
-
-        tagset = metadict[volid]['tagset']
-        if donottraintag in tagset:
-            donttrainset.add(volid)
-            continue
-
-        else:
-            with open(volpath, encoding = 'utf-8') as f:
-                for line in f:
-                    fields = line.strip().split('\t')
-                    if len(fields) > 2 or len(fields) < 2:
-                        # print(line)
-                        continue
-                    word = fields[0]
-                    if len(word) > 0 and word[0].isalpha():
-                        wordcounts[word] += 1
-                        # for initial feature selection we use the number of
-                        # *documents* that contain a given word,
-                        # so it's just +=1.
+    wordcounts = get_docfrequency(volspresent, donttrainset)
 
     # The feature list we use is defined by the top 10,000 words (by document
     # frequency) in the whole corpus, and it will be the same for all models.
@@ -297,22 +492,24 @@ def create_model(paths, exclusions, trainthresholds, classifyconditions):
     # the particular set we're modeling. So we check.
 
     vocablist = []
-    with open('../lexicon/top10k.csv', encoding = 'utf-8') as f:
+    ctr = 0
+    useall = True
+
+    with open(vocabpath, encoding = 'utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
+            ctr += 1
+            if ctr > numfeatures:
+                break
+                # this allows us to limit how deep we go
+
             word = row['word'].strip()
-            if wordcounts[word] > 2:
+            if wordcounts[word] > 2 or useall:
                 vocablist.append(word)
 
     numfeatures = len(vocablist)
 
-    # vocablist = binormal_select(vocablist, positivecounts, negativecounts, totalposvols, totalnegvols, 3000)
-    # Feature selection is deprecated. There are cool things
-    # we could do with feature selection,
-    # but they'd improve accuracy by 1% at the cost of complicating our explanatory task.
-    # The tradeoff isn't worth it. Explanation is more important.
-
-    # We need a list of indexes in orderedIDs to exclude.
+    # We need an ordered list of indexes in orderedIDs to exclude.
 
     donttrainon = [orderedIDs.index(x) for x in donttrainset]
 
@@ -441,6 +638,7 @@ def create_model(paths, exclusions, trainthresholds, classifyconditions):
 
     donttrainon.sort(reverse = True)
     trainingset, yvals, testset = sliceframe(data, classvector, donttrainon, 0)
+    trainingset, testset = modelingprocess.remove_zerocols(trainingset, testset)
     newmodel = LogisticRegression(C = regularization)
     trainingset, means, stdevs = normalizearray(trainingset, usedate)
     newmodel.fit(trainingset, yvals)
@@ -567,12 +765,13 @@ if __name__ == '__main__':
 
     # sourcefolder = '/Users/tunder/Dropbox/GenreProject/python/reception/fiction/texts/'
     # extension = '.fic.tsv'
-    # classpath = '/Users/tunder/Dropbox/GenreProject/python/reception/fiction/masterficmeta.csv'
+    # metadatapath = '/Users/tunder/Dropbox/GenreProject/python/reception/fiction/masterficmeta.csv'
     # outputpath = '/Users/tunder/Dropbox/GenreProject/python/reception/fiction/predictions.csv'
 
     sourcefolder = '../newdata/'
     extension = '.fic.tsv'
-    classpath = '../meta/genremeta.csv'
+    metadatapath = '../meta/genremeta.csv'
+    vocabpath = '../lexicon/top10k.csv'
 
     modelname = input('Name of model? ')
     outputpath = '../results/' + modelname + str(datetime.date.today()) + '.csv'
@@ -589,42 +788,44 @@ if __name__ == '__main__':
 
     excludebelow['firstpub'] = 1700
     excludeabove['firstpub'] = 2000
-    sizecap = 141
-
-    # For more historically-interesting kinds of questions, we can limit the part
-    # of the dataset that gets TRAINED on, while permitting the whole dataset to
-    # be PREDICTED. (Note that we always exclude authors from their own training
-    # set; this is in addition to that.) The variables futurethreshold and
-    # pastthreshold set the chronological limits of the training set, inclusive
-    # of the threshold itself.
-
-    ## THRESHOLDS
-
-    pastthreshold = 1700
-    futurethreshold = 2000
-    donottraintag = 'null tag'
+    sizecap = 1000
 
     # CLASSIFY CONDITIONS
 
-    categorytodivideon = 'tagset'
+    # We ask the user for a list of categories to be included in the positive
+    # set, as well as a list for the negative set. Default for the negative set
+    # is to include all the "random"ly selected categories. Note that random volumes
+    # can also be tagged with various specific genre tags; they are included in the
+    # negative set only if they lack tags from the positive set.
+
     tagphrase = input("Comma-separated list of tags to include in the positive class: ")
     positive_tags = [x.strip() for x in tagphrase.split(',')]
     tagphrase = input("Comma-separated list of tags to include in the negative class: ")
+
+    # An easy default option.
     if tagphrase == 'r':
         negative_tags = ['random', 'grandom', 'chirandom']
     else:
         negative_tags = [x.strip() for x in tagphrase.split(',')]
+
+    # We also ask the user to specify categories of texts to be used only for testing.
+    # These exclusions from training are in addition to ordinary crossvalidation.
+
+    print()
+    print("You can also specify positive tags to be excluded from training, and/or a pair")
+    print("of integer dates outside of which vols should be excluded from training.")
+    testphrase = input("Comma-separated list of such tags: ")
+    testconditions = set([x.strip() for x in testphrase.split(',') if len(x) > 0])
+
     datetype = "firstpub"
     numfeatures = 10000
     regularization = .000075
 
-
-    paths = (sourcefolder, extension, classpath, outputpath)
+    paths = (sourcefolder, extension, metadatapath, outputpath, vocabpath)
     exclusions = (excludeif, excludeifnot, excludebelow, excludeabove, sizecap)
-    thresholds = (pastthreshold, futurethreshold, donottraintag)
-    classifyconditions = (categorytodivideon, positive_tags, negative_tags, datetype, numfeatures, regularization)
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
 
-    rawaccuracy, allvolumes, coefficientuples = create_model(paths, exclusions, thresholds, classifyconditions)
+    rawaccuracy, allvolumes, coefficientuples = create_model(paths, exclusions, classifyconditions)
 
     print('If we divide the dataset with a horizontal line at 0.5, accuracy is: ', str(rawaccuracy))
     tiltaccuracy = diachronic_tilt(allvolumes, 'linear', [])

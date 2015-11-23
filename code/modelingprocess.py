@@ -4,6 +4,21 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 
+def remove_zerocols(trainingset, testset):
+    ''' Remove all columns that sum to zero in the trainingset.
+    '''
+
+    columnsums = trainingset.sum(axis = 0)
+    columnstokeep = []
+    for i in range(len(columnsums)):
+        if columnsums[i] > 0:
+            columnstokeep.append(i)
+
+    trainingset = trainingset.iloc[ : , columnstokeep]
+    testset = testset.iloc[columnstokeep]
+
+    return trainingset, testset
+
 def sliceframe(dataframe, yvals, excludedrows, testrow):
     numrows = len(dataframe)
     newyvals = list(yvals)
@@ -17,6 +32,13 @@ def sliceframe(dataframe, yvals, excludedrows, testrow):
 
     newyvals = np.array(newyvals)
     testset = dataframe.iloc[testrow]
+
+    # Potential problem arises. What if some of these columns are
+    # all zero, because the associated word occurs in none of the
+    # documents still in the training matrix? An error will be
+    # thrown. To avoid this, we remove columns that sum to zero.
+
+    trainingset, testset = remove_zerocols(trainingset, testset)
 
     return trainingset, newyvals, testset
 

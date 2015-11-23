@@ -184,24 +184,51 @@ def identify_class(negative_tags, positive_tags, docdict, categorytodivideon):
     else:
         return 'drop'
 
+def get_gender(avolume):
+    if 'gender' in avolume:
+        gender = avolume['gender']
+    else:
+        gender = ''
+
+    return gender
+
+def get_nationality(avolume):
+    if 'nation' in avolume:
+        nationality = avolume['nation']
+    else:
+        nationality = ''
+
+    return nationality
+
 def closest_idx(negative_volumes, positive_volume, datetype):
+    '''
+    Finds the volume in negative_volumes that most closely
+    matches the date, nationality, and gender of positive_volume.
+    Date is by far the most important category, but the function
+    will reach one year away to get a better gender-nationality
+    match if it can.
+    '''
+
     global knownnations
     date = positive_volume[datetype]
-    gender = positive_volume['gender']
-    nationality = positive_volume['nation']
+
+    gender = get_gender(positive_volume)
+
+    nationality = get_nationality(positive_volume)
 
     proximities = list()
 
     for atarget in negative_volumes:
         targetdate = atarget[datetype]
         proximity = abs(targetdate - date)
-        targetgender = atarget['gender']
-        targetnation = atarget['nation']
+        targetgender = get_gender(atarget)
+        targetnation = get_nationality(atarget)
 
         if gender != targetgender and gender != '' and targetgender != '':
             proximity += 0.6
         if nationality != targetnation and nationality in knownnations and targetnation in knownnations:
             proximity += 0.6
+
         # 0.6 is chosen to ensure that date is more important than either gender or nationality
         # separately, but not more important than both together. The algorithm will choose perfect
         # date-gender-nationality matches when available, but will prefer a perfect gender-nationality
