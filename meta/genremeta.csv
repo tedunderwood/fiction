@@ -45,7 +45,7 @@ uiuo.ark+=13960=t4km00443,8721875,2026857,PR4034.N7 1818,"Austen, Jane,",London;
 uiuo.ark+=13960=t6zw24n6x,8721875,2026857,PR4034.N7 1818,"Austen, Jane,",London;Joh,1818,1775,1818,v. 2,Rejection ,Northanger Abbey,uk,f,lochorror
 uc1.31158008377706,439042,1215156,,"Austen, Jane,",London;Tor,1922,1775,1818,,,Northanger abbey,uk,f,pbgothic
 mdp.39015063556271,5232730,13352959,PR5115.O3N4,"Opie, Amelia Alderson,",London;Lon,1818,1769,1818,v.1,,New tales,uk,f,grandom
-mdp.39015004200997,1774603,14770844,,"Shelley, Mary Wollstonecr",London;G. ,1891,1797,1818,,,Frankenstein,uk,f,femscifi
+mdp.39015004200997,1774603,14770844,,"Shelley, Mary Wollstonecr",London;G. ,1891,1797,1818,,,Frankenstein,uk,f,femscifi | stangothic
 uva.x000960744,9776004,8523153,PS2066.A1 1873,"Irving, Washington,",New York;G,1873,1783,1820,,,The sketch-book of Geoffr,us,m,pbgothic
 mdp.39015021040004,1910357,4418502,,"Maturin, Charles Robert,",London;R. ,1892,1782,1820,v.1,,Melmoth the wanderer,ir,m,pbgothic
 mdp.39015021039998,1910357,4418502,,"Maturin, Charles Robert,",London;R. ,1892,1782,1820,v.2,,Melmoth the wanderer,ir,m,pbgothic
@@ -82,15 +82,15 @@ nyp.33433074937438,8664338,13242846,,"Disraeli, Benjamin,",New York;H,1832,1804,
 njp.32101032308387,8888080,8909779,,"Lytton, Edward Bulwer Lyt",Philadelph,1881,1803,1832,,,Eugene Aram,uk,m,newgate
 uc2.ark+=13960=t1mg7hw3f,7648454,3727345,PZ3.L998G6,"Lytton, Edward Bulwer Lyt",London;New,1880,1803,1833,,,Godolphin,uk,m,pbgothic
 njp.32101067634046,8961437,10879910,PZ3.H145S,"Hall, James,",Philadelph,1833,1793,1833,,,The soldier's bride and o,us,m,grandom
-mdp.39015030996832,42246,16389250,,"Ainsworth, William Harris",London;New,1878,1805,1834,,,Rookwood,uk,m,newgate
+mdp.39015030996832,42246,16389250,,"Ainsworth, William Harris",London;New,1878,1805,1834,,,Rookwood,uk,m,newgate | stangothic
 njp.32101067645505,8961936,12851342,,"Griffith, Mary,",Philadelph,1836,1772,1836,,Science fi,"Camperdown, or, News from",us,f,locscifi
 mdp.39015002313487,478831,1846344,,"Hawthorne, Nathaniel,",London;J. ,1915,1804,1837,,,Twice-told tales,us,m,pbgothic
 nyp.33433074878889,8666267,6298715,,"Lover, Samuel,",New York;F,1837,1797,1837,,Ireland;Hi,Rory O'More,ir,m,grandom
 hvd.hwjme4,9730346,1980800,,"Dickens, Charles,",Leipzig;B.,1843,1812,1837,,,Oliver Twist,uk,m,newgate
 mdp.39015000551799,540236,13280368,PZ3.D55O115,"Dickens, Charles,",New York;H,1867,1812,1838,,,Oliver Twist,uk,m,pbgothic
-uc1.31822038205001,10824291,3280190,PZ3.P752N2,"Poe, Edgar Allan,",London;Wil,1838,1809,1838,,,The narrative of Arthur G,us,m,pbgothic
+uc1.31822038205001,10824291,3280190,PZ3.P752N2,"Poe, Edgar Allan,",London;Wil,1838,1809,1838,,,The narrative of Arthur G,us,m,pbgothic | anatscifi
 nyp.33433074868807,8670619,37312214,,"James, G. P. R.",New York;H,1838,1799,1838,v. 1,,The robber,uk,m,grandom
-uc1.31822038205001,10824291,3280190,PZ3.P752N2,"Poe, Edgar Allan,",London;Wil,1838,1809,1838,,,The narrative of Arthur G,us,m,anatscifi
+uc1.31822038205001,10824291,3280190,PZ3.P752N2,"Poe, Edgar Allan,",London;Wil,1838,1809,1838,,,The narrative of Arthur G,us,m,anatscifi | drop
 nyp.33433074919402,8663847,36143063,,"Ainsworth, William Harris",London;New,1858,1805,1840,,Lady;Engli,The Tower of London,uk,m,pbgothic
 uc1.b3326097,7922865,3945332,,"Hook, Theodore Edward,",Paris;Baud,1840,1788,1840,,,"Cousin Geoffrey, the old ",uk,m,grandom
 dul1.ark+=13960=t9n30pf1s,10943726,11360969,,"Ainsworth, William Harris",London;G. ,1898,1805,1840,,1702-1724;,Jack Sheppard ;,uk,m,newgate
@@ -101,7 +101,7 @@ njp.32101007059791,2104490,2841712,,"James, G. P. R.",London;Sau,1843,1799,1843,
 uc1.b248744,6501566,3790961,,"Eastlake, Elizabeth,",London;J. ,1846,1809,1843,,,Livonian tales,uk,f,grandom
 njp.32101075374379,9026153,15496734,PR5221.R35M88 1845,"Reynolds, George W. M.",London;G. ,1845,1814,1844,v.1,,The mysteries of London,uk,m,pbgothic
 uc2.ark+=13960=t7hq42c97,6672945,5369471,,"Dickens, Charles,",Philadelph,1844,1812,1844,,,Martin Chuzzlewit,uk,m,grandom
-uc2.ark+=13960=t0bv79z1x,7682514,2612191,,"Poe, Edgar Allan,",London;Sid,1909,1809,1845,,,Selected tales of mystery,us,m,det100
+uc2.ark+=13960=t0bv79z1x,7682514,2612191,,"Poe, Edgar Allan,",London;Sid,1909,1809,1845,,,Selected tales of mystery,us,m,det100 | drop
 uc1.32106010644463,8323033,6338680,,"Reynolds, George W. M.",London;G. ,1846,1814,1846,v.4,,The mysteries of London,uk,m,pbgothic
 mdp.39015004274992,478557,274628,,"Hawthorne, Nathaniel,",Boston;New,1882,1804,1846,,,Mosses from an old manse,us,m,pbgothic
 mdp.39015006997806,780065,22465631,,"Sewell, Elizabeth Missing",London;Pri,1846,1815,1846,v.2,,Gertrude,uk,f,grandom
@@ -230,7 +230,7 @@ nyp.33433074866686,6156115,421426,,"Kipling, Rudyard,",Philadelph,1898,1865,1888
 uc1.b4104961,590565,5772680,,"Kipling, Rudyard,",New York;H,1899,1865,1888,,,The phantom rickshaw,uk,m,pbgothic
 nyp.33433074939723,8664055,2016496,,"Besant, Walter,",New York;H,1888,1836,1888,,Fantasy fi,The inner house,uk,m,anatscifi
 dul1.ark+=13960=t66401k8k,5082161,5934716,HX811 1887.B2,"Bellamy, Edward,",Boston;Tic,1888,1850,1888,,Social pro,"Looking backward, 2000-18",us,m,anatscifi | locscifi
-uc2.ark+=13960=t1gh9jr4d,000245281,03789691,,"Haggard, H. Rider",London;Spe,1888,1856,1888,,,Mr. Meeson's will,uk,m,det100
+uc2.ark+=13960=t1gh9jr4d,245281,3789691,,"Haggard, H. Rider",London;Spe,1888,1856,1888,,,Mr. Meeson's will,uk,m,det100
 mdp.39015007007282,124275,18920069,,"Stockton, Frank Richard,",New york;D,1889,1834,1889,,,The great war syndicate,us,m,anatscifi
 mdp.39015066036578,664119,9451665,,"Twain, Mark,",New York;H,1896,1835,1889,,,A Connecticut Yankee in K,us,m,anatscifi
 mdp.39015066083661,2040236,52047650,,,New York;L,1890,,,,Ghost stor,Modern ghosts;,,,locghost
@@ -293,7 +293,7 @@ njp.32101063580995,8916628,10095079,,"Isham, Frederic Stewart,",Indianapol,1903,
 inu.39000002156706,6058078,6388485,,"Benson, Arthur Christophe",London;Isb,1903,1862,1903,,,The hill of trouble and o,uk,m,pbgothic
 uc1.b4103074,6155345,20916821,,"Baring-Gould, S.",London;Met,1904,,,,Ghost stor,A book of ghosts,,,locghost
 nyp.33433074850870,8664795,13659278,PZ3.H2443Pr2,"Harris-Burland, J. B.",Boston;Lit,1904,1870,1904,,Science fi,The Princess Thora,uk,m,locscifi
-mdp.39015039487205,1416899,2576341,,"Hope, Laura Lee.",New York;G,1904,,1904,,Bobbsey Tw,The Bobbsey twins;,,,locdetmyst | juvenile
+mdp.39015039487205,1416899,2576341,,"Hope, Laura Lee.",New York;G,1904,,1904,,Bobbsey Tw,The Bobbsey twins;,,,locdetmyst | juvenile | drop
 nyp.33433075763080,7673651,1935922,PZ3.T674A1,"Tracy, Louis,",New York;R,1904,1863,1904,,,The Albert Gate mystery,uk,m,det100
 uc2.ark+=13960=t7tm74c51,1427113,23533090,,"Orcutt, William Dana,",London;Hei,1904,1870,1904,,sieur de;L,Robert Cavelier,us,m,random
 uc1.32106001959946,7120624,660430,,"Wells, H. G.",London;Mac,1904,1866,1904,,Science fi,The food of the gods and ,uk,m,anatscifi | locscifi
@@ -892,3 +892,77 @@ dul1.ark+=13960=t16m3xm4f,10943531,6700740,,"Hamilton, Cicely,",London;Leo,1922,
 23191,,,,"Shatner, William,",New York P,1989,,1989,,Science fi,TekWar,us,,chiscifi | chimyst
 23200,,,,"Somtow, S. P,",New York T,1989,,1989,,Dakota Ind,Moon dance,us,,chihorror
 23231,,,,"Weinstein, Howard,",New York P,1989,,1989,,Science fi,Power hungry,us,,chiscifi | chirandom
+uiuo.ark+=13960=t8nc69j1b,8690976,6715920,,"Cuthbertson, Catherine.",London;Printed for G. and J. Robinson;1803.,1803,1780,1803,v.3,English fiction,Romance of the Pyrenees,uk,f,stangothic
+nyp.33433074951611,8690976,6715920,,"Cuthbertson, Catherine.",London;Printed for G. and J. Robinson;1803.,1803,1780,1803,v. 3,English fiction,Romance of the Pyrenees,uk,f,stangothic
+uiuo.ark+=13960=t1gh9v49g,8722972,11893100,,"Cuthbertson, Catherine.",London;G. Robinson;1807.,1807,1780,1803,v.4,,Romance of the Pyrenees,uk,f,stangothic
+uiuo.ark+=13960=t3xs6cp6m,8722931,13323844,,"Young, Mary Julia.",London;Printed by D.N. Shury for Crosby and Hughes;1803.,1803,1770,1803,v.2,,"Right and wrong; or, The kinsmen of Naples",uk,f,stangothic
+mdp.39015033367668,326939,7082998,PR3658.R5S3,"Reeve, Clara,",London;Printed for T. Hookham [etc.;1791.,1791,1729,1791,v.1,,The school for widows,uk,f,stangothic
+uiuo.ark+=13960=t1ng5958h,8722137,82688894,,"Sullivan, Mary Ann.",London;A.K. Newman and Co.;1823.,1823,,1823,v.2,823SU55O1823,"Owen Castle, or, Which is the heroine?",uk,f,stangothic
+uiuo.ark+=13960=t6xw4rw1j,8690976,6715920,,"Cuthbertson, Catherine.",London;Printed for G. and J. Robinson;1803.,1803,1780,1803,v.2,English fiction,Romance of the Pyrenees,uk,f,stangothic
+uiuo.ark+=13960=t3jw90j80,404317,3596752,,"Porter, Anna Maria,","London;Printed for Longman, Hurst, Rees, Orme, and Brown;1818.",1818,1778,1818,v.2,,The fast of St. Magdalen,uk,f,stangothic
+uiuo.ark+=13960=t00z7jj1c,8722090,13323912,,"Gaspey, Thomas,",London;Longman;1823.,1823,1788,1823,v.2,,"Other times; or, the monks of Leadenhall",uk,m,stangothic
+uiuo.ark+=13960=t9f481w8n,8718092,22350460,,"Francis, Sophia L.",London;H. Colburn;1809.,1809,,1809,v.1,,"Angelo Guicciardini, or, The bandit of the Alps",uk,f,stangothic
+uiuo.ark+=13960=t0ns19n7m,8720059,6936332,,"Moore, George,","London;Printed for G.G. and J. Robinson, by R. Noble;1801.",1801,,1801,v.2,,Grasville Abbey,uk,m,stangothic
+nyp.33433067303937,8618455,37291665,,"Roche, Regina Maria,",New-York;P. Burtsell;1807.,1807,1763,1807,v. 1,English fiction,"The discarded son; or, Haunt of the banditti",uk,f,stangothic
+uiuo.ark+=13960=t8w95tz11,8719363,7121292,PR5708.W57D6,"Walker, George,","London;Printed for G. Walker, and T. Hurst, by Exton;1803.",1803,1772,1803,v.2,823W15D,Don Raphael,uk,m,stangothic
+njp.32101013133523,8883560,7031984,,"Roche, Regina Maria,","London;Printed at the Minerva Press, for A. K. Newman and Co.;1813.",1813,1763,1813,v.1,,The monastery of St. Columb;,uk,f,stangothic
+uiuo.ark+=13960=t86h4xr9x,8724127,77319848,,"Frances, Sophia L.","London;Printed at the Minerva Press, for Lane, Newman;1806.",1806,,1806,v.1,,"Vivonio, or, The hour of retribution",,f,stangothic
+uiuo.ark+=13960=t6251zn27,8719830,6715887,,"Cuthbertson, Catherine.",London;Printed for George Robinson;1810.,1810,1780,1810,v.3,,Forest of Montalbano,uk,f,stangothic
+uiuo.ark+=13960=t18k7vt5k,8719876,77209367,,"Mortimer, Edward,","London;Printed by J. Dennett, for J.F. Hughes;1807.",1807,,1807,v.4,,The friar Hildargo,uk,,stangothic
+uiuo.ark+=13960=t5z615j7x,8719007,7097044,,"Stanhope, Louisa Sidney.","London;Printed at the Minerva-Press, for A. K. Newman and Co.;1812.",1812,,1812,v.1,,The confessional of Valombre,uk,f,stangothic
+uiuo.ark+=13960=t2988vx2b,8724257,52810973,,"Melville, Theodore.",London;Crosby and Letterman;1802.,1802,,1802,v.2,,"The white knight, or, The monastery of Morne",uk,m,stangothic
+nyp.33433074863691,8665889,6328469,,"James, G. P. R.",New York;J. & J. Harper;1832.,1832,1799,1832,v. 2,"History;Fiction;Great Britain;Civil War, 1642-1649",Henry Masterton;,uk,m,grandom
+hvd.hn6nee,9712518,14355624,PQ1995.L75L5415 1798,"Leprince de Beaumont,",London;Printed for James Wallis ...;1798.,1798,1711,1780,v.2,,Letters of Madame Du Montier,fr,f,grandom
+uc2.ark+=13960=t4wh2p202,325094,10190007,PZ3.W584S,"White, James,","Philadelphia;E. L. Carey & A. Hart;Baltimore;Carey, Hart & co.;1834.",1834,,1834,,,Some passages in the life of Sir Frizzle Pumpkin,us,m,grandom
+umn.31951002096159c,11223881,5786305,,"Trollope, Frances Milton,",London;R. Bentley;1838.,1838,1779,1838,v.2,,A romance of Vienna,uk,f,grandom
+nyp.33433074954979,8690927,13320564,,"Cullen, Margaret.",London;J. Mawman;1802.,1802,,1802,v. 4,English fiction,Home,uk,f,grandom
+uiuo.ark+=13960=t7br98r5d,8717971,30364815,,,"London;Printed for the authoress and sold by Sherwood, Neely, and Jones;1810.",1810,,1810,v.1,,"The adulteress ; or, anecdotes of two noble families",uk,f,grandom
+dul1.ark+=13960=t0tq6sw6t,10944112,13307942,,"Bayfield, E. G.,","London;Printed by J.G. Barnard, for B. Crosby;1807.",1807,,1807,v.2,,A winter in Bath,uk,f,grandom
+uiuo.ark+=13960=t95723s7x,283101,36811317,,"Byron, Medora Gordon.","London;Printed at the Minerva-press, for A. K. Newman and co.;1812.",1812,,1812,v.2,,The Englishman,uk,f,grandom
+hvd.hwkdax,9708812,83645615,,"Lee, Harriet,","London;Printed for G. and J. Robinson;1804, 1803.",1803,1757,1803,v.1,,Canterbury tales,uk,f,grandom
+uc1.b250120,6502422,13258977,,,London;J. Johnson;1803.,1803,,1803,v.3,,Letters of Miss Riversdale,,,grandom
+uc1.b287473,5232730,13352959,PR5115.O3N4,"Opie, Amelia Alderson,",London;Longman;1818.,1818,1769,1818,v. 1,,New tales,uk,f,grandom
+nyp.33433074915970,8667884,36723572,,"More, Hannah,",New York;published by T. and J. Swords [printed by M'Farlane & Long].;1809..,1809,1745,1809,v. 2,English fiction,Cœlebs in search of a wife,uk,f,grandom
+njp.32101068177094,8969050,10370714,PZ3.D8515O2,"Du Bois, Edward,",London;T.N. Longman and O. Rees;1803.,1803,1774,1801,vol.2,,Old Nick;,uk,m,grandom
+uiuo.ark+=13960=t09w1328x,8718188,495994369,,"Parker, Emma.",London;Printed for B. and R. Crosby;1823.,1813,,1813,v.1,,Aretas,uk,f,grandom
+uc1.b248234,6501224,30211695,,,London;Printed by the Philanthropic Society for W.J. and J. Richardson;1803.,1803,,1803,v.1-2,,"Barbara Markham; or, The profligate requited;",,,grandom
+mdp.39015023189999,245494,10387619,PZ3.H183M 2,"Hamilton, Elizabeth,","London;Printed for G. G. and J. Robinson, by R. Noble;1801.",1801,1756,1800,v.3,,Memoirs of modern philosophers,uk,f,grandom
+uc1.$b522186,8933396,14201458,,"Genlis, Stéphanie Félicité,",Londres;Imprimé pour M. Peltier;1806.,1806,1746,1806,v.1,,Madame de Maintenon,fr,f,grandom
+njp.32101068177102,8969050,10370714,PZ3.D8515O2,"Du Bois, Edward,",London;T.N. Longman and O. Rees;1803.,1803,1774,1801,vol.3,,Old Nick;,uk,m,grandom
+nyp.33433051569915,8614719,,,"Karamzin, Nikolaĭ Mikhaĭlovich,",London;Printed by G. Sidney;1803.,1803,1766,1800,,,Russian tales,ru,m,grandom
+dul1.ark+=13960=t3dz14r97,10944112,13307942,,"Bayfield, E. G.,","London;Printed by J.G. Barnard, for B. Crosby;1807.",1807,,1807,v.1,,A winter in Bath,,,grandom
+mdp.39015059372105,538804,2275988,,"Lockhart, J. G.",Edinburgh;William Blackwood;1823.,1823,1794,1823,v.2,,Reginald Dalton,uk,m,grandom
+BlochPsycho1959,,,,"Bloch, Robert,",,1959,1917,1959,,,Psycho,us,m,pbgothic
+Derleth1948,,,,"Derleth, August,",,1948,1909,1948,,,Two stories by Derleth,us,m,pbgothic | chiscifi
+DinesenGothicTales1934,,,,"Dinesen, Isak,",,1934,1885,1934,,,Seven Gothic Tales,da,f,pbgothic
+EllisSteamManPrairies1868,,,,"Ellis, Edward S.",,1880,1840,1868,,,The Steam Man of the Prairies,us,m,anatscifi
+JacksonHillHouse1959,,,,"Jackson, Shirley,",,1959,1916,1959,,,The Haunting of Hill House,us,f,pbgothic
+JamesTurnOfScrew1898,,,,"James, Henry,",,1898,1843,1898,,,The Turn of the Screw,us,m,pbgothic
+LindsayVoyageToArcturus1920,,,,"Lindsay, David,",,1920,1876,1920,,,Voyage To Arcturus,uk,m,anatscifi | chifantasy
+LovecraftCharlesDexter1927,,,,"Lovecraft, H. P.",,1927,1890,1927,,,The Case of Charles Dexter Ward,us,m,pbgothic
+PeakeTitusGroan1946,,,,"Peake, Mervyn,",,1946,1911,1946,,,Titus Groan,uk,m,pbgothic
+StokerDracula1897,,,,"Stoker, Bram,",,1897,1847,1897,,,Dracula,ir,m,pbgothic
+PoeMysteryMarieRoget1842, , , ,"Poe, Edgar Allan,", ,1842,1809,1842,,,The Mystery of Marie Roget (short story),us,m,det100
+PoePurloinedLetter1845, , , ,"Poe, Edgar Allan,", ,1845,1809,1845,,,The Purloined Letter (short story),us,m,det100
+PoeRueMorgue1841, , , ,"Poe, Edgar Allan,", ,1841,1809,1841,,,The Murder in the Rue Morgue (short story),us,m,det100
+10835,,,,"Welty, Eudora,","New York: Harcourt, Brace & Co.",1946,1909,1946,,,Delta Wedding,us,f,chirandom
+10838,,,,"Blunden, Godfrey",Philadelphia: Lippincott,1947,1906,1947,,,A Room on the Route,au,m,chirandom
+4748,195,,,"Traprock, Walter E.","New York; London G.P. Putnam's Sons,  : The Knickerbocker Press 1922",1922,1877,1922,,Arctic Regions;Arctic regions,My northern exposure,us,,chirandom
+4463,27,,,"Martin, Helen Reimensnyder,","Garden City; New York Doubleday, Page & Co. 1920",1920,1868,1920,,,The schoolmaster of Hessville,us,,chirandom
+11030,1192,,,"Woolf, Virginia,","New York Harcourt, Brace & Co. 1927",1927,1882,1927,,"Skye, Island of (Scotland);England;Manners and customs;English -- Scotland;Married people;Loss (Psychology);Lighthouses;Widowers;Mothers -- Death;Marriage;England -- Social life and customs;British -- Scotland;Summer resorts;Psychological fiction;Domestic fiction;Stream of consciousness fiction;Marriage -- England;English fiction -- Scotland",To the lighthouse,uk,,chirandom
+11469,21,,,"McKinney, J. P,"," Sydney, Angus & Robertson 1935",1935,,1935,,"World War, 1914-1918",Crucible,au,,chirandom
+10531,743,,,"Steinbeck, John,",New York Modern library 1937,1937,1902,1937,,Fiction in English;California;Ranch life;Men;California -- Salinas River Valley;Male friendship -- California -- Salinas River Valley;Drifters;Men -- California -- Salinas River Valley;Genres littéraires;Salinas River Valley (Calif.);Cowboys;Drifters -- California;Poverty;Cowboys -- California -- Salinas River Valley;People with mental disabilities;Migrant labor,Of mice and men,us,,chirandom
+10526,112,,,"Pseudoman, Akkad,"," Princeton, N.J., Scientific Pub. Co. 1937",1937,1866,1937,,Science -- Philosophy;Technology -- Philosophy;Hypothesis,Zero to eighty,us,,chirandom | chiscifi
+11074,10,,,"Lewis, C. S.",London Collins 1942,1942,1898,1942,,Christianity;Christianisme -- 20e siècle;Christianity -- 20th century;Devil;Religious fiction,The Screwtape letters,uk,,chirandom | chifantasy
+11007,189,,,"Seton, Anya,",Chicago Sears Readers Club 1950,1950,,1950,,Romantic suspense fiction;Large type books;Married women;Arizona;Married women -- Arizona,Foxfire,us,,chirandom
+20136,129,,,"Foote, Shelby,",New York Dial Press 1954,1954,,1954,,Mississippi,Jordan County,us,,chirandom
+20163,90,,,"Robbins, Harold,",New York Avon Publications 1954,1954,1916,1954,,Big business;Businessmen;New York (N.Y.);Psychological fiction,Never leave me,us,,chirandom
+20544,363,,,"Kerouac, Jack,","New York Farrar, Straus & Co. 1963",1963,1922,1963,,Beat generation;Page proofs (Printing),Visions of Gerard,us,,chirandom
+20737,132,,,"Fox, Paula,","New York Harcourt, Brace & Co. 1967",1967,,1967,,"Manhattan (New York, N.Y.);Suburban life;Juvenile delinquents;Tutors and tutoring;Teenage boys;Married people;Domestic fiction;Teachers;Psychological fiction",Poor George,us,,chirandom
+20750,144,,,"McNichols, Charles Longstreth,"," Lincoln, University of Nebraska Press 1967",1967,1895,1967,,Mohave Indians;Arizona,Crazy weather,us,,chirandom
+21330,279,,,"Jenkins, Dan,",New York Atheneum 1976,1976,,1976,,Humorous fiction;Television broadcasting,Limo,us,,chirandom
+21043,501,,,"Millhauser, Steven,",New York Alfred A. Knopf 1972,1972,,1972,,Boys;Authors;Historical fiction,Edwin Mullhouse,us,,chirandom
+21620,591,,,"Gordon, Noah,",New York Random House 1979,1979,,1979,,Diamonds,The Jerusalem diamond,us,,chirandom
+22676,406,,,"Flynn, Robert,", Fort Worth : Texas Christian University Press 1987,1987,1932,1987,,Texas,Wanderer Springs,us,,chirandom
+22107,324,,,"Meade, Marion,",New York Morrow 1983,1983,1934,1983,,,Sybille,us,,chirandom
+21739,768,,,"Jakes, John,",New York Y : Jove Publications 1980,1980,1932,1980,,Kent family (Fictitious characters);United States;Adventure fiction;Epic fiction;Historical fiction,The Americans,us,,chirandom
