@@ -383,6 +383,67 @@ def add_matching_negs(donttrainset, orderedIDs, classdictionary, metadict, datet
 
     return donttrainset
 
+def make_vocablist(sourcedir, n, vocabpath):
+    '''
+    Makes a list of the top n words in sourcedir, and writes it
+    to vocabpath.
+    '''
+
+    sourcefiles = os.listdir(sourcedir)
+
+    wordcounts = Counter()
+
+    for afile in sourcefiles:
+        path = sourcedir + afile
+        with open(path, encoding = 'utf-8') as f:
+            for line in f:
+                fields = line.strip().split('\t')
+                if len(fields) > 2 or len(fields) < 2:
+                    continue
+                word = fields[0]
+                if len(word) > 0 and word[0].isalpha():
+                    count = int(fields[1])
+                    wordcounts[word] += 1
+
+    with open(vocabpath, mode = 'w', encoding = 'utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(['word', 'docfreq'])
+        for word, count in wordcounts.most_common(n):
+            writer.writerow([word, count])
+
+    vocabulary = [x[0] for x in wordcounts.most_common(n)]
+
+    return vocabulary
+
+def get_vocablist(vocabpath, sourcedir, wordcounts, useall, n):
+    '''
+    Gets the vocablist stored in vocabpath or, alternately, if that list
+    doesn't yet exist, it creates a vocablist and puts it there.
+    '''
+
+    vocablist = []
+    ctr = 0
+
+    if not os.path.isfile(vocabpath):
+        vocablist = make_vocablist(sourcedir, n, vocabpath)
+    else:
+        with open(vocabpath, encoding = 'utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                ctr += 1
+                if ctr > numfeatures:
+                    break
+                    # this allows us to limit how deep we go
+
+                word = row['word'].strip()
+                if wordcounts[word] > 2 or useall:
+                    vocablist.append(word)
+
+        if len(vocablist) > n:
+            vocablist = vocablist[0: n]
+
+    return vocablist
+
 def get_docfrequency(volspresent, donttrainset):
     '''
     This function counts words in volumes. These wordcounts don't necessarily define
@@ -484,24 +545,20 @@ def create_model(paths, exclusions, classifyconditions):
 
     # The feature list we use is defined by the top 10,000 words (by document
     # frequency) in the whole corpus, and it will be the same for all models.
-    # However, we don't want to include words that actually occur zero times in
-    # the particular set we're modeling. So we check.
 
-    vocablist = []
-    ctr = 0
-    useall = True
+    vocablist = get_vocablist(vocabpath, sourcefolder, wordcounts, useall = True, n = 10000)
 
-    with open(vocabpath, encoding = 'utf-8') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            ctr += 1
-            if ctr > numfeatures:
-                break
-                # this allows us to limit how deep we go
+    # This function either gets the vocabulary list already stored in vocabpath, or
+    # creates a list of the top 10k words in all files, and stores it there.
+    # N is a parameter that could be altered right here.
 
-            word = row['word'].strip()
-            if wordcounts[word] > 2 or useall:
-                vocablist.append(word)
+    # Useall is a parameter that you basically don't need to worry about unless
+    # you're changing / testing code. If you set it to false, the vocablist will
+    # exclude words that occur very rarely. This shouldn't be necessary; the
+    # crossvalidation routine is designed not to include features that occur
+    # zero times in the training set. But if you get div-by-zero errors in the
+    # training process, you could fiddle with this parameter as part of a
+    # troubleshooting process.
 
     numfeatures = len(vocablist)
 
@@ -767,7 +824,7 @@ if __name__ == '__main__':
     sourcefolder = '../newdata/'
     extension = '.fic.tsv'
     metadatapath = '../meta/genremeta.csv'
-    vocabpath = '../lexicon/top10k.csv'
+    vocabpath = '../lexicon/new10k.csv'
 
     modelname = input('Name of model? ')
     outputpath = '../results/' + modelname + str(datetime.date.today()) + '.csv'
