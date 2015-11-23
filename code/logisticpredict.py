@@ -260,20 +260,16 @@ def binormal_select(vocablist, positivecounts, negativecounts, totalpos, totalne
 
 def confirm_testconditions(testconditions, positive_tags):
 
-    if len(testconditions) < 1:
-        print('The testconditions set has no elements.')
-        sys.exit(0)
-    else:
-        for elem in testconditions:
-            if elem in positive_tags or elem.isdigit():
-                # that's fine
-                continue
-            elif elem == '':
-                # also okay
-                continue
-            else:
-                print('Illegal element in testconditions.')
-                sys.exit(0)
+    for elem in testconditions:
+        if elem in positive_tags or elem.isdigit():
+            # that's fine
+            continue
+        elif elem == '':
+            # also okay
+            continue
+        else:
+            print('Illegal element in testconditions.')
+            sys.exit(0)
 
 def get_volume_lists(volumeIDs, volumepaths, IDsToUse, metadict, datetype, positive_tags, testconditions, classdictionary):
     '''
