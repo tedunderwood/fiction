@@ -54,6 +54,10 @@ def get_metadata(classpath, volumeIDs, excludeif, excludeifnot, excludebelow, ex
 
             bail = False
             for key, value in excludeif.items():
+                if key == 'negatives':
+                    continue
+                    # special case
+
                 if row[key] == value:
                     bail = True
             for key, value in excludeifnot.items():
@@ -240,7 +244,7 @@ def closest_idx(negative_volumes, positive_volume, datetype):
 
     return closestidx
 
-def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, sizecap, datetype):
+def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, sizecap, datetype, excludeif):
     ''' This takes as input the metadata dictionary generated
     by get_metadata. It subsets that dictionary into a
     positive class and a negative class. Instances that belong
@@ -260,12 +264,26 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
     all_positives = set()
     all_negatives = set()
 
+    # Definitely an ad-hoc patch here: it allows you to exclude
+    # volumes with certain tags from the negative class.
+    if 'negatives' in excludeif:
+        negative_exclusions = excludeif['negatives']
+    else:
+        negative_exclusions = set()
+
     for docid, docdict in metadict.items():
         classflag = identify_class(negative_tags, positive_tags, docdict, categorytodivideon)
         if classflag == 'positive':
             all_positives.add(docid)
         elif classflag == 'negative':
-            all_negatives.add(docid)
+
+            # okay, I gotta admit this is a hack
+            excluded = False
+            for atag in negative_exclusions:
+                if atag in docdict['tagset']:
+                    excluded = True
+            if not excluded:
+                all_negatives.add(docid)
 
     if sizecap > 0 and len(all_positives) > sizecap:
         positives = random.sample(all_positives, sizecap)
@@ -282,7 +300,7 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
     # on (e.g. firstpub or birthdate) as well as gender and
     # nationality
 
-    numpositives = len(all_positives)
+    numpositives = len(positives)
 
     if sizecap > 0 and len(all_negatives) > numpositives:
         if categorytodivideon == 'tagset':

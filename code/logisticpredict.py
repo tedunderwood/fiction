@@ -519,7 +519,7 @@ def create_model(paths, exclusions, classifyconditions):
     # that we actually intend to contrast. If we want to us more or less everything,
     # this may not be necessary. But in some cases we want to use randomly sampled subsets.
 
-    IDsToUse, classdictionary = metafilter.label_classes(metadict, "tagset", positive_tags, negative_tags, sizecap, datetype)
+    IDsToUse, classdictionary = metafilter.label_classes(metadict, "tagset", positive_tags, negative_tags, sizecap, datetype, excludeif)
 
     print()
     min, max = first_and_last(IDsToUse, metadict, datetype)
@@ -840,8 +840,9 @@ if __name__ == '__main__':
     excludebelow = dict()
 
     excludebelow['firstpub'] = 1700
-    excludeabove['firstpub'] = 2000
-    sizecap = 1000
+    excludeabove['firstpub'] = 1920
+    # excludeif['negatives'] = {'chimyst', 'det100'}
+    sizecap = 150
 
     # CLASSIFY CONDITIONS
 
