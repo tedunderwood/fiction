@@ -484,6 +484,13 @@ def create_model(paths, exclusions, classifyconditions):
     positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions = classifyconditions
 
     verbose = False
+    holdout_authors = True
+
+    # If you want reliable results, always run this with holdout_authors
+    # set to True. The only reason to set it to False is to confirm that
+    # this flag is actually making a difference. If you do that, it
+    # disables the code that keeps other works by the author being predicted
+    # out of the training set.
 
     # The following function confirms that the testconditions are legal.
 
@@ -573,12 +580,21 @@ def create_model(paths, exclusions, classifyconditions):
     # Since we are going to use these indexes to exclude rows, we also add
     # all the ids in donttrainon to every volume
 
-    for idx1, anid in enumerate(orderedIDs):
-        thisauthor = metadict[anid]['author']
-        for idx2, anotherid in enumerate(orderedIDs):
-            otherauthor = metadict[anotherid]['author']
-            if thisauthor == otherauthor and not idx2 in authormatches[idx1]:
-                authormatches[idx1].append(idx2)
+    if holdout_authors:
+        for idx1, anid in enumerate(orderedIDs):
+            thisauthor = metadict[anid]['author']
+            for idx2, anotherid in enumerate(orderedIDs):
+                otherauthor = metadict[anotherid]['author']
+                if thisauthor == otherauthor and not idx2 in authormatches[idx1]:
+                    authormatches[idx1].append(idx2)
+    else:
+        # This code only runs if we're testing the effect of
+        # holdout_authors by disabling it.
+
+        for idx1, anid in enumerate(orderedIDs):
+            if idx1 not in authormatches[idx1]:
+                authormatches[idx1].append(idx1)
+
 
     for alist in authormatches:
         alist.sort(reverse = True)
@@ -823,7 +839,7 @@ if __name__ == '__main__':
 
     sourcefolder = '../newdata/'
     extension = '.fic.tsv'
-    metadatapath = '../meta/genremeta.csv'
+    metadatapath = '../meta/finalmeta.csv'
     vocabpath = '../lexicon/new10k.csv'
 
     modelname = input('Name of model? ')
@@ -840,9 +856,9 @@ if __name__ == '__main__':
     excludebelow = dict()
 
     excludebelow['firstpub'] = 1700
-    excludeabove['firstpub'] = 1920
+    excludeabove['firstpub'] = 2020
     # excludeif['negatives'] = {'chimyst', 'det100'}
-    sizecap = 150
+    sizecap = 400
 
     # CLASSIFY CONDITIONS
 
