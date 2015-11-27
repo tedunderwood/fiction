@@ -7,9 +7,15 @@ The strategy is not to rely on any single definition of genre, but to gather a b
 
 We'll then use predictive modeling to map relations of similarity and dissimilarity between these different definitions of genre, and, ultimately, to trace macroscopic histories of generic differentiation or convergence.
 
+final
+----
+Assembling results and images to support publication as they approach readiness.
+
 meta
 ----
 Metadata for the project.
+
+Right now the most complete set of metadata is in finalmeta.csv. 
 
 code
 ----
