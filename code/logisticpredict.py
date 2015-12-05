@@ -6,7 +6,7 @@
 # Reads all volumes meeting a given set of criteria,
 # and uses a leave-one-out strategy to distinguish
 # reviewed volumes (class 1) from random
-# class 0. In cases where an author occurs more
+# (class 0). In cases where an author occurs more
 # than once in the dataset, it leaves out all
 # volumes by that author whenever making a prediction
 # about one of them.
@@ -15,6 +15,15 @@
 # in using a different metadata structure, and
 # especially a multi-tag folksonomic system for
 # identifying the positive and negative classes.
+# In other words, volumes aren't explicitly divided
+# into positive and negative classes in the metadata;
+# they can carry any number of tags; you decide, when
+# you run the model, which tags you want to group as
+# positive and negative classes. The code will ensure
+# that no volumes with a positive tag are present in
+# the negative class, and also ensure that the two
+# groups have roughly similar distributions across
+# the timeline.
 #
 # The main class here is create_model().
 # It accepts three parameters, each of which is a tuple
@@ -383,6 +392,19 @@ def add_matching_negs(donttrainset, orderedIDs, classdictionary, metadict, datet
 
     return donttrainset
 
+def record_trainflags(metadict, donttrainset):
+    ''' This function records, for each volume, whether it is or is not
+    to be used in training. Important to run it after add_matching_negs so
+    that we know which volumes in the negative set were or weren't used
+    in training.
+    '''
+
+    for docid, metadata in metadict.items():
+        if docid in donttrainset:
+            metadata['trainflag'] = 0
+        else:
+            metadata['trainflag'] = 1
+
 def make_vocablist(sourcedir, n, vocabpath):
     '''
     Makes a list of the top n words in sourcedir, and writes it
@@ -545,6 +567,10 @@ def create_model(paths, exclusions, classifyconditions):
 
     donttrainset = add_matching_negs(donttrainset, orderedIDs, classdictionary, metadict, datetype)
 
+    # Create a flag for each volume that indicates whether it was used in training
+
+    record_trainflags(metadict, donttrainset)
+
     # Get a count of docfrequency for all words in the corpus. This is probably not needed and
     # might be deprecated later.
 
@@ -676,7 +702,7 @@ def create_model(paths, exclusions, classifyconditions):
 
     with open(outputpath, mode = 'w', encoding = 'utf-8') as f:
         writer = csv.writer(f)
-        header = ['volid', 'dateused', 'pubdate', 'birthdate', 'firstpub', 'gender', 'nation', 'allwords', 'logistic', 'realclass', 'author', 'title', 'genretags']
+        header = ['volid', 'dateused', 'pubdate', 'birthdate', 'firstpub', 'gender', 'nation', 'allwords', 'logistic', 'realclass', 'trainflag', 'author', 'title', 'genretags']
         writer.writerow(header)
         for volid in IDsToUse:
             metadata = metadict[volid]
@@ -691,8 +717,9 @@ def create_model(paths, exclusions, classifyconditions):
             allwords = volsizes[volid]
             logistic = logisticpredictions[volid]
             realclass = classdictionary[volid]
+            trainflag = metadata['trainflag']
             genretags = ' | '.join(metadata['tagset'])
-            outrow = [volid, dateused, pubdate, birthdate, firstpub, gender, nation, allwords, logistic, realclass, author, title, genretags]
+            outrow = [volid, dateused, pubdate, birthdate, firstpub, gender, nation, allwords, logistic, realclass, trainflag, author, title, genretags]
             writer.writerow(outrow)
             allvolumes.append(outrow)
 
@@ -857,7 +884,10 @@ if __name__ == '__main__':
 
     excludebelow['firstpub'] = 1700
     excludeabove['firstpub'] = 2020
-    # excludeif['negatives'] = {'chimyst', 'det100'}
+
+    # allstewgenres = {'cozy', 'hardboiled', 'det100', 'chimyst', 'locdetective', 'lockandkey', 'crime', 'locdetmyst', 'blcrime', 'anatscifi', 'locscifi', 'chiscifi', 'femscifi', 'stangothic', 'pbgothic', 'lochorror', 'chihorror', 'locghost'}
+    # excludeif['negatives'] = allstewgenres
+
     sizecap = 400
 
     # CLASSIFY CONDITIONS
