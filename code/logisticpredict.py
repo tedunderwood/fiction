@@ -882,8 +882,14 @@ if __name__ == '__main__':
     excludeabove = dict()
     excludebelow = dict()
 
-    excludebelow['firstpub'] = 1700
-    excludeabove['firstpub'] = 2020
+    daterange = input('Range of dates to use in the model? ')
+    if ',' in daterange:
+        dates = [int(x.strip()) for x in daterange.split(',')]
+        dates.sort()
+        if len(dates) == 2:
+            assert dates[0] < dates[1]
+            excludebelow['firstpub'] = dates[0]
+            excludeabove['firstpub'] = dates[1]
 
     # allstewgenres = {'cozy', 'hardboiled', 'det100', 'chimyst', 'locdetective', 'lockandkey', 'crime', 'locdetmyst', 'blcrime', 'anatscifi', 'locscifi', 'chiscifi', 'femscifi', 'stangothic', 'pbgothic', 'lochorror', 'chihorror', 'locghost'}
     # excludeif['negatives'] = allstewgenres
