@@ -6,7 +6,7 @@ def ghastly_stew():
 
     sourcefolder = '../newdata/'
     extension = '.fic.tsv'
-    metadatapath = '../meta/stewmeta.csv'
+    metadatapath = '../meta/finalmeta.csv'
     vocabpath = '../lexicon/new10k.csv'
 
     modelname = 'ghastlystew'
@@ -57,6 +57,63 @@ def ghastly_stew():
 
     paths = (sourcefolder, extension, metadatapath, outputpath, vocabpath)
     exclusions = (excludeif, excludeifnot, excludebelow, excludeabove, sizecap)
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+
+    print('If we divide the dataset with a horizontal line at 0.5, accuracy is: ', str(rawaccuracy))
+
+def make_paths(modelname):
+    '''
+    Makes a pathtuple using a model name and a default set of
+    paths to feature-vocab and metadata files.
+    '''
+
+    sourcefolder = '../newdata/'
+    extension = '.fic.tsv'
+    metadatapath = '../meta/finalmeta.csv'
+    vocabpath = '../lexicon/new10k.csv'
+    # These words will be used as features
+
+    outputpath = '../results/' + modelname + str(datetime.date.today()) + '.csv'
+
+    return (sourcefolder, extension, metadatapath, outputpath, vocabpath)
+
+def make_exclusions(startdate, enddate, sizecap):
+    excludeif = dict()
+    excludeifnot = dict()
+    excludeabove = dict()
+    excludebelow = dict()
+
+    excludebelow['firstpub'] = startdate
+    excludeabove['firstpub'] = enddate
+
+    return (excludeif, excludeifnot, excludebelow, excludeabove, sizecap)
+
+def project_detective_beyond_date(dividedate):
+
+    divide_date = 1920
+    sizecap = 250
+
+    modelname = 'detectivejustpost1920'
+    paths = make_paths(modelname)
+    sourcefolder, extension, metadatapath, outputpath, vocabpath = paths
+
+    # We can simply exclude volumes from consideration on the basis on any
+    # metadata category we want, using the dictionaries defined below.
+
+    ## EXCLUSIONS.
+
+    exclusions = make_exclusions(1700, dividedate, sizecap)
+
+    positive_tags = ['locdetective', 'locdetmyst', 'chimyst', 'locdetmyst', 'det100']
+    negative_tags = ['random', 'chirandom']
+    testconditions = set()
+
+    datetype = "firstpub"
+    numfeatures = 10000
+    regularization = .000075
+
     classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
 
     rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)

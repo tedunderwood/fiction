@@ -77,7 +77,15 @@ def compare_dicts(a, b):
             elif realb < 0.5 and predictb <= 0.5:
                 bcorrect += 1
 
-            diffs.append(predicta - predictb)
+            if reala > 0.5:
+                diffs.append(predicta - predictb)
+            else:
+                diffs.append(predictb - predicta)
+            # If this was a positive volume we record the amount the original
+            # prediction exceeded the deviation. If it's really negative, we
+            # record the amount it undershot it. Either way, it's a list of
+            # how much the original predictions were "righter than" the
+            # deviations.
 
     if total > 0:
         apct = acorrect / total
