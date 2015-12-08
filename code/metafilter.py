@@ -97,6 +97,12 @@ def get_metadata(classpath, volumeIDs, excludeif, excludeifnot, excludebelow, ex
             metadict[volid]['tagset'] = tagset
             metadict[volid]['firstpub'] = forceint(row['firstpub'])
 
+            if metadict[volid]['firstpub'] == 0 and metadict[volid]['pubdate'] > 0:
+                metadict[volid]['firstpub'] = metadict[volid]['pubdate']
+
+                # we may not have first publication information for all volumes
+                # in cases where we don't, use publication date
+
     # We only return metadata entries for volumes that are also
     # in the list of volumeIDs -- ultimately extracted from the
     # filenames present in a data folder.
