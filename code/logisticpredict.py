@@ -453,7 +453,7 @@ def get_vocablist(vocabpath, sourcedir, wordcounts, useall, n):
             reader = csv.DictReader(f)
             for row in reader:
                 ctr += 1
-                if ctr > numfeatures:
+                if ctr > n:
                     break
                     # this allows us to limit how deep we go
 
@@ -621,6 +621,59 @@ def create_model(paths, exclusions, classifyconditions):
             if idx1 not in authormatches[idx1]:
                 authormatches[idx1].append(idx1)
 
+    # The purpose of everything that follows is to
+    # balance negative and positive instances in each
+    # training set.
+
+    trainingpositives = set()
+    trainingnegatives = set()
+
+    for anid, thisclass in classdictionary.items():
+        if anid in donttrainset:
+            continue
+
+        if thisclass == 1:
+            trainingpositives.add(orderedIDs.index(anid))
+        else:
+            trainingnegatives.add(orderedIDs.index(anid))
+
+    print('Training positives: ' + str(len(trainingpositives)))
+    print('Training negatives: ' + str(len(trainingnegatives)))
+
+    for alist in authormatches:
+        numpositive = 0
+        numnegative = 0
+        for anidx in alist:
+            anid = orderedIDs[anidx]
+            thisclass = classdictionary[anid]
+            if thisclass == 1:
+                numpositive += 1
+            else:
+                numnegative += 1
+
+        if numpositive > numnegative:
+            difference = numpositive - numnegative
+            remaining = trainingnegatives - set(alist)
+            alist.extend(random.sample(remaining, difference))
+        elif numpositive < numnegative:
+            difference = numnegative - numpositive
+            remaining = trainingpositives - set(alist)
+            alist.extend(random.sample(remaining, difference))
+        else:
+            difference = 0
+
+        # print("Difference" + str(difference) + " length " + str(len(alist)))
+        # numpositive = 0
+        # numnegative = 0
+        # for anidx in alist:
+        #     anid = orderedIDs[anidx]
+        #     thisclass = classdictionary[anid]
+        #     if thisclass == 1:
+        #         numpositive += 1
+        #     else:
+        #         numnegative += 1
+        # print("Numpositive " + str(numpositive) + " numnegative " + str(numnegative))
+
 
     for alist in authormatches:
         alist.sort(reverse = True)
@@ -658,7 +711,9 @@ def create_model(paths, exclusions, classifyconditions):
             voldata.append(features)
         else:
             features = get_features(voldict, vocablist)
-            voldata.append(features / (totalcount + 0.001))
+            if totalcount == 0:
+                totalcount = .00001
+            voldata.append(features / totalcount)
 
 
         volsizes[volid] = totalcount
@@ -723,14 +778,27 @@ def create_model(paths, exclusions, classifyconditions):
             writer.writerow(outrow)
             allvolumes.append(outrow)
 
-            if logistic > 0.5 and classdictionary[volid] > 0.5:
+            if logistic == 0.5:
+                print("equals!")
+                predictedpositive = random.sample([True, False], 1)[0]
+            elif logistic > 0.5:
+                predictedpositive = True
+            elif logistic < 0.5:
+                predictedpositive = False
+            else:
+                print('Oh, joy. A fundamental floating point error.')
+                predictedpositive = random.sample([True, False], 1)[0]
+
+            if predictedpositive and classdictionary[volid] > 0.5:
                 truepositives += 1
-            elif logistic <= 0.5 and classdictionary[volid] < 0.5:
+            elif not predictedpositive and classdictionary[volid] < 0.5:
                 truenegatives += 1
-            elif logistic <= 0.5 and classdictionary[volid] > 0.5:
+            elif not predictedpositive and classdictionary[volid] > 0.5:
                 falsenegatives += 1
-            elif logistic > 0.5 and classdictionary[volid] < 0.5:
+            elif predictedpositive and classdictionary[volid] < 0.5:
                 falsepositives += 1
+            else:
+                print("Wait a second, boss.")
 
     donttrainon.sort(reverse = True)
     trainingset, yvals, testset = sliceframe(data, classvector, donttrainon, 0)
@@ -748,7 +816,16 @@ def create_model(paths, exclusions, classifyconditions):
             print(word + " :  " + str(coefficient))
 
     print()
-    accuracy = (truepositives + truenegatives) / len(IDsToUse)
+    totalevaluated = truepositives + truenegatives + falsepositives + falsenegatives
+    if totalevaluated != len(IDsToUse):
+        print("Total evaluated = " + str(totalevaluated))
+        print("But we've got " + str(len(IDsToUse)))
+    accuracy = (truepositives + truenegatives) / totalevaluated
+    print('True positives ' + str(truepositives))
+    print('True negatives ' + str(truenegatives))
+    print('False positives ' + str(falsepositives))
+    print('False negatives ' + str(falsenegatives))
+
 
     coefficientpath = outputpath.replace('.csv', '.coefs.csv')
     with open(coefficientpath, mode = 'w', encoding = 'utf-8') as f:
