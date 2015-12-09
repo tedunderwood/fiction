@@ -113,9 +113,6 @@ def get_metadata(classpath, volumeIDs, excludeif, excludeifnot, excludebelow, ex
     missingindir = len(allidsinmeta - allidsindir)
     print("We have " + str(missinginmeta) + " volumes in missing in metadata, and")
     print(str(missingindir) + " volumes missing in the directory.")
-    print(allidsinmeta - allidsindir)
-    print('***')
-    print(allidsindir - allidsinmeta)
 
     intersectiondict = dict()
 
