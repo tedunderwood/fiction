@@ -826,6 +826,11 @@ def create_model(paths, exclusions, classifyconditions):
     print('False positives ' + str(falsepositives))
     print('False negatives ' + str(falsenegatives))
 
+    precision = truepositives / (truepositives + falsepositives)
+    recall = truepositives / (truepositives + falsenegatives)
+    F1 = 2 * (precision * recall) / (precision + recall)
+    print("F1 : " + str(F1))
+
 
     coefficientpath = outputpath.replace('.csv', '.coefs.csv')
     with open(coefficientpath, mode = 'w', encoding = 'utf-8') as f:
