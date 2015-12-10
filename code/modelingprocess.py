@@ -31,6 +31,7 @@ def sliceframe(dataframe, yvals, excludedrows, testrow):
     trainingset = dataframe.drop(dataframe.index[excludedrows])
 
     newyvals = np.array(newyvals)
+
     testset = dataframe.iloc[testrow]
 
     # Potential problem arises. What if some of these columns are
