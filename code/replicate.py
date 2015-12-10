@@ -1,4 +1,5 @@
 import logisticpredict
+import datetime
 
 def ghastly_stew():
 
@@ -92,17 +93,13 @@ def make_exclusions(startdate, enddate, sizecap):
 
 def project_detective_beyond_date(dividedate):
 
-    divide_date = 1920
-    sizecap = 250
+    print('First we create a model of detective fiction only after ' + str(dividedate))
 
-    modelname = 'detectivejustpost1920'
+    sizecap = 300
+
+    modelname = 'detectivejustpost' + str(dividedate)
     paths = make_paths(modelname)
-    sourcefolder, extension, metadatapath, outputpath, vocabpath = paths
-
-    # We can simply exclude volumes from consideration on the basis on any
-    # metadata category we want, using the dictionaries defined below.
-
-    ## EXCLUSIONS.
+    sourcefolder, extension, metadatapath, outputpath1, vocabpath = paths
 
     exclusions = make_exclusions(1700, dividedate, sizecap)
 
@@ -119,4 +116,166 @@ def project_detective_beyond_date(dividedate):
     rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
 
     print('If we divide the dataset with a horizontal line at 0.5, accuracy is: ', str(rawaccuracy))
+
+    print('Then we create a model of detective fiction predicting after ' + str(dividedate))
+
+    modelname = 'detectivepredictpost' + str(dividedate)
+    paths = make_paths(modelname)
+    sourcefolder, extension, metadatapath, outputpath2, vocabpath = paths
+
+    exclusions = make_exclusions(1700, 2001, sizecap)
+
+    testconditions = {1700, dividedate}
+
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+
+    print('If we divide the second dataset at 0.5, accuracy is: ', str(rawaccuracy))
+
+def the_red_and_the_black():
+
+    sizecap = 140
+
+    modelname = 'blackandthered'
+    paths = make_paths(modelname)
+
+    exclusions = make_exclusions(1700, 2001, sizecap)
+
+    positive_tags = ['teamred']
+    negative_tags = ['teamblack']
+    testconditions = set()
+
+    datetype = "firstpub"
+    numfeatures = 10000
+    regularization = .000075
+
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    accuracies = []
+    for i in range(40):
+
+        modelname = 'redandtheblack' + str(i)
+        paths = make_paths(modelname)
+
+        rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+        print(rawaccuracy)
+        accuracies.append(rawaccuracy)
+
+    with open('finalaccuracies.csv', mode = 'w', encoding = 'utf-8') as f:
+        for accuracy in accuracies:
+            f.write(str(accuracy) + '\n')
+
+def replicate_stew():
+
+    sizecap = 140
+
+    modelname = 'replicatestew'
+    paths = make_paths(modelname)
+
+    ## EXCLUSIONS.
+
+    excludeif = dict()
+    excludeifnot = dict()
+    excludeabove = dict()
+    excludebelow = dict()
+
+    excludebelow['firstpub'] = 1700
+    excludeabove['firstpub'] = 2020
+
+    allstewgenres = {'cozy', 'hardboiled', 'det100', 'chimyst', 'locdetective', 'lockandkey', 'crime', 'locdetmyst', 'blcrime', 'anatscifi', 'locscifi', 'chiscifi', 'femscifi', 'stangothic', 'pbgothic', 'lochorror', 'chihorror', 'locghost'}
+
+    # We have to explicitly exclude genres because the category "stew" in the
+    # positive category wouldn't otherwise automatically exclude the constituent
+    # tags that were used to create it.
+
+    # I would just have put all those tags in the positive tag list, but then you'd lose
+    # the ability to explicitly balance equal numbers of crime, gothic,
+    # and science fiction, plus sensation novels. You'd get a list dominated by
+    # the crime categories, which are better-represented in the dataset.
+
+    excludeif['negatives'] = allstewgenres
+    exclusions = (excludeif, excludeifnot, excludebelow, excludeabove, sizecap)
+
+    positive_tags = ['stew']
+    negative_tags = ['random', 'chirandom']
+    testconditions = set()
+
+    datetype = "firstpub"
+    numfeatures = 10000
+    regularization = .000075
+
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    accuracies = []
+    for i in range(20):
+
+        rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+        print(rawaccuracy)
+        accuracies.append(rawaccuracy)
+
+    with open('stewaccuracies.csv', mode = 'a', encoding = 'utf-8') as f:
+        for accuracy in accuracies:
+            f.write(str(accuracy) + '\n')
+
+def replicate_detective():
+
+    sizecap = 140
+
+    modelname = 'replicatedet'
+    paths = make_paths(modelname)
+
+    ## EXCLUSIONS.
+
+    excludeif = dict()
+    excludeifnot = dict()
+    excludeabove = dict()
+    excludebelow = dict()
+
+    excludebelow['firstpub'] = 1700
+    excludeabove['firstpub'] = 2020
+
+
+    # We have to explicitly exclude genres because the category "stew" in the
+    # positive category wouldn't otherwise automatically exclude the constituent
+    # tags that were used to create it.
+
+    # I would just have put all those tags in the positive tag list, but then you'd lose
+    # the ability to explicitly balance equal numbers of crime, gothic,
+    # and science fiction, plus sensation novels. You'd get a list dominated by
+    # the crime categories, which are better-represented in the dataset.
+
+    exclusions = (excludeif, excludeifnot, excludebelow, excludeabove, sizecap)
+
+    positive_tags = ['locdetective', 'locdetmyst', 'chimyst', 'locdetmyst', 'det100']
+    negative_tags = ['random', 'chirandom']
+    testconditions = set()
+
+    datetype = "firstpub"
+    numfeatures = 10000
+    regularization = .000075
+
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    accuracies = []
+    for i in range(20):
+
+        rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+        print(rawaccuracy)
+        accuracies.append(rawaccuracy)
+
+    with open('detaccuracies.csv', mode = 'a', encoding = 'utf-8') as f:
+        for accuracy in accuracies:
+            f.write(str(accuracy) + '\n')
+
+if __name__ == '__main__':
+
+    replicate_detective()
+
+
+
+
+
+
+
 
