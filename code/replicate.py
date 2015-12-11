@@ -1,5 +1,5 @@
-import logisticpredict
-import datetime
+import logisticpredict, comparemodels
+import datetime, sys
 
 def ghastly_stew():
 
@@ -101,7 +101,7 @@ def project_detective_beyond_date(dividedate):
     paths = make_paths(modelname)
     sourcefolder, extension, metadatapath, outputpath1, vocabpath = paths
 
-    exclusions = make_exclusions(1700, dividedate, sizecap)
+    exclusions = make_exclusions(dividedate, 2000, sizecap)
 
     positive_tags = ['locdetective', 'locdetmyst', 'chimyst', 'locdetmyst', 'det100']
     negative_tags = ['random', 'chirandom']
@@ -116,22 +116,29 @@ def project_detective_beyond_date(dividedate):
     rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
 
     print('If we divide the dataset with a horizontal line at 0.5, accuracy is: ', str(rawaccuracy))
-
-    print('Then we create a model of detective fiction predicting after ' + str(dividedate))
+    print()
+    print('Then we create a model of detective fiction blindly predicting after ' + str(dividedate))
 
     modelname = 'detectivepredictpost' + str(dividedate)
     paths = make_paths(modelname)
     sourcefolder, extension, metadatapath, outputpath2, vocabpath = paths
 
-    exclusions = make_exclusions(1700, 2001, sizecap)
+    exclusions = make_exclusions(0, 2001, sizecap)
 
-    testconditions = {1700, dividedate}
+    testconditions = {'1700', str(dividedate)}
 
     classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
 
     rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
 
     print('If we divide the second dataset at 0.5, accuracy is: ', str(rawaccuracy))
+    print()
+
+    # Now we compare the predictions made by these two models, comparing only
+    # the volumes that are in both models but excluded from the training process
+    # in the second model.
+
+    comparemodels.compare_untrained(outputpath1, outputpath2)
 
 def the_red_and_the_black():
 
@@ -270,7 +277,31 @@ def replicate_detective():
 
 if __name__ == '__main__':
 
-    replicate_detective()
+    args = sys.argv
+
+    if len(args) < 2:
+
+        print('Your options include: ')
+        print('  1) Extrapolating a model of LoC "detective" fiction to the Indiana exhibition.')
+        print('  2) Extrapolating a model of detective fiction beyond a particular date.')
+
+        userchoice = int(input('\nyour choice: '))
+
+        if userchoice == 1:
+            command = 'extrapolate_indiana'
+        elif userchoice == 2:
+            command = 'extrapolate_detective_date'
+            dividedate = int(input('date beyond which to project: '))
+
+    else:
+        command = args[1]
+        dividedate = 0
+
+    if command == 'extrapolate_detective_date':
+        if dividedate == 0:
+            dividedate = int(input('date beyond which to project: '))
+        project_detective_beyond_date(dividedate)
+
 
 
 
