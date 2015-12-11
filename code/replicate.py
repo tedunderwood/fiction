@@ -80,7 +80,7 @@ def make_paths(modelname):
 
     return (sourcefolder, extension, metadatapath, outputpath, vocabpath)
 
-def make_exclusions(startdate, enddate, sizecap):
+def make_exclusions(startdate, enddate, sizecap, negatives):
     excludeif = dict()
     excludeifnot = dict()
     excludeabove = dict()
@@ -88,6 +88,10 @@ def make_exclusions(startdate, enddate, sizecap):
 
     excludebelow['firstpub'] = startdate
     excludeabove['firstpub'] = enddate
+
+    if negatives != 'nonegatives':
+        excludeif['negatives'] = negatives
+    # This is a way to exclude certain tags from the negative contrast set.
 
     return (excludeif, excludeifnot, excludebelow, excludeabove, sizecap)
 
@@ -140,6 +144,60 @@ def project_detective_beyond_date(dividedate):
 
     comparemodels.compare_untrained(outputpath1, outputpath2)
 
+def project_tag_to_another(tagtoproject, tagtarget):
+
+    print('First we create a model of ' + tagtarget)
+
+    sizecap = 400
+
+    modelname = tagtarget + 'byitself'
+    paths = make_paths(modelname)
+    sourcefolder, extension, metadatapath, outputpath1, vocabpath = paths
+
+    exclusions = make_exclusions(0, 2000, sizecap, tagtoproject)
+    # Note that we exclude tagtoproject from the negative contrast set, so the
+    # contrast sets for the two models will be identical.
+
+    positive_tags = [tagtarget]
+    negative_tags = ['random', 'chirandom']
+    testconditions = set()
+
+    datetype = "firstpub"
+    numfeatures = 10000
+    regularization = .000075
+
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+
+    print('If we divide the dataset with a horizontal line at 0.5, accuracy is: ', str(rawaccuracy))
+    print()
+    print('Then we create a model of ' + tagtoproject + ' and use it to predict ' + tagtarget)
+
+    modelname = tagtoproject + 'predicts' + tagtarget
+    paths = make_paths(modelname)
+    sourcefolder, extension, metadatapath, outputpath2, vocabpath = paths
+
+    exclusions = make_exclusions(0, 2001, sizecap, 'nonegatives')
+
+    positive_tags = [tagtarget, tagtoproject]
+    testconditions = {tagtarget}
+    # That's the line that actually excludes tagtarget from training.
+
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+
+    print('If we divide the second dataset at 0.5, accuracy is: ', str(rawaccuracy))
+    print()
+
+    # Now we compare the predictions made by these two models, comparing only
+    # the volumes that are in both models but excluded from the training process
+    # in the second model.
+
+    comparemodels.compare_untrained(outputpath1, outputpath2)
+
+
 def the_red_and_the_black():
 
     sizecap = 140
@@ -147,7 +205,7 @@ def the_red_and_the_black():
     modelname = 'blackandthered'
     paths = make_paths(modelname)
 
-    exclusions = make_exclusions(1700, 2001, sizecap)
+    exclusions = make_exclusions(1700, 2001, sizecap, 'nonegatives')
 
     positive_tags = ['teamred']
     negative_tags = ['teamblack']
@@ -282,8 +340,9 @@ if __name__ == '__main__':
     if len(args) < 2:
 
         print('Your options include: ')
-        print('  1) Extrapolating a model of LoC "detective" fiction to the Indiana exhibition.')
-        print('  2) Extrapolating a model of detective fiction beyond a particular date.')
+        print('  1) Extrapolate a model of LoC "detective" fiction to the Indiana exhibition.')
+        print('  2) Extrapolate a model of detective fiction beyond a particular date.')
+        print('  3) Extrapolate a model of one tag to another.')
 
         userchoice = int(input('\nyour choice: '))
 
@@ -292,6 +351,8 @@ if __name__ == '__main__':
         elif userchoice == 2:
             command = 'extrapolate_detective_date'
             dividedate = int(input('date beyond which to project: '))
+        elif userchoice == 3:
+            command = 'extrapolate_tag'
 
     else:
         command = args[1]
@@ -301,6 +362,11 @@ if __name__ == '__main__':
         if dividedate == 0:
             dividedate = int(input('date beyond which to project: '))
         project_detective_beyond_date(dividedate)
+
+    if command == 'extrapolate_tag':
+        tagtoproject = input('tag to project: ')
+        tagtarget = input('tag to model: ')
+        project_tag_to_another(tagtoproject, tagtarget)
 
 
 
