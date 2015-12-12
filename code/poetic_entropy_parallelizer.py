@@ -28,6 +28,8 @@ def wordsplit(atext):
     # we want to count hyphen-divided phrases as separate words 
     wordseq = [x.strip(punctuation).lower() for x in atext.split()]
 
+    return wordseq
+
 def parallelize_over_paths(pathlist, number_of_cores):
     '''
     Calls get_volume_entropy for every path in pathlist
@@ -44,7 +46,7 @@ def parallelize_over_paths(pathlist, number_of_cores):
 
     return resultlist
 
-def main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputpath, windowradius):
+def main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputpath):
 
     # I start by loading all the volumes in the metadata file as
     # dictionaries in a list. We're going to randomly select
@@ -64,6 +66,10 @@ def main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputp
         number_to_do = len(metadata)
 
     selected = random.sample(metadata, number_to_do)
+
+    # MOST OF WHAT FOLLOWS IS SPECIFIC TO MY POETRY METADATA.
+    # If you don't care about that, fast-forward down to
+    # END METADATA MUNGING.
 
     # Now we need to align book_ids with paths to the
     # appropriate file. Our strategy is to iterate through
@@ -107,16 +113,18 @@ def main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputp
         else:
             bookidlist.append(bookid)
             filepath = sourcedir + afile
-            pathlist.append((filepath, windowradius))
+            pathlist.append(filepath)
             # For each volume, we pass a filepath and the radius
             # of a window of words to be considered. This will
             # be the same for all volumes.
+
+    # END METADATA MUNGING.
 
     # Because we are going to calculate entropy and TTR on equal-sized chunks
     # for all the volumes, we need to know what the smallest volume size is.
 
     minsize = 1000000
-    for filepath, winrad in pathlist:
+    for filepath in pathlist:
         with open(filepath, encoding = 'utf-8') as f:
             filestring = f.read()
             words = wordsplit(filestring)
@@ -127,19 +135,30 @@ def main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputp
             if wordlen < minsize:
                 minsize = wordlen
 
-    # Now we actually get the entropies for all the files in the pathlist.
-    # ALL THE REAL WORK HAPPENS HERE.
+    newpathlist = []
+    for filepath in pathlist:
+        newpathlist.append((filepath, minsize))
+    pathlist = newpathlist
 
-    results = parallelize_over_paths(pathlist, number_of_cores, minsize)
+    print('The minimum doc size in words was ' + str(minsize))
+
+    # Now we actually get the entropies for all the files in the pathlist.
+    # REAL WORK HAPPENS HERE.
+
+    results = parallelize_over_paths(pathlist, number_of_cores)
 
     output = []
     # we're going to create a list of dictionaries that
     # can be output easily as a csv
 
+    # we also keep track of the maximum length of cumulative
+    # sequences so we can output those in a separate matrix
+    maxlen = 0
+
     for bookid, result in zip(bookidlist, results):
 
-        # each result is a threetuple
-        relative_entropy, unigramct, typect, seqlen = result
+        # each result is a pentuple
+        avg_conditional_ent, avg_pct_of_max, avg_TTR, cumulative_sequence, wordcount = result
 
         # for each volume we create a dictionary that
         # will be the output row
@@ -147,32 +166,60 @@ def main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputp
         o = dict()
         o['bookid'] = bookid
         o['date'] = metadata[bookid]['firstpub']
-        o['wordcount'] = unigramct
-        o['wordsused'] = seqlen
-        o['relent'] = relative_entropy
-        o['typetoken'] = typect / unigramct
+        o['wordcount'] = wordcount
+        o['conditionalent'] = avg_conditional_ent
+        o['pctofmaxent'] = avg_pct_of_max
+        o['ttr'] = avg_TTR
         o['recept'] = metadata[bookid]['recept']
         o['author'] = metadata[bookid]['author']
 
         output.append(o)
 
-    fields = ['bookid', 'date', 'wordcount', 'wordsused', 'relent', 'typetoken', 'recept', 'author']
+        # we also keep track of max cumulative sequence length
+        cumlen = len(cumulative_sequence)
+        if cumlen > maxlen:
+            maxlen = cumlen
+
+    fields = ['bookid', 'date', 'wordcount', 'conditionalent', 'pctofmaxent', 'ttr', 'recept', 'author']
     with open(outputpath, mode = 'w', encoding = 'utf-8') as f:
         writer = csv.DictWriter(f, fieldnames = fields)
         writer.writeheader()
         for outputdict in output:
             writer.writerow(outputdict)
 
+    dimensions = ['ttr', 'conditional', 'normalized']
+    outputmatrix = dict()
+    for dimension in dimensions:
+        outputmatrix[dimension] = []
+
+    for bookid, result in zip(bookidlist, results):
+        avg_conditional_ent, avg_pct_of_max, avg_TTR, cumulative_sequence, wordcount = result
+        numchunks = len(cumulative_sequence)
+        for dimension in dimensions:
+            outputrow = []
+            initialvalue = cumulative_sequence[0][dimension]
+            for i in range(maxlen):
+                if i < numchunks and initialvalue > 0:
+                    relativetostart = cumulative_sequence[i][dimension] / initialvalue
+                    outputrow.append(str(relativetostart))
+                else:
+                    outputrow.append('NA')
+            outputmatrix[dimension].append(outputrow)
+
+    for dimension in dimensions:
+        filename = '/Users/tunder/discard/cumulative_' + dimension + '.csv'
+        with open(filename, mode = 'w', encoding = 'utf-8') as f:
+            writer = csv.writer(f)
+            for row in outputmatrix[dimension]:
+                writer.writerow(row)
+
 if __name__ == '__main__':
     number_of_cores = 4
-    windowradius = 10000000
-    # If you want to calculate entropy on the whole volume, set the window
-    # radius very high, like 10,000,000 or something.
 
     # sourcedir = '/Users/tunder/Dropbox/CLEAN_TEXTS/'
     sourcedir = '/Users/tunder/Dropbox/GenreProject/python/reception/poetry/readable/'
     metadatapath = '/Users/tunder/Dropbox/GenreProject/python/reception/poetry/finalpoemeta.csv'
     number_to_do = 0
-    outputpath = '/Users/tunder/discard/poetic_entropy2.csv'
+    outputpath = '/Users/tunder/discard/poetic_entropy3.csv'
 
-    main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputpath, windowradius)
+    main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputpath)
