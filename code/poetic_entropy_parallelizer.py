@@ -1,10 +1,22 @@
-# entropyparallelizer.py
+# poetic_entropy_parallelizer.py
+
+# Script calculates conditional entropy
+# and type-token ratio for a corpus of
+# texts, parallelizing the calculation
+# to speed things up.
+
+# Updated Dec 12, 2015 to use a strategy
+# of averaging across equal-sized chunks
+# recommended by Yuancheng Zhu.
 
 # This is the main module to run. Using
 # parameters set at the bottom of the script,
 # it calls a main_routine that gathers
-# metadata for poetry volumes and pairs
-# bookids with paths to files.
+# metadata for volumes and pairs
+# bookids with paths to files. The paths I've
+# set here, and the metadata format I use,
+# are specifically designed to work with the
+# poetry in my paceofchange repo.
 
 # Then using multiprocessing, it distributes
 # the work of calculating entropy over multiple
@@ -25,7 +37,7 @@ def wordsplit(atext):
     punctuation = '.,():-—;"!?•$%@“”#<>+=/[]*^\'{}_■~\\|«»©&~`£·'
     atext = atext.replace('-', ' ')
     # we replace hyphens with spaces because it seems probable that for this purpose
-    # we want to count hyphen-divided phrases as separate words 
+    # we want to count hyphen-divided phrases as separate words
     wordseq = [x.strip(punctuation).lower() for x in atext.split()]
 
     return wordseq
@@ -113,7 +125,7 @@ def main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputp
         else:
             bookidlist.append(bookid)
             filepath = sourcedir + afile
-            pathlist.append(filepath)
+            pathlist.append((filepath, bookid))
             # For each volume, we pass a filepath and the radius
             # of a window of words to be considered. This will
             # be the same for all volumes.
@@ -124,7 +136,7 @@ def main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputp
     # for all the volumes, we need to know what the smallest volume size is.
 
     minsize = 1000000
-    for filepath in pathlist:
+    for filepath, bookid in pathlist:
         with open(filepath, encoding = 'utf-8') as f:
             filestring = f.read()
             words = wordsplit(filestring)
@@ -135,12 +147,19 @@ def main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputp
             if wordlen < minsize:
                 minsize = wordlen
 
+    # print('The minimum doc size in words was ' + str(minsize))
+    # print()
+    # print("But guess what, I'm going to use 1 mil anyhow.")
+    # minsize = 1000000
+    #
+    # If for some reason you want to set a chunk size larger than the
+    # minimum document size, you could do so here.
+
     newpathlist = []
-    for filepath in pathlist:
+
+    for filepath, bookid in pathlist:
         newpathlist.append((filepath, minsize))
     pathlist = newpathlist
-
-    print('The minimum doc size in words was ' + str(minsize))
 
     # Now we actually get the entropies for all the files in the pathlist.
     # REAL WORK HAPPENS HERE.
@@ -187,39 +206,49 @@ def main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputp
         for outputdict in output:
             writer.writerow(outputdict)
 
-    dimensions = ['ttr', 'conditional', 'normalized']
-    outputmatrix = dict()
-    for dimension in dimensions:
-        outputmatrix[dimension] = []
 
-    for bookid, result in zip(bookidlist, results):
-        avg_conditional_ent, avg_pct_of_max, avg_TTR, cumulative_sequence, wordcount = result
-        numchunks = len(cumulative_sequence)
-        for dimension in dimensions:
-            outputrow = []
-            initialvalue = cumulative_sequence[0][dimension]
-            for i in range(maxlen):
-                if i < numchunks and initialvalue > 0:
-                    relativetostart = cumulative_sequence[i][dimension] / initialvalue
-                    outputrow.append(str(relativetostart))
-                else:
-                    outputrow.append('NA')
-            outputmatrix[dimension].append(outputrow)
+    # THIS WOULD NEED TO BE UNCOMMENTED IF YOU WANT TO ACTUALLY
+    # WRITE CUMULATIVE SEQUENCES TO FILE. RIGHT NOW THAT
+    # CALCULATION IS DISABLED IN ENTROPYFUNCTIONS.PY.
 
-    for dimension in dimensions:
-        filename = '/Users/tunder/discard/cumulative_' + dimension + '.csv'
-        with open(filename, mode = 'w', encoding = 'utf-8') as f:
-            writer = csv.writer(f)
-            for row in outputmatrix[dimension]:
-                writer.writerow(row)
+    # dimensions = ['ttr', 'conditional', 'normalized']
+    # outputmatrix = dict()
+    # for dimension in dimensions:
+    #     outputmatrix[dimension] = []
+
+    # for bookid, result in zip(bookidlist, results):
+    #     avg_conditional_ent, avg_pct_of_max, avg_TTR, cumulative_sequence, wordcount = result
+    #     numchunks = len(cumulative_sequence)
+    #     for dimension in dimensions:
+    #         outputrow = []
+    #         initialvalue = cumulative_sequence[0][dimension]
+    #         for i in range(maxlen):
+    #             if i < numchunks and initialvalue > 0:
+    #                 relativetostart = cumulative_sequence[i][dimension] / initialvalue
+    #                 outputrow.append(str(relativetostart))
+    #             else:
+    #                 outputrow.append('NA')
+    #         outputmatrix[dimension].append(outputrow)
+
+    # for dimension in dimensions:
+    #     filename = '/Users/tunder/discard/cumulative_' + dimension + '.csv'
+    #     with open(filename, mode = 'a', encoding = 'utf-8') as f:
+    #         writer = csv.writer(f)
+    #         for row in outputmatrix[dimension]:
+    #             writer.writerow(row)
 
 if __name__ == '__main__':
-    number_of_cores = 4
+    number_of_cores = 10
+    # set lower if you're running this on a laptop!
 
     # sourcedir = '/Users/tunder/Dropbox/CLEAN_TEXTS/'
     sourcedir = '/Users/tunder/Dropbox/GenreProject/python/reception/poetry/readable/'
     metadatapath = '/Users/tunder/Dropbox/GenreProject/python/reception/poetry/finalpoemeta.csv'
+
     number_to_do = 0
-    outputpath = '/Users/tunder/discard/poetic_entropy3.csv'
+    # Setting that to zero instructs the script to use all texts in sourcedir that match
+    # metadata. If you want to start with a smaller sample, set it to 5 or 10 or something.
+
+    outputpath = '/Users/tunder/discard/poetic_entropymillion.csv'
 
     main_routine(number_of_cores, sourcedir, metadatapath, number_to_do, outputpath)

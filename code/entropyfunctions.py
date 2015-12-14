@@ -27,7 +27,7 @@ def wordsplit(atext):
     punctuation = '.,():-—;"!?•$%@“”#<>+=/[]*^\'{}_■~\\|«»©&~`£·'
     atext = atext.replace('-', ' ')
     # we replace hyphens with spaces because it seems probable that for this purpose
-    # we want to count hyphen-divided phrases as separate words 
+    # we want to count hyphen-divided phrases as separate words
     awordseq = [x.strip(punctuation).lower() for x in atext.split()]
 
     return awordseq
@@ -67,9 +67,10 @@ def measure_by_chunk(atext, chunksize):
 
     It also calculates type-token ratio for each chunk.
 
-    Finally, in order to better understand relationships to length, we record all
-    three of these values for a text that is cumulative (i.e., all chunks up to this
-    one).
+    Finally, in order to better understand relationships to length, we could record all
+    three of these values for a text that is cumulative (i.e., includes all chunks
+    up to this one). But note, in the comments below, that I have disabled this function.
+    It makes calculations much slower.
     '''
 
     wordseq = wordsplit(atext)
@@ -80,7 +81,14 @@ def measure_by_chunk(atext, chunksize):
     seqlen = len(wordseq)
 
     # Now we iterate through chunks
-    overrun = False
+    overrun = True
+    # I've set that to True in order to deactivate the cumulative sequence
+    # calculation, which otherwise slows things down. If you set it to
+    # False, cumulative calculation will be reactivated. You would also need
+    # to uncomment a section of poetic_entropy_parallelizer, which
+    # actually writes results of that calculation to file. See comments
+    # in the latter script.
+
     TTRlist = []
     conditional_entropy_list = []
     normalized_entropy_list = []
@@ -105,7 +113,6 @@ def measure_by_chunk(atext, chunksize):
 
             if startposition < 0:
                 print ('In at least one document, chunk size exceeds doc size.')
-                # This is not okay, but let's proceed.
                 startposition = 0
 
         thischunk = wordseq[startposition: endposition]
@@ -129,6 +136,7 @@ def measure_by_chunk(atext, chunksize):
     conditional_entropy = sum(conditional_entropy_list) / len(conditional_entropy_list)
     normalized_entropy = sum(normalized_entropy_list) / len(normalized_entropy_list)
 
+    print(seqlen)
     return conditional_entropy, normalized_entropy, TTR, cumulative_sequence, seqlen
 
 def get_all_measures(awordseq):
@@ -137,7 +145,7 @@ def get_all_measures(awordseq):
     words in the chunk.
     '''
     unigramdist, bigramdist, unigramct, bigramct, typect = get_distributions(awordseq)
-    
+
     TTR = typect / len(awordseq)
 
     conditional_entropy, bigram_entropy, unigram_entropy = get_conditional_entropy(bigramdist, unigramdist, bigramct, unigramct)

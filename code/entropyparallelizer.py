@@ -1,5 +1,11 @@
 # entropyparallelizer.py
 
+# Note: this script is no longer up-to-date
+# as of December 14, 2015. If you want the
+# up-to-date version, see poetic_entropy_parallelizer,
+# which implements the chunking approach recommended
+# by Yuancheng Zhu.
+
 # This is the main module to run. Using
 # parameters set at the bottom of the script,
 # it calls a main_routine that gathers
