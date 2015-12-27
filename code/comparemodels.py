@@ -130,11 +130,8 @@ def compare_untrained():
     orig = input('Name of full model? ' )
     devi = input('Name of model with an untrained subset? ')
 
-    origpath = '../results/' + orig
-    devipath = '../results/' + devi
-
-    origdict = get_allvols(origpath)
-    devidict = get_untrained(devipath)
+    origdict = get_allvols(orig)
+    devidict = get_untrained(devi)
 
     total, apct, bpct, meandiff = compare_dicts(origdict, devidict)
     print('\nRESULTS\n-------')

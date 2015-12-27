@@ -411,7 +411,7 @@ def make_vocablist(sourcedir, n, vocabpath):
     to vocabpath.
     '''
 
-    sourcefiles = os.listdir(sourcedir)
+    sourcefiles = [x for x in os.listdir(sourcedir) if not x.startswith('.')]
 
     wordcounts = Counter()
 
@@ -579,7 +579,7 @@ def create_model(paths, exclusions, classifyconditions):
     # The feature list we use is defined by the top 10,000 words (by document
     # frequency) in the whole corpus, and it will be the same for all models.
 
-    vocablist = get_vocablist(vocabpath, sourcefolder, wordcounts, useall = True, n = 10000)
+    vocablist = get_vocablist(vocabpath, sourcefolder, wordcounts, useall = True, n = numfeatures)
 
     # This function either gets the vocabulary list already stored in vocabpath, or
     # creates a list of the top 10k words in all files, and stores it there.
@@ -731,7 +731,7 @@ def create_model(paths, exclusions, classifyconditions):
     # Now do leave-one-out predictions.
     print('Beginning multiprocessing.')
 
-    pool = Pool(processes = 12)
+    pool = Pool(processes = 11)
     res = pool.map_async(modelingprocess.model_one_volume, sextuplets)
 
     # After all files are processed, write metadata, errorlog, and counts of phrases.
