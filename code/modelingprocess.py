@@ -83,6 +83,7 @@ def model_one_volume(data5tuple):
     newmodel.fit(trainingset, yvals)
 
     testset = (testset - means) / stdevs
+    testset = testset.reshape(1, -1)
     prediction = newmodel.predict_proba(testset)[0][1]
     if i % 50 == 0:
         print(i)
