@@ -105,9 +105,9 @@ def project_detective_beyond_date(dividedate):
     paths = make_paths(modelname)
     sourcefolder, extension, metadatapath, outputpath1, vocabpath = paths
 
-    exclusions = make_exclusions(dividedate, 2000, sizecap)
+    exclusions = make_exclusions(dividedate, 2000, sizecap, 'nonegatives')
 
-    positive_tags = ['locdetective', 'locdetmyst', 'chimyst', 'locdetmyst', 'det100']
+    positive_tags = ['locdetective', 'locdetmyst', 'chimyst', 'det100']
     negative_tags = ['random', 'chirandom']
     testconditions = set()
 
@@ -127,7 +127,7 @@ def project_detective_beyond_date(dividedate):
     paths = make_paths(modelname)
     sourcefolder, extension, metadatapath, outputpath2, vocabpath = paths
 
-    exclusions = make_exclusions(0, 2001, sizecap)
+    exclusions = make_exclusions(0, 2001, sizecap, 'nonegatives')
 
     testconditions = {'1700', str(dividedate)}
 
@@ -196,7 +196,6 @@ def project_tag_to_another(tagtoproject, tagtarget):
     # in the second model.
 
     comparemodels.compare_untrained(outputpath1, outputpath2)
-
 
 def the_red_and_the_black():
 
