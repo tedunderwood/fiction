@@ -94,10 +94,12 @@ import csv, os, random, sys, datetime
 from collections import Counter
 from multiprocessing import Pool
 from sklearn.linear_model import LogisticRegression
-import modelingprocess
-import metafilter
 # from scipy.stats import norm
 import matplotlib.pyplot as plt
+
+import modelingprocess
+import metafilter
+import metautils
 
 usedate = False
 # Leave this flag false unless you plan major
@@ -108,48 +110,6 @@ usedate = False
 # Choose which here.
 
 # FUNCTIONS GET DEFINED BELOW.
-
-def infer_date(metadictentry, datetype):
-    if datetype == 'pubdate':
-        return metadictentry[datetype]
-    elif datetype == 'firstpub':
-        firstpub = metadictentry['firstpub']
-        if firstpub > 1700 and firstpub < 1950:
-            return firstpub
-        else:
-            return metadictentry['pubdate']
-    else:
-        sys.exit(0)
-
-def appendif(key, value, dictionary):
-    if key in dictionary:
-        dictionary[key].append(value)
-    else:
-        dictionary[key] = [value]
-
-# Clean this up and make it unnecessary.
-
-def dirty_pairtree(htid):
-    ''' Changes a 'clean' HathiTrust ID (with only chars that are
-    legal in filenames) into a 'clean' version of the same name
-    (which may contain illegal chars.)
-    '''
-    period = htid.find('.')
-    prefix = htid[0:period]
-    postfix = htid[(period+1): ]
-    if '=' in postfix:
-        postfix = postfix.replace('+',':')
-        postfix = postfix.replace('=','/')
-    dirtyname = prefix + "." + postfix
-    return dirtyname
-
-def forceint(astring):
-    try:
-        intval = int(astring)
-    except:
-        intval = 0
-
-    return intval
 
 def get_features(wordcounts, wordlist):
     numwords = len(wordlist)
@@ -276,29 +236,23 @@ def confirm_testconditions(testconditions, positive_tags):
         elif elem == '':
             # also okay
             continue
+        elif elem == 'donotmatch':
+            print("You have instructed me that positive volumes matching only a")
+            print("positive tag in the test-but-not-train group should not be matched")
+            print("with negative volumes.")
         else:
             print('Illegal element in testconditions.')
             sys.exit(0)
 
-def get_volume_lists(volumeIDs, volumepaths, IDsToUse, metadict, datetype, positive_tags, testconditions, classdictionary):
+def get_thresholds(testconditions):
+    ''' The testconditions are a set of elements that may include dates
+    (setting an upper and lower limit for training, outside of which
+    volumes are only to be in the test set), or may include genre tags.
+
+    This function only identifies the dates, if present. If not present,
+    it returns 0 and 3000. Do not use this code for predicting volumes
+    dated after 3000 AD. At that point, the whole thing is deprecated.
     '''
-    This function creates an ordered list of volume IDs included in this
-    modeling process, and an ordered list of volume-path tuples.
-
-    It also identifies positive volumes that are not to be included in a training set,
-    because they belong to a category that is being tested.
-    '''
-
-    volspresent = []
-    orderedIDs = []
-    donttrainset = set()
-
-    for volid, volpath in zip(volumeIDs, volumepaths):
-        if volid not in IDsToUse:
-            continue
-        else:
-            volspresent.append((volid, volpath))
-            orderedIDs.append(volid)
 
     thresholds = []
     for elem in testconditions:
@@ -315,34 +269,28 @@ def get_volume_lists(volumeIDs, volumepaths, IDsToUse, metadict, datetype, posit
         # we are unlikely to have any volumes before or after
         # those dates
 
-    for volid in orderedIDs:
-        if classdictionary[volid] != 1:
+    return pastthreshold, futurethreshold
+
+def get_volume_lists(volumeIDs, volumepaths, IDsToUse):
+    '''
+    This function creates an ordered list of volume IDs included in this
+    modeling process, and an ordered list of volume-path tuples.
+
+    It also identifies positive volumes that are not to be included in a training set,
+    because they belong to a category that is being tested.
+    '''
+
+    volspresent = []
+    orderedIDs = []
+
+    for volid, volpath in zip(volumeIDs, volumepaths):
+        if volid not in IDsToUse:
             continue
-            # On the first pass we only add positive volumes
-            # to donttrainset. Negative volumes handled in a
-            # separate function.
+        else:
+            volspresent.append((volid, volpath))
+            orderedIDs.append(volid)
 
-        date = infer_date(metadict[volid], datetype)
-        if date < pastthreshold or date > futurethreshold:
-            donttrainset.add(volid)
-            continue
-
-        tagset = metadict[volid]['tagset']
-        hasexclusion = False
-        hasotherpositive = False
-
-        for tag in positive_tags:
-            if tag in tagset and not tag in testconditions:
-                hasotherpositive = True
-
-        for tag in testconditions:
-            if tag in tagset:
-                hasexclusion = True
-
-        if hasexclusion and not hasotherpositive:
-            donttrainset.add(volid)
-
-    return volspresent, orderedIDs, donttrainset
+    return volspresent, orderedIDs
 
 def first_and_last(idset, metadict, datetype):
     min = 3000
@@ -357,40 +305,31 @@ def first_and_last(idset, metadict, datetype):
 
     return min, max
 
-def add_matching_negs(donttrainset, orderedIDs, classdictionary, metadict, datetype):
+def describe_donttrainset(donttrainset, classdictionary, metadict, datetype):
 
-    negatives = []
-
-    for anid in orderedIDs:
-        if classdictionary[anid] == 0:
-            negatives.append(metadict[anid])
-
-    matching_negatives = []
-
-    print(len(donttrainset))
+    positivedonts = []
+    negativedonts = []
 
     for anid in donttrainset:
-        this_positive = metadict[anid]
-        closest_negative_idx = metafilter.closest_idx(negatives, this_positive, datetype)
-        closest_negative = negatives.pop(closest_negative_idx)
-        matching_negatives.append(closest_negative['docid'])
+        posneg = classdictionary[anid]
+        if posneg == 0:
+            negativedonts.append(anid)
+        elif posneg == 1:
+            positivedonts.append(anid)
+        else:
+            print('Anomaly in classdictionary.')
 
-    min, max = first_and_last(donttrainset, metadict, datetype)
+    min, max = first_and_last(positivedonts, metadict, datetype)
     if min > 0:
-        print("The set of volumes not to be trained on includes " + str(len(donttrainset)))
-        print("postive volumes, ranging from " + str(min) + " to " + str(max) + ".")
+        print("The set of volumes not to be trained on includes " + str(len(positivedonts)))
+        print("positive volumes, ranging from " + str(min) + " to " + str(max) + ".")
         print()
 
-    min, max = first_and_last(matching_negatives, metadict, datetype)
+    min, max = first_and_last(negativedonts, metadict, datetype)
     if min > 0:
-        print("And also includes " + str(len(matching_negatives)))
+        print("And also includes " + str(len(negativedonts)))
         print("negative volumes, ranging from " + str(min) + " to " + str(max) + ".")
         print()
-
-    for negative in matching_negatives:
-        donttrainset.add(negative)
-
-    return donttrainset
 
 def record_trainflags(metadict, donttrainset):
     ''' This function records, for each volume, whether it is or is not
@@ -545,10 +484,9 @@ def create_model(paths, exclusions, classifyconditions):
     metadict = metafilter.get_metadata(metadatapath, volumeIDs, excludeif, excludeifnot, excludebelow, excludeabove)
 
     # Now that we have a list of volumes with metadata, we can select the groups of IDs
-    # that we actually intend to contrast. If we want to us more or less everything,
-    # this may not be necessary. But in some cases we want to use randomly sampled subsets.
+    # that we actually intend to contrast.
 
-    IDsToUse, classdictionary = metafilter.label_classes(metadict, "tagset", positive_tags, negative_tags, sizecap, datetype, excludeif)
+    IDsToUse, classdictionary, donttrainset = metafilter.label_classes(metadict, "tagset", positive_tags, negative_tags, sizecap, datetype, excludeif, testconditions)
 
     print()
     min, max = first_and_last(IDsToUse, metadict, datetype)
@@ -560,12 +498,12 @@ def create_model(paths, exclusions, classifyconditions):
     # We now create an ordered list of id-path tuples for later use, and identify a set of
     # positive ids that should never be used in training.
 
-    volspresent, orderedIDs, donttrainset = get_volume_lists(volumeIDs, volumepaths, IDsToUse, metadict, datetype, positive_tags, testconditions, classdictionary)
+    volspresent, orderedIDs = get_volume_lists(volumeIDs, volumepaths, IDsToUse)
 
     # Extend the set of ids not to be used in training by identifying negative volumes that match
     # the distribution of positive volumes.
 
-    donttrainset = add_matching_negs(donttrainset, orderedIDs, classdictionary, metadict, datetype)
+    describe_donttrainset(donttrainset, classdictionary, metadict, datetype)
 
     # Create a flag for each volume that indicates whether it was used in training
 
@@ -595,16 +533,20 @@ def create_model(paths, exclusions, classifyconditions):
 
     numfeatures = len(vocablist)
 
-    # We need an ordered list of indexes in orderedIDs to exclude.
+    # For each volume, we're going to create a list of volumes that should be
+    # excluded from the training set when it is to be predicted. More precisely,
+    # we're going to create a list of their *indexes*, so that we can easily
+    # remove rows from the training matrix.
+
+    # This list will include for ALL volumes, the indexes of vols in the donttrainset.
 
     donttrainon = [orderedIDs.index(x) for x in donttrainset]
 
     authormatches = [list(donttrainon) for x in range(len(orderedIDs))]
-    # For every index in authormatches, identify a set of indexes that have
-    # the same author. Obvs, there will always be at least one.
 
-    # Since we are going to use these indexes to exclude rows, we also add
-    # all the ids in donttrainon to every volume
+    # Now we proceed to enlarge that list by identifying, for each volume,
+    # a set of indexes that have the same author. Obvs, there will always be at least one.
+    # We exclude a vol from it's own training set.
 
     if holdout_authors:
         for idx1, anid in enumerate(orderedIDs):
@@ -701,7 +643,7 @@ def create_model(paths, exclusions, classifyconditions):
                 voldict[word] = count
                 totalcount += count
 
-        date = infer_date(metadict[volid], datetype)
+        date = metautils.infer_date(metadict[volid], datetype)
         date = date - 1700
         if date < 0:
             date = 0
@@ -1002,6 +944,9 @@ if __name__ == '__main__':
     print()
     print("You can also specify positive tags to be excluded from training, and/or a pair")
     print("of integer dates outside of which vols should be excluded from training.")
+    print("If you add 'donotmatch' to the list of tags, these volumes will not be")
+    print("matched with corresponding negative volumes.")
+    print()
     testphrase = input("Comma-separated list of such tags: ")
     testconditions = set([x.strip() for x in testphrase.split(',') if len(x) > 0])
 

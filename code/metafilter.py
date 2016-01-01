@@ -3,6 +3,7 @@
 # Functions that process metadata for parallel_crossvalidate.py
 
 import csv, random
+import metautils
 
 knownnations = {'us', 'uk'}
 
@@ -247,7 +248,68 @@ def closest_idx(negative_volumes, positive_volume, datetype):
 
     return closestidx
 
-def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, sizecap, datetype, excludeif):
+def get_thresholds(testconditions):
+    ''' The testconditions are a set of elements that may include dates
+    (setting an upper and lower limit for training, outside of which
+    volumes are only to be in the test set), or may include genre tags.
+
+    This function only identifies the dates, if present. If not present,
+    it returns 0 and 3000. Do not use this code for predicting volumes
+    dated after 3000 AD. At that point, the whole thing is deprecated.
+    '''
+
+    thresholds = []
+    for elem in testconditions:
+        if elem.isdigit():
+            thresholds.append(int(elem))
+
+    thresholds.sort()
+    if len(thresholds) == 2:
+        pastthreshold = thresholds[0]
+        futurethreshold = thresholds[1]
+    else:
+        pastthreshold = 0
+        futurethreshold = 3000
+        # we are unlikely to have any volumes before or after
+        # those dates
+
+    return pastthreshold, futurethreshold
+
+def get_donttrainset(all_positives, positive_tags, metadict, donttrainconditions, datetype):
+    '''
+    This function identifies positive volumes that are not to be included in a training set,
+    because they belong to a category that is being tested only.
+    '''
+
+    donttrainset = set()
+
+    pastthreshold, futurethreshold = get_thresholds(donttrainconditions)
+
+    for posvol in all_positives:
+
+        date = metautils.infer_date(metadict[posvol], datetype)
+        if date < pastthreshold or date > futurethreshold:
+            donttrainset.add(posvol)
+            continue
+
+        tagset = metadict[posvol]['tagset']
+        hasexclusion = False
+        hasotherpositive = False
+
+        for tag in positive_tags:
+            if tag in tagset and not tag in donttrainconditions:
+                hasotherpositive = True
+
+        for tag in donttrainconditions:
+            if tag in tagset:
+                hasexclusion = True
+
+        if hasexclusion and not hasotherpositive:
+            donttrainset.add(posvol)
+
+    return donttrainset
+
+def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, sizecap, datetype, excludeif, donttrainconditions):
     ''' This takes as input the metadata dictionary generated
     by get_metadata. It subsets that dictionary into a
     positive class and a negative class. Instances that belong
@@ -258,6 +320,11 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
     or it's some kind of date (pubdate, birthdate, firstpub), in which case
     positive_tags will be a pair of min and max dates for the positive class
     and negative_tags will be a min and max date for the negative class.
+
+    This function doesn't necessarily return positive and negative classes with equal
+    numbers of members. Volumes that are not going to be in the training set don't
+    need to be matched with negative counterparts; indeed, doing that can throw off
+    your selection of negatives. So we don't match them.
     '''
 
     all_instances = set([x for x in metadict.keys()])
@@ -280,7 +347,11 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
             all_positives.add(docid)
         elif classflag == 'negative':
 
-            # okay, I gotta admit this is a hack
+            # okay, I gotta admit this is a hack; again, the point is to
+            # allow the user to arbitrarily exclude volumes with certain tags
+            # from the negative (random) class, even if those volumes do bear
+            # the random tag, and don't bear any of the positive tags
+
             excluded = False
             for atag in negative_exclusions:
                 if atag in docdict['tagset']:
@@ -288,10 +359,33 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
             if not excluded:
                 all_negatives.add(docid)
 
-    if sizecap > 0 and len(all_positives) > sizecap:
-        positives = random.sample(all_positives, sizecap)
+    # Let's identify positive volumes that are not to be trained on. These are recognized
+    # using donttrainconditions.
+
+    donttrainset = get_donttrainset(all_positives, positive_tags, metadict, donttrainconditions, datetype)
+
+    # There's also a special flag in donttrainconditions that can tell us not to match
+    # the test-only volumes with negative instances.
+
+    if 'donotmatch' in donttrainconditions:
+        dontmatch = True
     else:
-        positives = list(all_positives)
+        dontmatch = False
+
+    trainable_positives = all_positives - donttrainset
+
+    # If there's a sizecap, we want to randomly select only that number
+    # of positives from the *trainable* positives.
+
+    if sizecap > 0 and len(trainable_positives) > sizecap:
+        positives = random.sample(trainable_positives, sizecap)
+    else:
+        positives = list(trainable_positives)
+
+    # Then we go ahead and add all the test-only positives. There
+    # is not usually a reason to cap their size.
+
+    positives.extend(donttrainset)
 
     # If there's a sizecap we also want to ensure classes have
     # matching sizes and roughly equal distributions over time.
@@ -311,6 +405,12 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
             negatives = list()
 
             for anid in positives:
+                if dontmatch and anid in donttrainset:
+                    continue
+                    # because the dontmatch flag tells us that volumes
+                    # in the test-only donttrainset do not need to be
+                    # matched with negative counterparts
+
                 this_positive = metadict[anid]
 
                 closest_negative_idx = closest_idx(negative_metadata, this_positive, datetype)
@@ -318,9 +418,10 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
                 # print(closest_negative)
                 negatives.append(closest_negative['docid'])
 
-                # print("MATCH this: " + str(this_positive['firstpub']) + " : " + this_positive['title'] + " " + this_positive['gender'])
-                # print('with this: ' + str(closest_negative['firstpub']) + " : " + closest_negative['title'] + " " + closest_negative['gender'])
-                # print()
+                if anid in donttrainset:
+                    donttrainset.add(closest_negative['docid'])
+                    # because negative volumes that were selected to match volumes
+                    # in the donttrainset should also be in the donttrainset!
 
         else:
             # if we're dividing classes by date, we obvs don't want to
@@ -348,7 +449,7 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
         IDsToUse.add(anid)
         classdictionary[anid] = 0
 
-    return IDsToUse, classdictionary
+    return IDsToUse, classdictionary, donttrainset
 
 
 
