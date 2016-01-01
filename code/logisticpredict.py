@@ -604,18 +604,12 @@ def create_model(paths, exclusions, classifyconditions):
         else:
             difference = 0
 
-        # print("Difference" + str(difference) + " length " + str(len(alist)))
-        # numpositive = 0
-        # numnegative = 0
-        # for anidx in alist:
-        #     anid = orderedIDs[anidx]
-        #     thisclass = classdictionary[anid]
-        #     if thisclass == 1:
-        #         numpositive += 1
-        #     else:
-        #         numnegative += 1
-        # print("Numpositive " + str(numpositive) + " numnegative " + str(numnegative))
+    # Let's record, for each volume, the size of its training set.
 
+    numvolumes = len(orderedIDs)
+    for idx, anid in enumerate(orderedIDs):
+        excluded = len(authormatches[idx])
+        metadict[anid]['trainsize'] = numvolumes - excluded
 
     for alist in authormatches:
         alist.sort(reverse = True)
@@ -699,7 +693,7 @@ def create_model(paths, exclusions, classifyconditions):
 
     with open(outputpath, mode = 'w', encoding = 'utf-8') as f:
         writer = csv.writer(f)
-        header = ['volid', 'dateused', 'pubdate', 'birthdate', 'firstpub', 'gender', 'nation', 'allwords', 'logistic', 'realclass', 'trainflag', 'author', 'title', 'genretags']
+        header = ['volid', 'dateused', 'pubdate', 'birthdate', 'firstpub', 'gender', 'nation', 'allwords', 'logistic', 'realclass', 'trainflag', 'trainsize', 'author', 'title', 'genretags']
         writer.writerow(header)
         for volid in IDsToUse:
             metadata = metadict[volid]
@@ -715,8 +709,9 @@ def create_model(paths, exclusions, classifyconditions):
             logistic = logisticpredictions[volid]
             realclass = classdictionary[volid]
             trainflag = metadata['trainflag']
+            trainsize = metadata['trainsize']
             genretags = ' | '.join(metadata['tagset'])
-            outrow = [volid, dateused, pubdate, birthdate, firstpub, gender, nation, allwords, logistic, realclass, trainflag, author, title, genretags]
+            outrow = [volid, dateused, pubdate, birthdate, firstpub, gender, nation, allwords, logistic, realclass, trainflag, trainsize, author, title, genretags]
             writer.writerow(outrow)
             allvolumes.append(outrow)
 
