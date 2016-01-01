@@ -90,7 +90,7 @@ def make_exclusions(startdate, enddate, sizecap, negatives):
     excludeabove['firstpub'] = enddate
 
     if negatives != 'nonegatives':
-        excludeif['negatives'] = negatives
+        excludeif['negatives'] = set(negatives)
     # This is a way to exclude certain tags from the negative contrast set.
 
     return (excludeif, excludeifnot, excludebelow, excludeabove, sizecap)
@@ -182,6 +182,63 @@ def project_tag_to_another(tagtoproject, tagtarget):
 
     positive_tags = [tagtarget, tagtoproject]
     testconditions = {tagtarget}
+    # That's the line that actually excludes tagtarget from training.
+
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+
+    print('If we divide the second dataset at 0.5, accuracy is: ', str(rawaccuracy))
+    print()
+
+    # Now we compare the predictions made by these two models, comparing only
+    # the volumes that are in both models but excluded from the training process
+    # in the second model.
+
+    comparemodels.compare_untrained(outputpath1, outputpath2)
+
+def project_tags(tagstoproject, tagtargets):
+
+    targetstring = ','.join(tagtargets)
+    projectstring = ','.join(tagstoproject)
+
+    print('First we create a model of ' + targetstring)
+
+    sizecap = 400
+
+    modelname = targetstring + 'byitself'
+    paths = make_paths(modelname)
+    sourcefolder, extension, metadatapath, outputpath1, vocabpath = paths
+
+    exclusions = make_exclusions(0, 2000, sizecap, tagstoproject)
+    # Note that we exclude tagstoproject from the negative contrast set, so the
+    # contrast sets for the two models will be identical.
+
+    positive_tags = tagtargets
+    negative_tags = ['random', 'chirandom']
+    testconditions = set()
+
+    datetype = "firstpub"
+    numfeatures = 10000
+    regularization = .000075
+
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+
+    print('If we divide the dataset with a horizontal line at 0.5, accuracy is: ', str(rawaccuracy))
+    print()
+    print('Then we create a model of ' + projectstring + ' and use it to predict ' + targetstring)
+
+    modelname = projectstring + 'predicts' + targetstring
+    paths = make_paths(modelname)
+    sourcefolder, extension, metadatapath, outputpath2, vocabpath = paths
+
+    exclusions = make_exclusions(0, 2001, sizecap, 'nonegatives')
+
+    positive_tags = list(tagtargets)
+    positive_tags.extend(tagstoproject)
+    testconditions = set(tagtargets)
     # That's the line that actually excludes tagtarget from training.
 
     classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
@@ -332,6 +389,131 @@ def replicate_detective():
         for accuracy in accuracies:
             f.write(str(accuracy) + '\n')
 
+def calibrate_detective():
+    '''
+    Tests accuracy of classification for detective fiction at different sample
+    sizes.
+    '''
+
+    modelname = 'calibratedet'
+    paths = make_paths(modelname)
+
+    ## EXCLUSIONS.
+
+    excludeif = dict()
+    excludeifnot = dict()
+    excludeabove = dict()
+    excludebelow = dict()
+
+    excludebelow['firstpub'] = 1700
+    excludeabove['firstpub'] = 2020
+
+
+    positive_tags = ['locdetective', 'locdetmyst', 'chimyst', 'locdetmyst', 'det100']
+    negative_tags = ['random', 'chirandom']
+    testconditions = set()
+
+    datetype = "firstpub"
+    numfeatures = 10000
+    regularization = .000075
+
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    sizes = [7,8,9,10,11,12,15,20,25,30,35,40,45,50,60,70,80,90,100,110,120,130,140,150]
+
+    with open('../results/collateddetectiveaccuracies.tsv', mode = 'a', encoding = 'utf-8') as f:
+            f.write('sizecap\tavgsize\trawaccuracy\n')
+
+    accuracies = []
+    for sizecap in sizes:
+
+        exclusions = (excludeif, excludeifnot, excludebelow, excludeabove, sizecap)
+
+        rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+
+        trainsizes = []
+        for vol in allvolumes:
+            trainsizes.append(vol[11])
+            # this is unfortunately dependent on the exact way
+            # logisticpredict formats its output
+
+        avgsize = sum(trainsizes) / len(trainsizes)
+
+        print(sizecap, avgsize, rawaccuracy)
+        with open('../results/collateddetectiveaccuracies.tsv', mode = 'a', encoding = 'utf-8') as f:
+            f.write(str(sizecap) + '\t' + str(avgsize) + '\t' + str(rawaccuracy) + '\n')
+
+    return None
+
+def calibrate_stew():
+    '''
+    Tests accuracy of classification for ghastly stew at different sample
+    sizes.
+    '''
+
+    modelname = 'calibratestew'
+    paths = make_paths(modelname)
+
+    ## EXCLUSIONS.
+
+    excludeif = dict()
+    excludeifnot = dict()
+    excludeabove = dict()
+    excludebelow = dict()
+
+    excludebelow['firstpub'] = 1700
+    excludeabove['firstpub'] = 2020
+
+
+    allstewgenres = {'cozy', 'hardboiled', 'det100', 'chimyst', 'locdetective', 'lockandkey', 'crime', 'locdetmyst', 'blcrime', 'anatscifi', 'locscifi', 'chiscifi', 'femscifi', 'stangothic', 'pbgothic', 'lochorror', 'chihorror', 'locghost'}
+
+    # We have to explicitly exclude genres because the category "stew" in the
+    # positive category wouldn't otherwise automatically exclude the constituent
+    # tags that were used to create it.
+
+    # I would just have put all those tags in the positive tag list, but then you'd lose
+    # the ability to explicitly balance equal numbers of crime, gothic,
+    # and science fiction, plus sensation novels. You'd get a list dominated by
+    # the crime categories, which are better-represented in the dataset.
+
+    excludeif['negatives'] = allstewgenres
+
+    positive_tags = ['stew']
+    negative_tags = ['random', 'chirandom']
+    testconditions = set()
+
+    datetype = "firstpub"
+    numfeatures = 10000
+    regularization = .000075
+
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    sizes = [7,8,9,10,11,12,15,20,25,30,35,40,45,50,60,70,80,90,100,110,120,130,140,150]
+
+    with open('../results/collatedstewaccuracies.tsv', mode = 'a', encoding = 'utf-8') as f:
+            f.write('sizecap\tavgsize\trawaccuracy\n')
+
+    accuracies = []
+    for sizecap in sizes:
+
+        exclusions = (excludeif, excludeifnot, excludebelow, excludeabove, sizecap)
+
+        rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+
+        trainsizes = []
+        for vol in allvolumes:
+            trainsizes.append(vol[11])
+            # this is unfortunately dependent on the exact way
+            # logisticpredict formats its output
+
+        avgsize = sum(trainsizes) / len(trainsizes)
+
+        print(sizecap, avgsize, rawaccuracy)
+        with open('../results/collatedstewaccuracies.tsv', mode = 'a', encoding = 'utf-8') as f:
+            f.write(str(sizecap) + '\t' + str(avgsize) + '\t' + str(rawaccuracy) + '\n')
+
+    return None
+
 def project_gothic_beyond_date(dividedate):
 
     print('First we create a model of gothic fiction only after ' + str(dividedate))
@@ -384,6 +566,7 @@ def project_gothic_beyond_date(dividedate):
 if __name__ == '__main__':
 
     args = sys.argv
+    command = ''
 
     if len(args) < 2:
 
@@ -392,6 +575,9 @@ if __name__ == '__main__':
         print('  2) Extrapolate a model of detective fiction beyond a particular date.')
         print('  3) Extrapolate a model of one tag to another.')
         print('  4) Extrapolate a model of gothic fiction beyond a particular date.')
+        print('  5) Extrapolate a model of several tags to several others.')
+        print('  6) Run detective prediction at many diff sizes.')
+        print('  7) Run ghastly stew prediction at many diff sizes.')
 
         userchoice = int(input('\nyour choice: '))
 
@@ -405,6 +591,13 @@ if __name__ == '__main__':
         elif userchoice == 4:
             command = 'extrapolate_gothic_date'
             dividedate = int(input('date beyond which to project: '))
+        elif userchoice == 5:
+            command = 'extrapolate_tags'
+        elif userchoice == 6:
+            calibrate_detective()
+        elif userchoice == 7:
+            calibrate_stew()
+
 
     else:
         command = args[1]
@@ -416,8 +609,8 @@ if __name__ == '__main__':
         project_detective_beyond_date(dividedate)
 
     if command == 'extrapolate_tag':
-        tagtoproject = input('tag to project: ')
-        tagtarget = input('tag to model: ')
+        tagtoproject = input('tag to project from: ')
+        tagtarget = input('tag to project onto: ')
         project_tag_to_another(tagtoproject, tagtarget)
 
     if command == 'extrapolate_gothic_date':
@@ -425,9 +618,14 @@ if __name__ == '__main__':
             dividedate = int(input('date beyond which to project: '))
         project_gothic_beyond_date(dividedate)
 
+    if command == 'extrapolate_tags':
+        tagstoproject = input('comma-separated list of tags to model and project from: ')
+        tagstoproject = [x.strip() for x in tagstoproject.split(',')]
+        tagtargets = input('comma-separated list of tags project onto: ')
+        tagtargets = [x.strip() for x in tagtargets.split(',')]
+        project_tags(tagstoproject, tagtargets)
 
-
-
+    print('Done.')
 
 
 
