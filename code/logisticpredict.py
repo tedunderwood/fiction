@@ -606,10 +606,15 @@ def create_model(paths, exclusions, classifyconditions):
 
     # Let's record, for each volume, the size of its training set.
 
+    trainingsizes = []
+
     numvolumes = len(orderedIDs)
     for idx, anid in enumerate(orderedIDs):
         excluded = len(authormatches[idx])
         metadict[anid]['trainsize'] = numvolumes - excluded
+        trainingsizes.append(metadict[anid]['trainsize'])
+
+    averagetrainingsize = sum(trainingsizes) / len(trainingsizes)
 
     for alist in authormatches:
         alist.sort(reverse = True)
@@ -762,6 +767,10 @@ def create_model(paths, exclusions, classifyconditions):
     print('True negatives ' + str(truenegatives))
     print('False positives ' + str(falsepositives))
     print('False negatives ' + str(falsenegatives))
+
+    print()
+    print('The average size of the training set was ' + str(averagetrainingsize))
+    print()
 
     precision = truepositives / (truepositives + falsepositives)
     recall = truepositives / (truepositives + falsenegatives)
