@@ -19,7 +19,7 @@ Right now the most complete set of metadata is in finalmeta.csv.
 
 code
 ----
-(Mostly Python) code.
+(Mostly Python) code. The key modules for modeling are logisticpredict, metafilter, modelingprocess, and metautils. replicate.py is (going to be) the script that allows readers to reproduce the particular settings I used for tests in the article. Not finalized yet.
 
 plot
 ----
@@ -28,7 +28,7 @@ plot
 workflow
 --------
 
-The dataset-creation workflow is a mess because we're assembling volumes from multiple sources and doing a lot of manual tagging. But it starts by randomly selecting volumes from existing corpora, guided by LoC tags, using scripts like get_chicago_data and find_genre_fiction. I add volumes one by one from bibliographies, using fiction_browser and tag_chicago_data. 
+The dataset-creation workflow is a mess because I'm assembling volumes from multiple sources and doing a lot of manual tagging. But it starts by randomly selecting volumes from existing corpora, guided by LoC tags, using scripts like get_chicago_data and find_genre_fiction. I add volumes one by one from bibliographies, using fiction_browser and tag_chicago_data. 
 
 This leaves me with two separate metadata files (hathigenremeta and chicagometa). To actually get the hathi data I run list_of_missing_vols and then rsync the resulting volume list up to Taub.
 

@@ -1,9 +1,29 @@
 fiction/code
 ============
 
+replicate.py
+------------
+When I'm done, this will be the central script that you call to reproduce tests from the article. I hope to key different functions to figure numbers.
+
+logisticpredict.py
+------------------
+The main modeling script, called by replicate.py with specific parameters. Does leave-one-out crossvalidation by author.
+
+modelingprocess.py
+------------------
+Actually does the modeling for each pass of leave-one-out crossvalidation.
+
+metafilter.py
+-------------
+Filters metadata to create sets of volumes matching particular sets of "tags" specified by parameters in logisticpredict. Can also identify a set of volumes that are to be tested only -- never included in the training set.
+
+metautils.py
+------------
+Simple utility for munging metadata, called by both logisticpredict and metafilter.
+
 fiction_browser.py
 ------------------
-Interactively selects fiction volumes in particular genres from HathiTrust metadata and adds them to metadata.
+In the data creation process, interactively selects fiction volumes in particular genres from HathiTrust metadata and adds them to metadata.
 
 tag_chicago_data.py
 -------------------
@@ -15,7 +35,7 @@ Selects random volumes and interactively allows user to approve them, plus provi
 
 logisticleave1out.py
 --------------------
-Does modeling, calling metafilter.py and modelingprocess.py.
+Old version of logisticpredict. Even on github, sometimes my code repos accumulate "old versions" that I'm afraid to throw out.
 
 entropyfunctions.py
 -------------------
