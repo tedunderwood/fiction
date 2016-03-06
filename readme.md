@@ -1,11 +1,13 @@
 fiction
 =======
 
-Code and data for a project exploring the history of fictional genres. 
+Code and data for a project supporting the article, "The Life Cycles of Genres." 
 
-The strategy is not to rely on any single definition of genre, but to gather a bunch of _different_ sources of social testimony about overlapping genre categories. "Librarians have tagged these books as 'science fiction,' but here's a more inclusive bibliography of 'speculative fiction,' so let's record that too -- and so on."
+The data model here assumes that genre designations are situated and perspectival. An observer in a particular place and time groups a particular set of works and calls them 'crime fiction,' or what have you. We don't necessarily know that anyone else will agree; a different observer could group different works as 'crime fiction,' or 'detective fiction.' Nothing prevents some of the works from also being 'science fiction.' For that matter, some works can belong to no genre at all.
 
-We'll then use predictive modeling to map relations of similarity and dissimilarity between these different definitions of genre, and, ultimately, to trace macroscopic histories of generic differentiation or convergence.
+In short, every work can carry any number of genre tags, from zero upward. The compatibility of different definitions becomes an empirical question. Do different observers actually agree about detective fiction? Can a model trained on one observer's claims about detective fiction also predict crime fiction?
+
+We use predictive modeling to test these questions.
 
 final
 ----
