@@ -72,7 +72,7 @@ def make_paths(modelname):
 
     sourcefolder = '../newdata/'
     extension = '.fic.tsv'
-    metadatapath = '../meta/stewmeta.csv'
+    metadatapath = '../meta/finalmeta.csv'
     vocabpath = '../lexicon/new10k.csv'
     # These words will be used as features
 
@@ -419,7 +419,7 @@ def calibrate_detective():
 
     classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
 
-    sizes = [160,165]
+    sizes = [6,7,8,9,11,13,16,18,21,27]
 
     # with open('../results/collateddetectiveaccuracies.tsv', mode = 'a', encoding = 'utf-8') as f:
     #         f.write('sizecap\tavgsize\trawaccuracy\n')
@@ -440,7 +440,7 @@ def calibrate_detective():
         avgsize = sum(trainsizes) / len(trainsizes)
 
         print(sizecap, avgsize, rawaccuracy)
-        with open('../results/collateddetectiveaccuracies.tsv', mode = 'a', encoding = 'utf-8') as f:
+        with open('../final/collateddetaccuracies.tsv', mode = 'a', encoding = 'utf-8') as f:
             f.write(str(sizecap) + '\t' + str(avgsize) + '\t' + str(rawaccuracy) + '\n')
 
     return None
@@ -488,7 +488,7 @@ def calibrate_stew():
 
     classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
 
-    sizes = [160,165]
+    sizes = [6,18,22,65]
 
     # with open('../results/collatedstewaccuracies.tsv', mode = 'a', encoding = 'utf-8') as f:
     #         f.write('sizecap\tavgsize\trawaccuracy\n')
@@ -509,7 +509,7 @@ def calibrate_stew():
         avgsize = sum(trainsizes) / len(trainsizes)
 
         print(sizecap, avgsize, rawaccuracy)
-        with open('../results/collatedstewaccuracies.tsv', mode = 'a', encoding = 'utf-8') as f:
+        with open('../final/collatedstewaccuracies.tsv', mode = 'a', encoding = 'utf-8') as f:
             f.write(str(sizecap) + '\t' + str(avgsize) + '\t' + str(rawaccuracy) + '\n')
 
     return None
