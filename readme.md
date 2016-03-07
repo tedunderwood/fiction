@@ -19,6 +19,10 @@ Metadata for the project.
 
 Right now the most complete set of metadata is in finalmeta.csv. 
 
+data
+----
+The data used in the model: tables of word counts for each volume, as separate files.
+
 code
 ----
 (Mostly Python) code. The key modules for modeling are logisticpredict, metafilter, modelingprocess, and metautils. replicate.py is (going to be) the script that allows readers to reproduce the particular settings I used for tests in the article. Not finalized yet.

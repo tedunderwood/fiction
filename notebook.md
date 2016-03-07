@@ -51,3 +51,8 @@ But most importantly, reran logisticleave1out on the new dataset and identified 
 2. The Rise and Fall of Genre -- proposed title. There's a very marked pattern where genres differentiate in the 19c, reach peak differentiation around 1940-50, and then reconverge. It's clearest with detective/crime fiction. But also holds e.g. with crime vs. scifi. The convergence is actually clearer than the differentiation. Probably has to do with increasing quotidian realism in genre fiction, but that's a speculation at this point. Also, see "sanity check" above for an important source of doubt that needs to be explored.
 
 3. The overarching thesis, uniting 1 & 2: "genre" is not a historically stable analytic category.
+
+Monday, March 7th, 2016
+-----------------------
+
+Well, evidently I stopped keeping this notebook very reliably in September. :)
