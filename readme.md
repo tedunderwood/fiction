@@ -9,7 +9,7 @@ In short, every work can carry any number of genre tags, from zero upward. The c
 
 We use predictive modeling to test these questions. If you want to replicate the results here you'll need Python 3 and a copy of this repository. Running code/replicate.py will give you a range of modeling options keyed to particular sections of the article. The script will draw on metadata in meta/finalmeta.csv, and wordcount files in the newdata directory.
 
-Because many of the books here are under copyright or otherwise encumbered with intellectual property agreements, I haveto share wordcounts rather than original texts. If you want to consult texts in HathiTrust before 1922, it's usually possible to find them by pasting the Hathi volume id into a link of this form:
+Because many of the books here are under copyright or otherwise encumbered with intellectual property agreements, I have to share wordcounts rather than original texts. If you want to consult texts in HathiTrust before 1922, it's usually possible to find them by pasting the Hathi volume id into a link of this form:
 
 [http://babel.hathitrust.org/cgi/pt?id=uiuo.ark:/13960/t7wm20x0v](http://babel.hathitrust.org/cgi/pt?id=uiuo.ark:/13960/t7wm20x0v)
 
