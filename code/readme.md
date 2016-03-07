@@ -3,7 +3,7 @@ fiction/code
 
 replicate.py
 ------------
-When I'm done, this will be the central script that you call to reproduce tests from the article. I hope to key different functions to figure numbers.
+The central script that you call to reproduce tests from the article. If you run it interactively, it will query you and ask you which part of the project you want to reproduce. You can also specify other settings to compare other sets of genres.
 
 logisticpredict.py
 ------------------
