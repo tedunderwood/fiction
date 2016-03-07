@@ -7,7 +7,9 @@ The data model here assumes that genre designations are situated and perspectiva
 
 In short, every work can carry any number of genre tags, from zero upward. The compatibility of different definitions becomes an empirical question. Do different observers actually agree about detective fiction? Can a model trained on one observer's claims about detective fiction also predict crime fiction?
 
-We use predictive modeling to test these questions.
+We use predictive modeling to test these questions. If you want to replicate the results here you'll need Python 3 and a copy of this repository. Running code/replicate.py will give you a range of modeling options keyed to particular aspects of the article. It will draw on metadata in meta/finalmeta.csv, and wordcount files in the newdata directory.
+
+Because many of the books here are under copyright or otherwise encumbered with intellectual property agreements, I cannot easily share the original texts.
 
 final
 ----
@@ -19,35 +21,15 @@ Metadata for the project.
 
 Right now the most complete set of metadata is in finalmeta.csv. 
 
-data
+newdata
 ----
-The data used in the model: tables of word counts for each volume, as separate files.
+The data used in the model: tables of word counts for each volume, as separate files. No, there is no olddata.
 
 code
 ----
-(Mostly Python) code. The key modules for modeling are logisticpredict, metafilter, modelingprocess, and metautils. replicate.py is (going to be) the script that allows readers to reproduce the particular settings I used for tests in the article. Not finalized yet.
+Code for the modeling process. The key modules for modeling are logisticpredict, metafilter, modelingprocess, and metautils. replicate.py is a script that allows readers to reproduce the particular settings I used for tests in the article. Not finalized yet, but getting close.
 
 plot
 ----
-(Mostly R) scripts for visualization.
+(Mostly R) scripts for plotting in the sense of "dataviz." Has nothing to do with fictional plots.
 
-workflow
---------
-
-The dataset-creation workflow is a mess because I'm assembling volumes from multiple sources and doing a lot of manual tagging. But it starts by randomly selecting volumes from existing corpora, guided by LoC tags, using scripts like get_chicago_data and find_genre_fiction. I add volumes one by one from bibliographies, using fiction_browser and tag_chicago_data. 
-
-This leaves me with two separate metadata files (hathigenremeta and chicagometa). To actually get the hathi data I run list_of_missing_vols and then rsync the resulting volume list up to Taub.
-
-At that point, two commands in code/extract:
-
-python3 extract.py -v -g fic -idfile filestoget2015-08-30.txt -o /projects/ichass/usesofscale/sampletexts/ -rh
-
-to get pre1900 and
-
-python3 extract.py -v -g fic -idfile filestoget2015-08-30.txt -o /projects/ichass/usesofscale/sampletexts/ -rh -index 20cpredictions.index -root /projects/ichass/usesofscale/20c/
-
-to get post1900
-
-Equivalent chicago process starts with gather_chicago, and proceeds through 
-
-python NormalizeOneFolder.py /Volumes/TARDIS/US_Novel_Corpus/selected/ /Volumes/TARDIS/US_Novel_Corpus/selectcounts/
