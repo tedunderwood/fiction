@@ -307,6 +307,14 @@ def get_donttrainset(all_positives, positive_tags, metadict, donttrainconditions
         if hasexclusion and not hasotherpositive:
             donttrainset.add(posvol)
 
+    # The following paragraph allows us to limit the size of the
+    # donttrainset by including a tag like "limit==250"
+    for tag in donttrainconditions:
+        if 'limit==' in tag:
+            limit = int(tag.replace('limit==', ''))
+            if limit < len(donttrainset):
+                donttrainset = set(random.sample(donttrainset, limit))
+
     return donttrainset
 
 def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, sizecap, datetype, excludeif, donttrainconditions):
@@ -382,11 +390,6 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
     else:
         positives = list(trainable_positives)
 
-    # Then we go ahead and add all the test-only positives. There
-    # is not usually a reason to cap their size.
-
-    positives.extend(donttrainset)
-
     # If there's a sizecap we also want to ensure classes have
     # matching sizes and roughly equal distributions over time.
     # This is set up to assume that the negatives will be the
@@ -431,6 +434,11 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
 
     else:
         negatives = list(all_negatives)
+
+    # Finally we go ahead and add all the test-only positives. There
+    # is not usually a reason to cap their size.
+
+    positives.extend(donttrainset)
 
     # Now we have two lists of ids.
 

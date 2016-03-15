@@ -240,6 +240,12 @@ def confirm_testconditions(testconditions, positive_tags):
             print("You have instructed me that positive volumes matching only a")
             print("positive tag in the test-but-not-train group should not be matched")
             print("with negative volumes.")
+        elif elem.startswith('limit=='):
+            limit = elem.replace('limit==', '')
+            print()
+            print("You have instructed me to allow only "+ limit)
+            print("volumes in the do-not-train set.")
+            print()
         else:
             print('Illegal element in testconditions.')
             sys.exit(0)
@@ -582,27 +588,32 @@ def create_model(paths, exclusions, classifyconditions):
     print('Training positives: ' + str(len(trainingpositives)))
     print('Training negatives: ' + str(len(trainingnegatives)))
 
-    for alist in authormatches:
-        numpositive = 0
-        numnegative = 0
-        for anidx in alist:
-            anid = orderedIDs[anidx]
-            thisclass = classdictionary[anid]
-            if thisclass == 1:
-                numpositive += 1
-            else:
-                numnegative += 1
+    # The code below was intended to balance the size of positive and
+    # negative in spite of same-author exclusions. But it could
+    # have grossly unintended effects when there were many donttrainon
+    # exclusions.
 
-        if numpositive > numnegative:
-            difference = numpositive - numnegative
-            remaining = trainingnegatives - set(alist)
-            alist.extend(random.sample(remaining, difference))
-        elif numpositive < numnegative:
-            difference = numnegative - numpositive
-            remaining = trainingpositives - set(alist)
-            alist.extend(random.sample(remaining, difference))
-        else:
-            difference = 0
+    # for alist in authormatches:
+    #     numpositive = 0
+    #     numnegative = 0
+    #     for anidx in alist:
+    #         anid = orderedIDs[anidx]
+    #         thisclass = classdictionary[anid]
+    #         if thisclass == 1:
+    #             numpositive += 1
+    #         else:
+    #             numnegative += 1
+
+    #     if numpositive > numnegative:
+    #         difference = numpositive - numnegative
+    #         remaining = trainingnegatives - set(alist)
+    #         alist.extend(random.sample(remaining, difference))
+    #     elif numpositive < numnegative:
+    #         difference = numnegative - numpositive
+    #         remaining = trainingpositives - set(alist)
+    #         alist.extend(random.sample(remaining, difference))
+    #     else:
+    #         difference = 0
 
     # Let's record, for each volume, the size of its training set.
 
@@ -922,7 +933,7 @@ if __name__ == '__main__':
     # allstewgenres = {'cozy', 'hardboiled', 'det100', 'chimyst', 'locdetective', 'lockandkey', 'crime', 'locdetmyst', 'blcrime', 'anatscifi', 'locscifi', 'chiscifi', 'femscifi', 'stangothic', 'pbgothic', 'lochorror', 'chihorror', 'locghost'}
     # excludeif['negatives'] = allstewgenres
 
-    sizecap = 400
+    sizecap = 160
 
     # CLASSIFY CONDITIONS
 
