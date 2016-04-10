@@ -46,9 +46,12 @@ def get_metadata(classpath, volumeIDs, excludeif, excludeifnot, excludebelow, ex
         reader = csv.DictReader(f)
 
         anonctr = 0
+        allidsinmeta = set()
 
         for row in reader:
             volid = row['docid']
+            allidsinmeta.add(volid)
+
             tagstring = row['genretags'].strip()
             taglist = tagstring.split('|')
             tagset = set([x.strip() for x in taglist])
@@ -108,12 +111,15 @@ def get_metadata(classpath, volumeIDs, excludeif, excludeifnot, excludebelow, ex
     # in the list of volumeIDs -- ultimately extracted from the
     # filenames present in a data folder.
 
-    allidsinmeta = set([x for x in metadict.keys()])
+    allidsaccepted = set([x for x in metadict.keys()])
     allidsindir = set(volumeIDs)
     missinginmeta = len(allidsindir - allidsinmeta)
     missingindir = len(allidsinmeta - allidsindir)
-    print("We have " + str(missinginmeta) + " volumes in missing in metadata, and")
-    print(str(missingindir) + " volumes missing in the directory.")
+    excluded = len(allidsinmeta - allidsaccepted)
+    print("There are " + str(len(allidsinmeta)) + " volumes described in metadata.")
+    print("Of those, " + str(missingindir) + " were missing in the directory.")
+    print(str(missinginmeta) + " volumes in the directory were missing in metadata.")
+    print("There were also " + str(excluded) + " volumes excluded from the model by *excludeif*.")
 
     intersectiondict = dict()
 
@@ -390,6 +396,10 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
     else:
         positives = list(trainable_positives)
 
+    positives.extend(donttrainset)
+    # We add back the donttrainset, which has already been limited by
+    # a limit condition in donttrainconditions.
+
     # If there's a sizecap we also want to ensure classes have
     # matching sizes and roughly equal distributions over time.
     # This is set up to assume that the negatives will be the
@@ -398,11 +408,11 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
     # selected' volumes. Our goal is to match its distribution
     # as closely as possible, using the datetype we're matching
     # on (e.g. firstpub or birthdate) as well as gender and
-    # nationality
+    # nationality.
 
     numpositives = len(positives)
 
-    if sizecap > 0 and len(all_negatives) > numpositives:
+    if sizecap > 0:
         if categorytodivideon == 'tagset':
             negative_metadata = [metadict[x] for x in all_negatives]
             negatives = list()
@@ -414,11 +424,13 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
                     # in the test-only donttrainset do not need to be
                     # matched with negative counterparts
 
+                if len(negative_metadata) < 0:
+                    continue
+
                 this_positive = metadict[anid]
 
                 closest_negative_idx = closest_idx(negative_metadata, this_positive, datetype)
                 closest_negative = negative_metadata.pop(closest_negative_idx)
-                # print(closest_negative)
                 negatives.append(closest_negative['docid'])
 
                 if anid in donttrainset:
@@ -434,11 +446,6 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
 
     else:
         negatives = list(all_negatives)
-
-    # Finally we go ahead and add all the test-only positives. There
-    # is not usually a reason to cap their size.
-
-    positives.extend(donttrainset)
 
     # Now we have two lists of ids.
 

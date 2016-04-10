@@ -95,6 +95,32 @@ def make_exclusions(startdate, enddate, sizecap, negatives):
 
     return (excludeif, excludeifnot, excludebelow, excludeabove, sizecap)
 
+def model_taglist(positive_tags, modelname):
+    print('We are modeling these positive tags:')
+    for tag in positive_tags:
+        print(tag)
+
+    sizecap = 1000
+    paths = make_paths(modelname)
+    sourcefolder, extension, metadatapath, outputpath, vocabpath = paths
+
+    exclusions = make_exclusions(0, 2000, sizecap, 'nonegatives')
+
+    negative_tags = ['random', 'chirandom']
+    testconditions = set()
+
+    datetype = "firstpub"
+    numfeatures = 10000
+    regularization = .000075
+
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+
+    print('If we divide the dataset with a horizontal line at 0.5, accuracy is: ', str(rawaccuracy))
+
+    return allvolumes
+
 def project_detective_beyond_date(dividedate):
 
     print('First we create a model of detective fiction only after ' + str(dividedate))
@@ -234,7 +260,7 @@ def project_tags(tagstoproject, tagtargets):
     paths = make_paths(modelname)
     sourcefolder, extension, metadatapath, outputpath2, vocabpath = paths
 
-    exclusions = make_exclusions(0, 2001, sizecap, 'nonegatives')
+    exclusions = make_exclusions(0, 2000, sizecap, 'nonegatives')
 
     positive_tags = list(tagtargets)
     positive_tags.extend(tagstoproject)
@@ -578,6 +604,10 @@ if __name__ == '__main__':
         print('  5) Extrapolate a model of several tags to several others.')
         print('  6) Run detective prediction at many diff sizes.')
         print('  7) Run ghastly stew prediction at many diff sizes.')
+        print('  8) Model LOC "detective" fiction by itself.')
+        print('  9) Model Indiana detective fiction by itself.')
+        print('  10) Model LOC and Indiana together.')
+        print('  11) Try to use detective fiction to predict scifi (fails).')
 
         userchoice = int(input('\nyour choice: '))
 
@@ -597,11 +627,35 @@ if __name__ == '__main__':
             calibrate_detective()
         elif userchoice == 7:
             calibrate_stew()
+        elif userchoice == 8:
+            tagstomodel = ['locdetmyst', 'locdetective', 'chimyst']
+            modelname = 'LOCdetective'
+            allvolumes = model_taglist(tagstomodel, modelname)
+            print('Results are in allvolumes.')
+        elif userchoice == 9:
+            tagstomodel = ['det100']
+            modelname = 'IndianaDetective'
+            allvolumes = model_taglist(tagstomodel, modelname)
+            print('Results are in allvolumes.')
+        elif userchoice == 10:
+            tagstomodel = ['det100', 'locdetmyst', 'locdetective', 'chimyst']
+            modelname = 'AllDetective'
+            allvolumes = model_taglist(tagstomodel, modelname)
+            print('Results are in allvolumes.')
+        elif userchoice == 11:
+            projectfrom = 'chimyst'
+            projectonto = 'chiscifi'
+            project_tag_to_another(projectfrom, projectonto)
 
 
     else:
         command = args[1]
         dividedate = 0
+
+    if command == 'extrapolate_indiana':
+        tagtoproject = ['locdetmyst', 'locdetective', 'chimyst']
+        tagtarget = ['det100']
+        project_tags(tagtoproject, tagtarget)
 
     if command == 'extrapolate_detective_date':
         if dividedate == 0:
