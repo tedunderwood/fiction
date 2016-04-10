@@ -12,7 +12,7 @@ p <- ggplot(l, aes(x = dateused, y = logistic, color = reviewed, shape = reviewe
   scale_color_manual(name = "actually\n", values = c('gray70', 'red2', 'chartreuse3', 'darkcyan', 'blue')) + 
   theme(text = element_text(size = 16)) + 
   scale_size_manual(name = "actually\n", values = c(2,2,3,3,3)) +
-  scale_y_continuous('Predicted probability of beng detective fiction\n', labels = percent, breaks = c(0.25,0.5,0.75)) + 
+  scale_y_continuous('Predicted probability of being detective fiction\n', labels = percent, breaks = c(0.25,0.5,0.75)) + 
   scale_x_continuous("", breaks = c(1850,1900,1950,1989)) 
 plot(p)
 

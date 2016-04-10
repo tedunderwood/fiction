@@ -10,12 +10,13 @@ stew <- read.csv('/Users/tunder/Dropbox/fiction/final/collatedstewaccuracies.tsv
 
 makeribbon <- function(frame, label) {
   framelen = dim(frame)[1]
-  f <- loess(rawaccuracy ~ avgsize, frame)
+  f <- loess(rawaccuracy ~ avgsize, frame, span = 0.85)
   predictions = predict(f)
   errors <- abs(f$y - predictions)
   up = c()
   low = c()
-
+  
+  lastradius = 100
   xseq = frame$avgsize
   for (i in 1:framelen) {
     start = i - 7
@@ -26,15 +27,26 @@ makeribbon <- function(frame, label) {
     meanerror = mean(errors[start:end])
     sderror = sd(errors[start:end])
     intervalradius = meanerror + (sderror * 0.82)
+    if (xseq[i] > 90 & intervalradius > lastradius) {
+      intervalradius = lastradius
+    }
+    lastradius = intervalradius
+    
     # This calculates a 90% prediction band; in other words, 90% of
     # data points should lie within the shaded area. It's 0.82
-    # instead of 1.64 because I'm doing this one-tailed
+    # instead of 1.64 because I'm doing this one-tailed; i.e., for
+    # one half of the band.
+    
+    # The business about lastradius is a kludge because it's computationally
+    # expensive to run a lot of large models.
+    # I know the variance of prediction accuracy doesn't actually increase,
+    # so I just don't let it increase.
     
     up <- c(up, predictions[i] + intervalradius)
     low <- c(low, predictions[i] - intervalradius)
   }
-  up = predict(loess(y ~ x, data.frame(x = xseq, y = up), span = 0.5))
-  low = predict(loess(y ~ x, data.frame(x = xseq, y = low), span = 0.5))
+  up = predict(loess(y ~ x, data.frame(x = xseq, y = up)))
+  low = predict(loess(y ~ x, data.frame(x = xseq, y = low)))
   df <- data.frame(x = frame$avgsize/2, upperbound = up, lowerbound = low, line = predictions, genre = as.factor(rep(label, framelen)))
   return(df)
 }
@@ -44,8 +56,8 @@ predictstew <- makeribbon(stew, '\nmixture\n')
 
 df <- rbind(predictdet, predictstew)
 
-samplesizes = c(38.6, 100, 186.5, 326.3)
-accuracies = c(.833, .788, .768, .767)
+samplesizes = c(40.3, 111.8, 188.2, 328.1)
+accuracies = c(.810, .781, .779, .770)
 points = data.frame(x = samplesizes/2, y = accuracies)
 
 p <- ggplot(df, aes(x = x)) + geom_line(aes(y = line, color = genre)) + 
