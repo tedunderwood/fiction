@@ -39,7 +39,6 @@ def get_metadata(classpath, volumeIDs, excludeif, excludeifnot, excludebelow, ex
     It also accepts four dictionaries containing criteria that will exclude volumes
     from the modeling process.
     '''
-    print(classpath)
     metadict = dict()
 
     with open(classpath, encoding = 'utf-8') as f:
@@ -415,6 +414,7 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
     if sizecap > 0:
         if categorytodivideon == 'tagset':
             negative_metadata = [metadict[x] for x in all_negatives]
+            random.shuffle(negative_metadata)
             negatives = list()
 
             for anid in positives:

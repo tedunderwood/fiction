@@ -121,6 +121,32 @@ def model_taglist(positive_tags, modelname):
 
     return allvolumes
 
+def model_taglist_within_dates(positive_tags, modelname, mindate, maxdate):
+    print('We are modeling these positive tags:')
+    for tag in positive_tags:
+        print(tag)
+
+    sizecap = 1000
+    paths = make_paths(modelname)
+    sourcefolder, extension, metadatapath, outputpath, vocabpath = paths
+
+    exclusions = make_exclusions(mindate, maxdate, sizecap, 'nonegatives')
+
+    negative_tags = ['random', 'chirandom']
+    testconditions = set()
+
+    datetype = "firstpub"
+    numfeatures = 10000
+    regularization = .000075
+
+    classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
+
+    rawaccuracy, allvolumes, coefficientuples = logisticpredict.create_model(paths, exclusions, classifyconditions)
+
+    print('If we divide the dataset with a horizontal line at 0.5, accuracy is: ', str(rawaccuracy))
+
+    return allvolumes
+
 def project_detective_beyond_date(dividedate):
 
     print('First we create a model of detective fiction only after ' + str(dividedate))
@@ -445,7 +471,7 @@ def calibrate_detective():
 
     classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
 
-    sizes = [6,7,8,9,11,13,16,18,21,27]
+    sizes = [5,6,7,8,9,11,13,15,17,18,21,27,29,32,34,36,40,45,50,55,60,65,70,75,80,85,90,100]
 
     # with open('../results/collateddetectiveaccuracies.tsv', mode = 'a', encoding = 'utf-8') as f:
     #         f.write('sizecap\tavgsize\trawaccuracy\n')
@@ -514,7 +540,7 @@ def calibrate_stew():
 
     classifyconditions = (positive_tags, negative_tags, datetype, numfeatures, regularization, testconditions)
 
-    sizes = [6,18,22,65]
+    sizes = [5,6,7,8,9,11,13,15,17,18,21,27,29,32,34,36,40,45,50,55,60,65,70,75,80,85,90,100]
 
     # with open('../results/collatedstewaccuracies.tsv', mode = 'a', encoding = 'utf-8') as f:
     #         f.write('sizecap\tavgsize\trawaccuracy\n')
@@ -597,87 +623,90 @@ if __name__ == '__main__':
     if len(args) < 2:
 
         print('Your options include: ')
-        print('  1) Extrapolate a model of LoC "detective" fiction to the Indiana exhibition.')
-        print('  2) Extrapolate a model of detective fiction beyond a particular date.')
-        print('  3) Extrapolate a model of one tag to another.')
-        print('  4) Extrapolate a model of gothic fiction beyond a particular date.')
-        print('  5) Extrapolate a model of several tags to several others.')
-        print('  6) Run detective prediction at many diff sizes.')
-        print('  7) Run ghastly stew prediction at many diff sizes.')
-        print('  8) Model LOC "detective" fiction by itself.')
-        print('  9) Model Indiana detective fiction by itself.')
-        print('  10) Model LOC and Indiana together.')
+        print('  1) Model Indiana detective fiction by itself.')
+        print('  2) Model LOC detective-esque categories by themselves.')
+        print('  3) Model LOC and Indiana together.')
+        print('  4) Extrapolate a model of LoC detective fiction to the Indiana exhibition.')
+        print('  5) Extrapolate a model of detective fiction beyond a particular date.')
+        print('  6) Extrapolate a model of one arbitrary genre tag to another.')
+        print('  7) Extrapolate a model of gothic fiction beyond a particular date.')
+        print('  8) Extrapolate a model of several tags to several others.')
+        print('  9) Run detective prediction at many different sizes.')
+        print('  10) Run ghastly stew prediction at many different sizes.')
         print('  11) Try to use detective fiction to predict scifi (fails).')
+        print('  12) Model an arbitrary tag against random control set.')
+        print('  13) Model all early gothic 1760-1840.')
+        print('  14) Model all gothic.')
+        print('  15) Model all SF.')
 
         userchoice = int(input('\nyour choice: '))
 
         if userchoice == 1:
-            command = 'extrapolate_indiana'
-        elif userchoice == 2:
-            command = 'extrapolate_detective_date'
-            dividedate = int(input('date beyond which to project: '))
-        elif userchoice == 3:
-            command = 'extrapolate_tag'
-        elif userchoice == 4:
-            command = 'extrapolate_gothic_date'
-            dividedate = int(input('date beyond which to project: '))
-        elif userchoice == 5:
-            command = 'extrapolate_tags'
-        elif userchoice == 6:
-            calibrate_detective()
-        elif userchoice == 7:
-            calibrate_stew()
-        elif userchoice == 8:
-            tagstomodel = ['locdetmyst', 'locdetective', 'chimyst']
-            modelname = 'LOCdetective'
-            allvolumes = model_taglist(tagstomodel, modelname)
-            print('Results are in allvolumes.')
-        elif userchoice == 9:
             tagstomodel = ['det100']
             modelname = 'IndianaDetective'
             allvolumes = model_taglist(tagstomodel, modelname)
             print('Results are in allvolumes.')
-        elif userchoice == 10:
+        elif userchoice == 2:
+            tagstomodel = ['locdetmyst', 'locdetective', 'chimyst']
+            modelname = 'LOCdetective'
+            allvolumes = model_taglist(tagstomodel, modelname)
+            print('Results are in allvolumes.')
+        elif userchoice == 3:
             tagstomodel = ['det100', 'locdetmyst', 'locdetective', 'chimyst']
             modelname = 'AllDetective'
             allvolumes = model_taglist(tagstomodel, modelname)
             print('Results are in allvolumes.')
+        elif userchoice == 4:
+            tagtoproject = ['locdetmyst', 'locdetective', 'chimyst']
+            tagtarget = ['det100']
+            project_tags(tagtoproject, tagtarget)
+        elif userchoice == 5:
+            command = 'extrapolate_detective_date'
+            dividedate = int(input('date beyond which to project: '))
+            project_detective_beyond_date(dividedate)
+        elif userchoice == 6:
+            tagtoproject = input('tag to project from: ')
+            tagtarget = input('tag to project onto: ')
+            project_tag_to_another(tagtoproject, tagtarget)
+        elif userchoice == 7:
+            dividedate = int(input('date beyond which to project: '))
+            project_gothic_beyond_date(dividedate)
+        elif userchoice == 8:
+            tagstoproject = input('comma-separated list of tags to model and project from: ')
+            tagstoproject = [x.strip() for x in tagstoproject.split(',')]
+            tagtargets = input('comma-separated list of tags project onto: ')
+            tagtargets = [x.strip() for x in tagtargets.split(',')]
+            project_tags(tagstoproject, tagtargets)
+        elif userchoice == 9:
+            calibrate_detective()
+        elif userchoice == 10:
+            calibrate_stew()
         elif userchoice == 11:
             projectfrom = 'chimyst'
             projectonto = 'chiscifi'
             project_tag_to_another(projectfrom, projectonto)
+        elif userchoice == 12:
+            tagtomodel = input('tag to model (must be in metadata)? ')
+            tagstomodel = [tagtomodel]
+            allvolumes = model_taglist(tagstomodel, tagtomodel)
+        elif userchoice == 13:
+            tagstomodel = ['stangothic', 'pbgothic', 'lochorror', 'locghost']
+            allvolumes = model_taglist_within_dates(tagstomodel, 'EarlyGothic', 1760, 1840)
+        elif userchoice == 14:
+            tagstomodel = ['stangothic', 'pbgothic', 'lochorror', 'locghost', 'chihorror']
+            modelname = 'AllGothic'
+            allvolumes = model_taglist(tagstomodel, modelname)
+            print('Results are in allvolumes.')
+        elif userchoice == 15:
+            tagstomodel = ['locscifi', 'femscifi', 'anatscifi', 'chiscifi']
+            modelname = 'AllSF'
+            allvolumes = model_taglist(tagstomodel, modelname)
+            print('Results are in allvolumes.')
 
 
     else:
         command = args[1]
         dividedate = 0
-
-    if command == 'extrapolate_indiana':
-        tagtoproject = ['locdetmyst', 'locdetective', 'chimyst']
-        tagtarget = ['det100']
-        project_tags(tagtoproject, tagtarget)
-
-    if command == 'extrapolate_detective_date':
-        if dividedate == 0:
-            dividedate = int(input('date beyond which to project: '))
-        project_detective_beyond_date(dividedate)
-
-    if command == 'extrapolate_tag':
-        tagtoproject = input('tag to project from: ')
-        tagtarget = input('tag to project onto: ')
-        project_tag_to_another(tagtoproject, tagtarget)
-
-    if command == 'extrapolate_gothic_date':
-        if dividedate == 0:
-            dividedate = int(input('date beyond which to project: '))
-        project_gothic_beyond_date(dividedate)
-
-    if command == 'extrapolate_tags':
-        tagstoproject = input('comma-separated list of tags to model and project from: ')
-        tagstoproject = [x.strip() for x in tagstoproject.split(',')]
-        tagtargets = input('comma-separated list of tags project onto: ')
-        tagtargets = [x.strip() for x in tagtargets.split(',')]
-        project_tags(tagstoproject, tagtargets)
 
     print('Done.')
 
