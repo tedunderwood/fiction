@@ -1,3 +1,54 @@
+#!/usr/bin/env python3
+
+# replicate.py
+
+# This master script gives me a way to record the settings I used for
+# various aspects of the article "The Life Cycles of Genres," and
+# (I hope) allows other scholars to reproduce the same tests.
+
+# Generally, I've defined a separate function for each part of the
+# article that needs replication, and generally, they're listed
+# in article order.
+
+# Running this script gives you a menu and allows you to choose
+# a test to replicate. Or you could just use this code as a guide
+# in order to build your own script that calls logisticpredict with
+# settings of your own devising.
+
+# I have to admit that those "settings" are bloody complicated.
+# This is a consequence of trying to build a single
+# script that can do a whole bunch of different things.
+
+# The "paths" are somewhat straightforward. They tell the script where
+# to look for metadata, data files, and a vocabulary of features to
+# use in classification (if this last isn't found, it will be created.)
+#
+# The "exclusions" can focus the model on a particular segment of the timeline.
+# The fuss about nonegatives is less important than it seems; in most
+# circumstances logisticpredict will automatically exclude tags in the
+# positive set from the negative contrast set. The only situation where
+# you need to explicitly exclude particular tags is elucidated in the
+# function ghastly_stew below. In that case, it's achieved by putting
+# a special key in excludeif which excludes tags from the *negative* set,
+# (whereas excludeif would ordinarily exclude from the positives.)
+#
+# The testconditions variable is very important for one key move made
+# in the article: extrapolating from a model to another set of volumes.
+# This is achieved by defining a set of volumes that are only ever allowed
+# to be in the test set; they never appear in the training set.
+#
+# Unfortunately, the logic I've used is confusing.
+# When I provide a pair of dates in testconditions, this actually sets
+# the range of dates within which volumes *are* allowed in the training
+# set. On the other hand, when I provide a tag in testconditions, this
+# defines a tag that *is not* allowed into the training set (unless volumes
+# bearing that tag are also qualified as a member of the positive set
+# by some other positive tag). This is all done by the function
+# get_donttrainset in metafilter.py. Sorry the logic is a bit
+# convoluted.
+#
+# Those are, I think, the gnarliest aspects of this code.
+
 import logisticpredict, comparemodels
 import datetime, sys
 
@@ -617,96 +668,87 @@ def project_gothic_beyond_date(dividedate):
 
 if __name__ == '__main__':
 
-    args = sys.argv
-    command = ''
+    # args = sys.argv
 
-    if len(args) < 2:
+    print('Your options include: ')
+    print('  1) Model Indiana detective fiction by itself.')
+    print('  2) Model LOC detective-esque categories by themselves.')
+    print('  3) Model LOC and Indiana together.')
+    print('  4) Extrapolate a model of LoC detective fiction to the Indiana exhibition.')
+    print('  5) Extrapolate a model of detective fiction beyond a particular date.')
+    print('  6) Extrapolate a model of one arbitrary genre tag to another.')
+    print('  7) Extrapolate a model of gothic fiction beyond a particular date.')
+    print('  8) Extrapolate a model of several tags to several others.')
+    print('  9) Run detective prediction at many different sizes.')
+    print('  10) Run ghastly stew prediction at many different sizes.')
+    print('  11) Try to use detective fiction to predict scifi (fails).')
+    print('  12) Model an arbitrary tag against random control set.')
+    print('  13) Model all early gothic 1760-1840.')
+    print('  14) Model all gothic.')
+    print('  15) Model all SF.')
 
-        print('Your options include: ')
-        print('  1) Model Indiana detective fiction by itself.')
-        print('  2) Model LOC detective-esque categories by themselves.')
-        print('  3) Model LOC and Indiana together.')
-        print('  4) Extrapolate a model of LoC detective fiction to the Indiana exhibition.')
-        print('  5) Extrapolate a model of detective fiction beyond a particular date.')
-        print('  6) Extrapolate a model of one arbitrary genre tag to another.')
-        print('  7) Extrapolate a model of gothic fiction beyond a particular date.')
-        print('  8) Extrapolate a model of several tags to several others.')
-        print('  9) Run detective prediction at many different sizes.')
-        print('  10) Run ghastly stew prediction at many different sizes.')
-        print('  11) Try to use detective fiction to predict scifi (fails).')
-        print('  12) Model an arbitrary tag against random control set.')
-        print('  13) Model all early gothic 1760-1840.')
-        print('  14) Model all gothic.')
-        print('  15) Model all SF.')
+    userchoice = int(input('\nyour choice: '))
 
-        userchoice = int(input('\nyour choice: '))
-
-        if userchoice == 1:
-            tagstomodel = ['det100']
-            modelname = 'IndianaDetective'
-            allvolumes = model_taglist(tagstomodel, modelname)
-            print('Results are in allvolumes.')
-        elif userchoice == 2:
-            tagstomodel = ['locdetmyst', 'locdetective', 'chimyst']
-            modelname = 'LOCdetective'
-            allvolumes = model_taglist(tagstomodel, modelname)
-            print('Results are in allvolumes.')
-        elif userchoice == 3:
-            tagstomodel = ['det100', 'locdetmyst', 'locdetective', 'chimyst']
-            modelname = 'AllDetective'
-            allvolumes = model_taglist(tagstomodel, modelname)
-            print('Results are in allvolumes.')
-        elif userchoice == 4:
-            tagtoproject = ['locdetmyst', 'locdetective', 'chimyst']
-            tagtarget = ['det100']
-            project_tags(tagtoproject, tagtarget)
-        elif userchoice == 5:
-            command = 'extrapolate_detective_date'
-            dividedate = int(input('date beyond which to project: '))
-            project_detective_beyond_date(dividedate)
-        elif userchoice == 6:
-            tagtoproject = input('tag to project from: ')
-            tagtarget = input('tag to project onto: ')
-            project_tag_to_another(tagtoproject, tagtarget)
-        elif userchoice == 7:
-            dividedate = int(input('date beyond which to project: '))
-            project_gothic_beyond_date(dividedate)
-        elif userchoice == 8:
-            tagstoproject = input('comma-separated list of tags to model and project from: ')
-            tagstoproject = [x.strip() for x in tagstoproject.split(',')]
-            tagtargets = input('comma-separated list of tags project onto: ')
-            tagtargets = [x.strip() for x in tagtargets.split(',')]
-            project_tags(tagstoproject, tagtargets)
-        elif userchoice == 9:
-            calibrate_detective()
-        elif userchoice == 10:
-            calibrate_stew()
-        elif userchoice == 11:
-            projectfrom = 'chimyst'
-            projectonto = 'chiscifi'
-            project_tag_to_another(projectfrom, projectonto)
-        elif userchoice == 12:
-            tagtomodel = input('tag to model (must be in metadata)? ')
-            tagstomodel = [tagtomodel]
-            allvolumes = model_taglist(tagstomodel, tagtomodel)
-        elif userchoice == 13:
-            tagstomodel = ['stangothic', 'pbgothic', 'lochorror', 'locghost']
-            allvolumes = model_taglist_within_dates(tagstomodel, 'EarlyGothic', 1760, 1840)
-        elif userchoice == 14:
-            tagstomodel = ['stangothic', 'pbgothic', 'lochorror', 'locghost', 'chihorror']
-            modelname = 'AllGothic'
-            allvolumes = model_taglist(tagstomodel, modelname)
-            print('Results are in allvolumes.')
-        elif userchoice == 15:
-            tagstomodel = ['locscifi', 'femscifi', 'anatscifi', 'chiscifi']
-            modelname = 'AllSF'
-            allvolumes = model_taglist(tagstomodel, modelname)
-            print('Results are in allvolumes.')
-
-
-    else:
-        command = args[1]
-        dividedate = 0
+    if userchoice == 1:
+        tagstomodel = ['det100']
+        modelname = 'IndianaDetective'
+        allvolumes = model_taglist(tagstomodel, modelname)
+        print('Results are in allvolumes.')
+    elif userchoice == 2:
+        tagstomodel = ['locdetmyst', 'locdetective', 'chimyst']
+        modelname = 'LOCdetective'
+        allvolumes = model_taglist(tagstomodel, modelname)
+        print('Results are in allvolumes.')
+    elif userchoice == 3:
+        tagstomodel = ['det100', 'locdetmyst', 'locdetective', 'chimyst']
+        modelname = 'AllDetective'
+        allvolumes = model_taglist(tagstomodel, modelname)
+        print('Results are in allvolumes.')
+    elif userchoice == 4:
+        tagtoproject = ['locdetmyst', 'locdetective', 'chimyst']
+        tagtarget = ['det100']
+        project_tags(tagtoproject, tagtarget)
+    elif userchoice == 5:
+        dividedate = int(input('date beyond which to project: '))
+        project_detective_beyond_date(dividedate)
+    elif userchoice == 6:
+        tagtoproject = input('tag to project from: ')
+        tagtarget = input('tag to project onto: ')
+        project_tag_to_another(tagtoproject, tagtarget)
+    elif userchoice == 7:
+        dividedate = int(input('date beyond which to project: '))
+        project_gothic_beyond_date(dividedate)
+    elif userchoice == 8:
+        tagstoproject = input('comma-separated list of tags to model and project from: ')
+        tagstoproject = [x.strip() for x in tagstoproject.split(',')]
+        tagtargets = input('comma-separated list of tags project onto: ')
+        tagtargets = [x.strip() for x in tagtargets.split(',')]
+        project_tags(tagstoproject, tagtargets)
+    elif userchoice == 9:
+        calibrate_detective()
+    elif userchoice == 10:
+        calibrate_stew()
+    elif userchoice == 11:
+        projectfrom = 'chimyst'
+        projectonto = 'chiscifi'
+        project_tag_to_another(projectfrom, projectonto)
+    elif userchoice == 12:
+        tagtomodel = input('tag to model (must be in metadata)? ')
+        tagstomodel = [tagtomodel]
+        allvolumes = model_taglist(tagstomodel, tagtomodel)
+    elif userchoice == 13:
+        tagstomodel = ['stangothic', 'pbgothic', 'lochorror', 'locghost']
+        allvolumes = model_taglist_within_dates(tagstomodel, 'EarlyGothic', 1760, 1840)
+    elif userchoice == 14:
+        tagstomodel = ['stangothic', 'pbgothic', 'lochorror', 'locghost', 'chihorror']
+        modelname = 'AllGothic'
+        allvolumes = model_taglist(tagstomodel, modelname)
+        print('Results are in allvolumes.')
+    elif userchoice == 15:
+        tagstomodel = ['locscifi', 'femscifi', 'anatscifi', 'chiscifi']
+        modelname = 'AllSF'
+        allvolumes = model_taglist(tagstomodel, modelname)
+        print('Results are in allvolumes.')
 
     print('Done.')
 
