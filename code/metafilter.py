@@ -424,7 +424,7 @@ def label_classes(metadict, categorytodivideon, positive_tags, negative_tags, si
                     # in the test-only donttrainset do not need to be
                     # matched with negative counterparts
 
-                if len(negative_metadata) < 0:
+                if len(negative_metadata) < 1:
                     continue
 
                 this_positive = metadict[anid]
