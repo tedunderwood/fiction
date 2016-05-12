@@ -2,6 +2,7 @@ fiction
 =======
 
 Code and data supporting the article "The Life Cycles of Genres" in _Cultural Analytics._ 
+
 [![DOI](https://zenodo.org/badge/19804/tedunderwood/fiction.svg)](https://zenodo.org/badge/latestdoi/19804/tedunderwood/fiction)
 
 The data model here assumes that genre designations are situated and perspectival. An observer in a particular place and time groups a particular set of works and calls them 'crime fiction.' We don't necessarily know that anyone else will agree; a different observer could group different works as 'detective fiction,' which might or not be the same thing. Nothing prevents some of these works from also being 'science fiction.' For that matter, some works can belong to no genre at all.
