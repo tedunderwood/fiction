@@ -31,7 +31,7 @@ The data used in the model: tables of word counts for each volume, as separate f
 
 code
 ----
-Code for the modeling process. The key modules for modeling are logisticpredict, metafilter, modelingprocess, and metautils. replicate.py is a script that allows readers to reproduce the particular settings I used for tests in the article. Not finalized yet, but getting close.
+Code for the modeling process. The key modules for modeling are logisticpredict, metafilter, modelingprocess, and metautils. replicate.py is a script that allows readers to reproduce the particular settings I used for tests in the article.
 
 plot
 ----
