@@ -17,7 +17,7 @@ Because many of the books here are under copyright or otherwise encumbered with 
 
 final
 ----
-Assembling results and images to support publication as they approach readiness.
+This is the folder where you will find lists of predictive features for various genres modeled in the article, along with probabilities assigned to particular volumes.
 
 meta
 ----
