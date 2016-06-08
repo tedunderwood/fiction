@@ -1,7 +1,7 @@
 fiction
 =======
 
-Code and data supporting the article "The Life Cycles of Genres" in _Cultural Analytics._ 
+Code and data supporting the article ["The Life Cycles of Genres" in _Cultural Analytics._](http://culturalanalytics.org/2016/05/the-life-cycles-of-genres/) 
 
 [![DOI](https://zenodo.org/badge/19804/tedunderwood/fiction.svg)](https://zenodo.org/badge/latestdoi/19804/tedunderwood/fiction)
 
