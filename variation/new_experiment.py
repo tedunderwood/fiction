@@ -532,8 +532,8 @@ def measure_parallax(modelname, splityear):
     f0, c0 = periods[0]
     f1, c1 = periods[1]
 
-    for i in range(3):
-        for j in range(3):
+    for i in range(10):
+        for j in range(10):
                                
             name1 = modelname + str(f0) + '_' + str(c0) + '_' + str(i) 
             name2 = modelname + str(f1) + '_' + str(c1) + '_' + str(j)
