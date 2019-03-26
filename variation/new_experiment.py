@@ -649,7 +649,7 @@ args = sys.argv
 command = args[1]
 
 if command == "projectgothic":
-    project_a_model('firsttest', {'lochorror', 'pbgothic', 'locghost', 'stangothic', 'chihorror'}, 
+    create_variant_models('firsttest', {'lochorror', 'pbgothic', 'locghost', 'stangothic', 'chihorror'}, 
         {'random', 'chirandom'}, 1880)
 
 elif command == "comparegothic":
