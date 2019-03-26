@@ -672,7 +672,7 @@ def apply_pickled_model(amodelpath, folder, extension, metapath):
     resultindex = []
 
     for doc in metadata.index:
-        inpath = os.path.join(folder, doc + extension)
+        inpath = os.path.join(folder, str(doc) + extension)
         if os.path.exists(inpath):
             volspresent.append( (doc, inpath) )
             classdictionary[doc] = 0
