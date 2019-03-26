@@ -199,7 +199,7 @@ def model_call(quintuplets, algorithm):
     '''
 
     print('Beginning multiprocessing.')
-    pool = Pool(processes = 12)
+    pool = Pool(processes = 20)
 
     if algorithm == 'logistic':
         res = pool.map_async(modelingprocess.model_volume_list, quintuplets)
