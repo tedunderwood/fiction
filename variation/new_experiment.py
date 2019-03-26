@@ -534,8 +534,8 @@ def measure_parallax(modelname, splityear):
 
     for i in range(10):
         for j in range(10):
-                               
-            name1 = modelname + str(f0) + '_' + str(c0) + '_' + str(i) 
+
+            name1 = modelname + str(f0) + '_' + str(c0) + '_' + str(i)
             name2 = modelname + str(f1) + '_' + str(c1) + '_' + str(j)
 
             r = dict()
@@ -649,13 +649,21 @@ args = sys.argv
 command = args[1]
 
 if command == "projectgothic":
-    create_variant_models('gothicvariants', {'lochorror', 'pbgothic', 'locghost', 'stangothic', 'chihorror'}, 
+    create_variant_models('gothicvariants', {'lochorror', 'pbgothic', 'locghost', 'stangothic', 'chihorror'},
         {'random', 'chirandom'}, 1880)
 elif command == "comparegothic":
     measure_parallax('gothicvariants', 1880)
 
 elif command == "projectdetective":
-    create_variant_models('detectivevariants', {'locdetective', 'locdetmyst', 'chimyst', 'det100'}, 
+    create_variant_models('detectivevariants', {'locdetective', 'locdetmyst', 'chimyst', 'det100'},
         {'random', 'chirandom'}, 1930)
 elif command == "comparedetective":
     measure_parallax('detectivevariants', 1930)
+
+elif command == "projectSF":
+    create_variant_models('SFvariants', {'anatscifi', 'locscifi', 'chiscifi', 'femscifi'},
+        {'random', 'chirandom'}, 1945)
+elif command == "compareSF":
+    measure_parallax('SFvariants', 1945)
+
+
