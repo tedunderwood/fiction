@@ -651,8 +651,11 @@ command = args[1]
 if command == "projectgothic":
     create_variant_models('gothicvariants', {'lochorror', 'pbgothic', 'locghost', 'stangothic', 'chihorror'}, 
         {'random', 'chirandom'}, 1880)
-
 elif command == "comparegothic":
     measure_parallax('gothicvariants', 1880)
 
-
+elif command == "projectdetective":
+    create_variant_models('detectivevariants', {'locdetective', 'locdetmyst', 'chimyst', 'det100'}, 
+        {'random', 'chirandom'}, 1930)
+elif command == "comparedetective":
+    measure_parallax('detectivevariants', 1930)
