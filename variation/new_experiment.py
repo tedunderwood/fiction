@@ -476,7 +476,7 @@ def create_variant_models(modelname, tags4positive, tags4negative, splityear):
     sizecap = 75
 
     c_range = [.00001, .0001, .001, .01, 0.1, 1, 10, 100]
-    featurestart = 1500
+    featurestart = 1000
     featureend = 6500
     featurestep = 300
     modelparams = 'logistic', 15, featurestart, featureend, featurestep, c_range
@@ -486,7 +486,7 @@ def create_variant_models(modelname, tags4positive, tags4negative, splityear):
 
     periods = [(1700, splityear - 1), (splityear, 2010)]
 
-    for i in range(1):
+    for i in range(10):
         for floor, ceiling in periods:
 
             name = modelname + str(floor) + '_' + str(ceiling) + '_' + str(i)
@@ -649,10 +649,10 @@ args = sys.argv
 command = args[1]
 
 if command == "projectgothic":
-    create_variant_models('firsttest', {'lochorror', 'pbgothic', 'locghost', 'stangothic', 'chihorror'}, 
+    create_variant_models('gothicvariants', {'lochorror', 'pbgothic', 'locghost', 'stangothic', 'chihorror'}, 
         {'random', 'chirandom'}, 1880)
 
 elif command == "comparegothic":
-    measure_parallax('firsttest', 1880)
+    measure_parallax('gothicvariants', 1880)
 
 
