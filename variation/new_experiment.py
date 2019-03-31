@@ -666,4 +666,10 @@ elif command == "projectSF":
 elif command == "compareSF":
     measure_parallax('SFvariants', 1945)
 
+elif command == "projectSF1930":
+    create_variant_models('SFvariants1930', {'anatscifi', 'locscifi', 'chiscifi', 'femscifi'},
+        {'random', 'chirandom'}, 1930)
+elif command == "compareSF1930":
+    measure_parallax('SFvariants1930', 1930)
+
 
