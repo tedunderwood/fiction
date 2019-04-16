@@ -479,7 +479,7 @@ def repeatedly_model(modelname, tags4positive, tags4negative, sizecap):
         featureend = 6600
         featurestep = 200
         modelparams = 'logistic', 15, featurestart, featureend, featurestep, c_range
-
+        forbiddenwords = {}
         floor = 1700
         ceiling = 2020
 
