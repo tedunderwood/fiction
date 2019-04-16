@@ -459,6 +459,43 @@ def reliable_genre_comparisons():
             r['spearman'], r['loss'], r['spear1on2'], r['spear2on1'], r['loss1on2'], r['loss2on1'], r['acc1'], r['acc2'], r['alienacc1'], r['alienacc2'], r['meandate1'], r['meandate2'] = get_divergence(r['name1'], r['name2'])
             write_a_row(r, outcomparisons, columns)
 
+def repeatedly_model(modelname, tags4positive, tags4negative, sizecap):
+
+    outmodels = '../results/' + modelname + '_models.tsv'
+
+    if not os.path.isfile(outmodels):
+        with open(outmodels, mode = 'w', encoding = 'utf-8') as f:
+            outline = 'name\tsize\tfloor\tceiling\tmeandate\taccuracy\tfeatures\tregularization\ti\n'
+            f.write(outline)
+
+    for i in range(100):
+        name = modelname + str(i)
+        sourcefolder = '../newdata/'
+        metadatapath = '../meta/finalmeta.csv'
+        vocabpath = '../lexica/' + name + '.txt'
+
+        c_range = [.00001, .0001, .001, .01, 0.1, 1, 10, 100]
+        featurestart = 800
+        featureend = 6600
+        featurestep = 200
+        modelparams = 'logistic', 15, featurestart, featureend, featurestep, c_range
+
+        metadata, masterdata, classvector, classdictionary, orderedIDs, authormatches, vocablist = versatiletrainer2.get_simple_data(sourcefolder, metadatapath, vocabpath, tags4positive, tags4negative, sizecap, extension = '.fic.tsv', excludebelow = floor, excludeabove = ceiling, 
+            forbid4positive = {'juv'}, forbid4negative = {'juv'}, force_even_distribution = False, numfeatures = 6500, forbiddenwords = forbiddenwords)
+
+        matrix, maxaccuracy, metadata, coefficientuples, features4max, best_regularization_coef = versatiletrainer2.tune_a_model(metadata, masterdata, classvector, classdictionary, orderedIDs, authormatches, 
+            vocablist, tags4positive, tags4negative, modelparams, name, '../modeloutput/' + name + '.csv')
+
+        meandate = int(round(np.sum(metadata.firstpub) / len(metadata.firstpub)))
+        floor = np.min(metadata.firstpub)
+        ceiling = np.max(metadata.firstpub)
+
+        with open(outmodels, mode = 'a', encoding = 'utf-8') as f:
+            outline = name + '\t' + str(sizecap) + '\t' + str(floor) + '\t' + str(ceiling) + '\t' + str(meandate) + '\t' + str(maxaccuracy) + '\t' + str(features4max) + '\t' + str(best_regularization_coef) + '\t' + str(i) + '\n'
+            f.write(outline)
+
+        os.remove(vocabpath)
+
 def create_variant_models(modelname, tags4positive, tags4negative, splityear):
     '''
     Creates variant models that are then used by measure_parallax.
@@ -671,5 +708,9 @@ elif command == "projectSF1930":
         {'random', 'chirandom'}, 1930)
 elif command == "compareSF1930":
     measure_parallax('SFvariants1930', 1930)
+
+elif command == 'detectivevariations':
+    repeatedly_model('detectivemodels', {'locdetective', 'locdetmyst', 'chimyst', 'det100'},
+        {'random', 'chirandom'}, 160)
 
 
