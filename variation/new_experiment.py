@@ -716,4 +716,8 @@ elif command == 'detectivevariations':
     repeatedly_model('detectivemodels', {'locdetective', 'locdetmyst', 'chimyst', 'det100'},
         {'random', 'chirandom'}, 160)
 
+elif command == 'sfvariations':
+    repeatedly_model('scifi', {'anatscifi', 'locscifi', 'chiscifi', 'femscifi'},
+        {'random', 'chirandom'}, 160)
+
 
