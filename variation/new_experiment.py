@@ -480,6 +480,9 @@ def repeatedly_model(modelname, tags4positive, tags4negative, sizecap):
         featurestep = 200
         modelparams = 'logistic', 15, featurestart, featureend, featurestep, c_range
 
+        floor = 1700
+        ceiling = 2020
+
         metadata, masterdata, classvector, classdictionary, orderedIDs, authormatches, vocablist = versatiletrainer2.get_simple_data(sourcefolder, metadatapath, vocabpath, tags4positive, tags4negative, sizecap, extension = '.fic.tsv', excludebelow = floor, excludeabove = ceiling, 
             forbid4positive = {'juv'}, forbid4negative = {'juv'}, force_even_distribution = False, numfeatures = 6500, forbiddenwords = forbiddenwords)
 
