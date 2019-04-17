@@ -483,10 +483,10 @@ def repeatedly_model(modelname, tags4positive, tags4negative, sizecap):
         floor = 1700
         ceiling = 2020
 
-        metadata, masterdata, classvector, classdictionary, orderedIDs, authormatches, vocablist = versatiletrainer2.get_simple_data(sourcefolder, metadatapath, vocabpath, tags4positive, tags4negative, sizecap, extension = '.fic.tsv', excludebelow = floor, excludeabove = ceiling, 
+        metadata, masterdata, classvector, classdictionary, orderedIDs, authormatches, vocablist = versatiletrainer2.get_simple_data(sourcefolder, metadatapath, vocabpath, tags4positive, tags4negative, sizecap, extension = '.fic.tsv', excludebelow = floor, excludeabove = ceiling,
             forbid4positive = {'juv'}, forbid4negative = {'juv'}, force_even_distribution = False, numfeatures = 6500, forbiddenwords = forbiddenwords)
 
-        matrix, maxaccuracy, metadata, coefficientuples, features4max, best_regularization_coef = versatiletrainer2.tune_a_model(metadata, masterdata, classvector, classdictionary, orderedIDs, authormatches, 
+        matrix, maxaccuracy, metadata, coefficientuples, features4max, best_regularization_coef = versatiletrainer2.tune_a_model(metadata, masterdata, classvector, classdictionary, orderedIDs, authormatches,
             vocablist, tags4positive, tags4negative, modelparams, name, '../modeloutput/' + name + '.csv')
 
         meandate = int(round(np.sum(metadata.firstpub) / len(metadata.firstpub)))
@@ -719,5 +719,10 @@ elif command == 'detectivevariations':
 elif command == 'sfvariations':
     repeatedly_model('scifi', {'anatscifi', 'locscifi', 'chiscifi', 'femscifi'},
         {'random', 'chirandom'}, 160)
+
+elif command == 'gothicvariations':
+    repeatedly_model('gothic', {'lochorror', 'pbgothic', 'locghost', 'stangothic', 'chihorror'},
+        {'random', 'chirandom'}, 160)
+
 
 
