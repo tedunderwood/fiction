@@ -1,7 +1,7 @@
 Sampling variation for predictive models
 ========================================
 
-This is a simple repository that slightly improves my 2015 article "The Life Cycles of Genres" by more carefully measuring the effect of sampling variation on predictive accuracy.
+This is a simple repository that slightly improves my 2015 article ["The Life Cycles of Genres"](http://culturalanalytics.org/2016/05/the-life-cycles-of-genres/) by more carefully measuring the effect of sampling variation on predictive accuracy. It documents figure 2 in a response article submitted to *Critical Inquiry* and tentatively titled "Toward Better Critiques of Computational Research."
 
 In the original article, I make clear that I have different numbers of examples for each genre, and also make clear that there's a relationship between sample size and accuracy. But I don't go to great lengths to create apples-to-apples comparisons in every case, partly because absolute predictive accuracy is not the central point of the argument. (The article is more concerned with comparisons carried out by applying one model to a different set of data.)
 
@@ -15,4 +15,6 @@ The script that matters for this process is **new_experiment.py**.  I produced t
     > python3 new_experiment.py sfvariations
     > python3 new_experiment.py detective variations
 
-That created files in the ../results folder, but for simplicity I've moved them here: **detective_models.tsv, gothic_models.tsv** and **scifi_models.tsv.**
+That created three results files in the ../results folder, but for simplicity I've moved them here: **detective_models.tsv, gothic_models.tsv** and **scifi_models.tsv.**
+
+Those files are in turn used by boxplot.R to create the visualization used in the *Critical Inquiry* article. The point estimates also used in the visualization are taken from "The Life Cycles of Genres."
