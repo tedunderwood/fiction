@@ -91,7 +91,7 @@ eval_examples_len = len(eval_examples)
 label_map = {label: i for i, label in enumerate(label_list)}
 eval_examples_for_processing = [(example, label_map, MAX_SEQ_LENGTH, tokenizer, OUTPUT_MODE) for example in eval_examples]
 
-process_count = 1
+process_count = 10
 if __name__ ==  '__main__':
     print(f'Preparing to convert {eval_examples_len} examples..')
     print(f'Spawning {process_count} processes..')
