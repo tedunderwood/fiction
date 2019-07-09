@@ -1,0 +1,9 @@
+#!/bin/bash
+#PBS -l walltime=4:00:00
+#PBS -l nodes=1:ppn=12:TeslaK40M
+#PBS -N testbert
+#PBS -q secondary
+#PBS -m be
+cd $PBS_O_WORKDIR
+source activate py37
+python3 trainbert.py
