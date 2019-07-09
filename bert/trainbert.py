@@ -3,7 +3,7 @@ Written by Thilina Rajapakse
 https://github.com/ThilinaRajapakse/BERT_binary_text_classification/blob/master/converter.py
 '''
 
-import torch
+import torch, sys
 import pickle
 from torch.utils.data import (DataLoader, RandomSampler, SequentialSampler,
                               TensorDataset)
@@ -33,7 +33,7 @@ DATA_DIR = "data/"
 BERT_MODEL = 'bert-base-uncased'
 
 # The name of the task to train.
-TASK_NAME = 'first'
+TASK_NAME = sys.argv[1]
 
 # The output directory where the model predictions and checkpoints will be written.
 OUTPUT_DIR = f'outputs/{TASK_NAME}/'
@@ -47,7 +47,7 @@ MAX_SEQ_LENGTH = 128
 TRAIN_BATCH_SIZE = 24
 EVAL_BATCH_SIZE = 8
 LEARNING_RATE = 2e-5
-NUM_TRAIN_EPOCHS = 5
+NUM_TRAIN_EPOCHS = 1
 RANDOM_SEED = 42
 GRADIENT_ACCUMULATION_STEPS = 1
 WARMUP_PROPORTION = 0.1
@@ -143,36 +143,6 @@ for _ in trange(int(NUM_TRAIN_EPOCHS), desc="Epoch"):
             optimizer.step()
             optimizer.zero_grad()
             global_step += 1
-
-# for _ in trange(int(NUM_TRAIN_EPOCHS), desc="Epoch"):
-#     tr_loss = 0
-#     nb_tr_examples, nb_tr_steps = 0, 0
-#     for step, batch in enumerate(tqdm_notebook(train_dataloader, desc="Iteration")):
-#         batch = tuple(t.to(device) for t in batch)
-#         input_ids, input_mask, segment_ids, label_ids = batch
-
-#         logits = model(input_ids, segment_ids, input_mask, labels=None)
-
-#         if OUTPUT_MODE == "classification":
-#             loss_fct = CrossEntropyLoss()
-#             loss = loss_fct(logits.view(-1, num_labels), label_ids.view(-1))
-#         elif OUTPUT_MODE == "regression":
-#             loss_fct = MSELoss()
-#             loss = loss_fct(logits.view(-1), label_ids.view(-1))
-
-#         if GRADIENT_ACCUMULATION_STEPS > 1:
-#             loss = loss / GRADIENT_ACCUMULATION_STEPS
-
-#         loss.backward()
-#         print("\r%f" % loss, end='')
-        
-#         tr_loss += loss.item()
-#         nb_tr_examples += input_ids.size(0)
-#         nb_tr_steps += 1
-#         if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
-#             optimizer.step()
-#             optimizer.zero_grad()
-#             global_step += 1
 
 model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
 
