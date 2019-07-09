@@ -198,7 +198,6 @@ def model_call(quintuplets, algorithm):
     on a computer with 12 cores, I set 12 threads.
     '''
 
-    print('Beginning multiprocessing.')
     pool = Pool(processes = 20)
 
     if algorithm == 'logistic':
@@ -211,7 +210,6 @@ def model_call(quintuplets, algorithm):
     resultlist = res.get()
     pool.close()
     pool.join()
-    print('Multiprocessing concluded.')
 
     return resultlist
 
@@ -280,8 +278,6 @@ def calculate_accuracy(orderedIDs, predictions, classdictionary, verbose):
         elif probability > 0.5 and classdictionary[volid] < 0.5:
             falsepositives += 1
 
-    print()
-
     accuracy = (truepositives + truenegatives) / totalcount
 
     if verbose:
@@ -316,19 +312,21 @@ def gridsearch(featurestart, featureend, featurestep, c_range, masterdata, order
     ylen = len(yaxis)
     matrix = np.zeros((xlen, ylen))
 
+    highest_accuracy = 0
+    print()
+
     for xpos, variablecount in enumerate(xaxis):
         data = masterdata.iloc[ : , 0 : variablecount]
 
         for ypos, regu_const in enumerate(yaxis):
 
-            print('variablecount: ' + str(variablecount) + "  regularization: " + str(regu_const))
-
             predictions = crossvalidate(data, classvector, folds, algorithm, regu_const)
-
             accuracy = calculate_accuracy(orderedIDs, predictions, classdictionary, False)
-            print('Accuracy: ' + str(accuracy))
-            print()
             matrix[xpos, ypos] = accuracy
+
+            if accuracy > highest_accuracy:
+                highest_accuracy = accuracy
+                print('words: ' + str(variablecount) + "  reg: " + str(regu_const) + '  acc: ' + str(accuracy))
 
     if showmap:
         plt.rcParams["figure.figsize"] = [9.0, 6.0]
@@ -336,8 +334,6 @@ def gridsearch(featurestart, featureend, featurestep, c_range, masterdata, order
         plt.show()
 
     coords = np.unravel_index(matrix.argmax(), matrix.shape)
-    print(coords)
-    print(xaxis[coords[0]], yaxis[coords[1]])
     features4max = xaxis[coords[0]]
     c4max = yaxis[coords[1]]
 
@@ -477,7 +473,7 @@ def get_dataframe(volspresent, classdictionary, vocablist, freqs_already_normali
 
     return masterdata, classvector
 
-def get_simple_data(sourcefolder, metadatapath, vocabpath, tags4positive, tags4negative, sizecap, forbid4positive = {'allnegative'}, forbid4negative = {'allpositive'}, excludebelow = 0, excludeabove = 3000, verbose = False, datecols = ['firstpub'], indexcol = ['docid'], extension = '.tsv', genrecol = 'genretags', numfeatures = 5000, negative_strategy = 'random', overlap_strategy = 'random',force_even_distribution = False, forbiddenwords = set()):
+def get_simple_data(sourcefolder, metadatapath, vocabpath, tags4positive, tags4negative, sizecap, forbid4positive = {'allnegative'}, forbid4negative = {'allpositive'}, excludebelow = 0, excludeabove = 3000, verbose = False, datecols = ['firstpub'], indexcol = ['docid'], extension = '.tsv', genrecol = 'genretags', numfeatures = 7000, negative_strategy = 'closely match', overlap_strategy = 'positive',force_even_distribution = False, forbiddenwords = set()):
 
     ''' Loads metadata, selects instances for the positive and
     negative classes, creates a lexicon if one doesn't
@@ -493,7 +489,7 @@ def get_simple_data(sourcefolder, metadatapath, vocabpath, tags4positive, tags4n
     # set to True. The only reason to set it to False is to confirm that
     # this flag is actually making a difference.
 
-    freqs_already_normalized = True
+    freqs_already_normalized = False
 
     # By default we assume that frequencies have already been normalized
     # (divided by the total number of words in the volume). This allows us
@@ -522,7 +518,6 @@ def get_simple_data(sourcefolder, metadatapath, vocabpath, tags4positive, tags4n
             volumeIDsinfolder.append(volID)
 
     metadata = metaselector.load_metadata(metadatapath, volumeIDsinfolder, excludebelow, excludeabove, indexcol = indexcol, datecols = datecols, genrecol = genrecol)
-    print(metadata.shape)
     # That function returns a pandas dataframe which is guaranteed to be indexed by indexcol,
     # and to contain a numeric column 'std_date' as well as a column 'tagset' which contains
     # sets of genre tags for each row. It has also been filtered so it only contains volumes
@@ -559,9 +554,6 @@ def get_simple_data(sourcefolder, metadatapath, vocabpath, tags4positive, tags4n
         print('were available at ' + vocabpath)
 
     numfeatures = len(vocablist)
-
-    print()
-    print("Number of features: " + str(numfeatures))
 
     # For each volume, we're going to create a list of volumes that should be
     # excluded from the training set when it is to be predicted. More precisely,
@@ -683,8 +675,8 @@ def apply_pickled_model(amodelpath, folder, extension, metapath):
 
     print(len(volspresent))
 
-    masterdata, classvector = get_dataframe(volspresent, classdictionary, vocablist, True)
-    # True, there, means frequencies already normalized to be relative freqs.
+    masterdata, classvector = get_dataframe(volspresent, classdictionary, vocablist, False)
+    # False, there, means frequencies not already normalized to be relative freqs.
     print(masterdata.shape)
 
     standarddata = scaler.transform(masterdata)

@@ -209,7 +209,7 @@ def force_even(allpositives, allnegatives, metadata, sizecap, k):
     return positives, negatives
 
 
-def select_instances(metadata, sizecap, tags4positive, tags4negative, forbid4positive = set(), forbid4negative = set(), negative_strategy = 'random', overlap_strategy = 'random', force_even_distribution = False):
+def select_instances(metadata, sizecap, tags4positive, tags4negative, forbid4positive = set(), forbid4negative = set(), negative_strategy = 'closely match', overlap_strategy = 'positive', force_even_distribution = False):
 
     '''Selects instances of the positive class and negative class, trying to
     hit sizecap,but not allowing imbalanced classes. For both positive and
@@ -236,8 +236,6 @@ def select_instances(metadata, sizecap, tags4positive, tags4negative, forbid4pos
 
         forbiddenpos = len(row['tagset'] & forbid4positive)
         forbiddenneg = len(row['tagset'] & forbid4negative)
-
-
 
         if posintersect and not forbiddenpos:
             pos = True
@@ -268,13 +266,14 @@ def select_instances(metadata, sizecap, tags4positive, tags4negative, forbid4pos
         split = len(overlap) // 2
         allpositives.extend(overlap[0: split])
         allnegatives.extend(overlap[split: ])
+    elif overlap_strategy == 'positive':
+        allpositives.extend(overlap)
+        print('Assigning overlap to positive class.')
     else:
         pass
         # Just to be super-explicit, the other option
         # is to do nothing and let that overlap sit
         # in memory, untouched and unused.
-
-    print()
 
     # Across a long timeline, we may want
     # to explicitly force positive and negative classes
