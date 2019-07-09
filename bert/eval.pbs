@@ -6,4 +6,4 @@
 #PBS -m be
 cd $PBS_O_WORKDIR
 source activate py37
-python3 evalbert.py
+python3 evalbert.py sf

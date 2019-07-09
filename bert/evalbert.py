@@ -1,9 +1,8 @@
 '''
-Written by Thilina Rajapakse
-https://github.com/ThilinaRajapakse/BERT_binary_text_classification/blob/master/converter.py
+Adapted from code by Thilina Rajapakse
 '''
 
-import torch
+import torch, sys
 import numpy as np
 import pickle
 
@@ -32,19 +31,16 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # The input data dir. Should contain the .tsv files (or other data files) for the task.
 DATA_DIR = "data/"
 
-# Bert pre-trained model selected in the list: bert-base-uncased, 
+# Bert pre-trained model selected in the list: bert-base-uncased,
 # bert-large-uncased, bert-base-cased, bert-large-cased, bert-base-multilingual-uncased,
 # bert-base-multilingual-cased, bert-base-chinese.
-BERT_MODEL = 'first.tar.gz'
+# BERT_MODEL = 'first.tar.gz'
 
 # The name of the task to train.I'm going to name this 'yelp'.
-TASK_NAME = 'first'
+TASK_NAME = sys.argv[1]
 
 # The output directory where the fine-tuned model and checkpoints will be written.
 OUTPUT_DIR = f'outputs/{TASK_NAME}/'
-
-# The directory where the evaluation reports will be written to.
-REPORTS_DIR = f'reports/{TASK_NAME}_evaluation_reports/'
 
 # This is where BERT will look for pre-trained models to load parameters from.
 CACHE_DIR = 'cache/'
@@ -65,7 +61,8 @@ OUTPUT_MODE = 'classification'
 CONFIG_NAME = "config.json"
 WEIGHTS_NAME = "pytorch_model.bin"
 
-REPORTS_DIR = 'reports/'
+# The directory where the evaluation reports will be written to.
+REPORTS_DIR = 'reports/' + TASK_NAME + '/'
 
 def get_eval_report(task_name, labels, preds):
     mcc = matthews_corrcoef(labels, preds)
@@ -122,7 +119,7 @@ eval_data = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_la
 eval_sampler = SequentialSampler(eval_data)
 eval_dataloader = DataLoader(eval_data, sampler=eval_sampler, batch_size=EVAL_BATCH_SIZE)
 
-model = BertForSequenceClassification.from_pretrained(CACHE_DIR + BERT_MODEL, cache_dir=CACHE_DIR, num_labels=len(label_list))
+model = BertForSequenceClassification.from_pretrained(OUTPUT_DIR, cache_dir=CACHE_DIR, num_labels=len(label_list))
 #model = BertForSequenceClassification.from_pretrained(OUTPUT_DIR + 'first.tar.gz', num_labels = len(label_list))
 model.to(device)
 
@@ -164,7 +161,7 @@ elif OUTPUT_MODE == "regression":
     preds = np.squeeze(preds)
 
 result = compute_metrics(TASK_NAME, all_label_ids.numpy(), preds)
-with open(OUTPUT_DIR + 'predictions.tsv', mode = 'w', encoding = 'utf-8') as f:
+with open(REPORTS_DIR + 'predictions.tsv', mode = 'w', encoding = 'utf-8') as f:
 	for alabel, apred in zip(all_label_ids.numpy(), preds):
 		f.write(str(alabel) + '\t' + str(apred) + '\n')
 
