@@ -13,6 +13,6 @@ The code here uses the data and metadata from the 2015 article. But the modeling
 2. Separating the training and test sets from a third set used only for validation. (This becomes necessary once I'm optimizing parameters using grid search.)
 3. Running the process many times, so we can estimate variation.
 
-The script that matters most for this process is *make_validation_splits.ipynb**.  I produced the relevant results by running:
+The script that matters most for this process is **make_validation_splits.ipynb**.  I produced the relevant results by running:
 
 That notebook creates results files included here as ```BoWMystery_models.tsv,``` etc, which in turn are used by boxplot.R to create the visualization used in the *Critical Inquiry* article. The point estimates also used in the visualization are taken from "The Life Cycles of Genres."
