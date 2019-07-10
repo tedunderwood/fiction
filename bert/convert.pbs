@@ -6,4 +6,4 @@
 #PBS -m be
 cd $PBS_O_WORKDIR
 source activate py37
-python3 converter.py sf
+python3 converter.py goth
