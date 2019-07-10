@@ -5,6 +5,8 @@ https://github.com/ThilinaRajapakse/BERT_binary_text_classification/blob/master/
 
 import torch, sys
 import pickle
+from math import ceil
+
 from torch.utils.data import (DataLoader, RandomSampler, SequentialSampler,
                               TensorDataset)
 from torch.nn import CrossEntropyLoss, MSELoss
@@ -47,7 +49,7 @@ MAX_SEQ_LENGTH = 128
 TRAIN_BATCH_SIZE = 24
 EVAL_BATCH_SIZE = 8
 LEARNING_RATE = 2e-5
-NUM_TRAIN_EPOCHS = 1
+NUM_TRAIN_EPOCHS = 4
 RANDOM_SEED = 42
 GRADIENT_ACCUMULATION_STEPS = 1
 WARMUP_PROPORTION = 0.1
@@ -71,7 +73,7 @@ with open(DATA_DIR + "train_features.pkl", "rb") as f:
 train_examples_len = len(train_features)
 print("Train features count: ", train_examples_len)
 
-num_train_optimization_steps = int(
+num_train_optimization_steps = ceil(
     train_examples_len / TRAIN_BATCH_SIZE / GRADIENT_ACCUMULATION_STEPS) * NUM_TRAIN_EPOCHS
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
