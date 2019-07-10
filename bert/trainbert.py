@@ -66,7 +66,7 @@ train_examples = processor.get_train_examples(DATA_DIR)
 train_examples_len = len(train_examples)
 print("Train examples count: ", train_examples_len)
 
-with open(OUTPUTS_DIR + "train_features.pkl", "rb") as f:
+with open(OUTPUT_DIR + "train_features.pkl", "rb") as f:
     train_features = pickle.load(f)
 
 train_examples_len = len(train_features)
