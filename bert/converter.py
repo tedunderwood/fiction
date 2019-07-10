@@ -20,7 +20,6 @@ import convert_examples_to_features
 # logging.basicConfig(level=logging.INFO)
 
 # The input data dir. Should contain the .tsv files (or other data files) for the task.
-DATA_DIR = "data/"
 
 # Bert pre-trained model selected in the list: bert-base-uncased,
 # bert-large-uncased, bert-base-cased, bert-large-cased, bert-base-multilingual-uncased,
@@ -32,6 +31,7 @@ TASK_NAME = sys.argv[1]
 
 # The output directory where the model predictions and checkpoints will be written.
 OUTPUT_DIR = f'outputs/{TASK_NAME}/'
+DATA_DIR = f'data/{TASK_NAME}/'
 
 CACHE_DIR = 'cache/'
 
@@ -67,7 +67,7 @@ if __name__ ==  '__main__':
     with Pool(process_count) as p:
         train_features = list(tqdm(p.imap(convert_examples_to_features.convert_example_to_feature, train_examples_for_processing), total=train_examples_len))
 
-with open(DATA_DIR + "train_features.pkl", 'wb') as f:
+with open(OUTPUT_DIR + "train_features.pkl", 'wb') as f:
           pickle.dump(train_features, f)
 
 tokenizer.save_vocabulary(OUTPUT_DIR)
