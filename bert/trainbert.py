@@ -46,7 +46,7 @@ CACHE_DIR = 'cache/'
 # Sequences longer than this will be truncated, and sequences shorter than this will be padded.
 MAX_SEQ_LENGTH = 128
 
-TRAIN_BATCH_SIZE = 32
+TRAIN_BATCH_SIZE = 24
 EVAL_BATCH_SIZE = 8
 LEARNING_RATE = 2e-5
 NUM_TRAIN_EPOCHS = 1
