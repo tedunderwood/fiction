@@ -28,9 +28,6 @@ logging.basicConfig(level=logging.INFO)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# The input data dir. Should contain the .tsv files (or other data files) for the task.
-DATA_DIR = "data/"
-
 # Bert pre-trained model selected in the list: bert-base-uncased,
 # bert-large-uncased, bert-base-cased, bert-large-cased, bert-base-multilingual-uncased,
 # bert-base-multilingual-cased, bert-base-chinese.
@@ -41,6 +38,9 @@ TASK_NAME = sys.argv[1]
 
 # The output directory where the fine-tuned model and checkpoints will be written.
 OUTPUT_DIR = f'outputs/{TASK_NAME}/'
+
+# The input data dir. Should contain the .tsv files (or other data files) for the task.
+DATA_DIR = f'data/{TASK_NAME}/'
 
 # This is where BERT will look for pre-trained models to load parameters from.
 CACHE_DIR = 'cache/'
