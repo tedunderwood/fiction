@@ -30,10 +30,6 @@ BERT_MODEL = 'bert-base-uncased'
 # The name of the task to train.
 TASK_NAME = sys.argv[1]
 
-if TASK_NAME != 'sf':
-    print('error')
-    sys.exit(0)
-
 # The output directory where the model predictions and checkpoints will be written.
 OUTPUT_DIR = f'outputs/{TASK_NAME}/'
 
