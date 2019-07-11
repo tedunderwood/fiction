@@ -28,6 +28,10 @@ BERT_MODEL = 'bert-base-uncased'
 
 # The name of the task to train.
 TASK_NAME = sys.argv[1]
+if sys.argv[2] == 'reg':
+    OUTPUT_MODE = 'regression'
+else:
+    OUTPUT_MODE = 'classification'
 
 # The output directory where the model predictions and checkpoints will be written.
 OUTPUT_DIR = f'outputs/{TASK_NAME}/'
@@ -55,7 +59,7 @@ num_labels = len(label_list)
 print('num_labels: ', num_labels)
 
 label_map = {label: i for i, label in enumerate(label_list)}
-train_examples_for_processing = [(example, label_map, MAX_SEQ_LENGTH, tokenizer, output_mode) for example in train_examples]
+train_examples_for_processing = [(example, label_map, MAX_SEQ_LENGTH, tokenizer, OUTPUT_MODE) for example in train_examples]
 
 process_count = 10
 if __name__ ==  '__main__':
