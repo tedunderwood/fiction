@@ -129,10 +129,10 @@ for _ in trange(int(NUM_TRAIN_EPOCHS), desc="Epoch"):
         # define a new function to compute loss values for both output_modes
         logits = model(input_ids, token_type_ids=segment_ids, attention_mask=input_mask)
 
-        if output_mode == "classification":
+        if OUTPUT_MODE == "classification":
             loss_fct = CrossEntropyLoss()
             loss = loss_fct(logits.view(-1, num_labels), label_ids.view(-1))
-        elif output_mode == "regression":
+        elif OUTPUT_MODE == "regression":
             loss_fct = MSELoss()
             loss = loss_fct(logits.view(-1), label_ids.view(-1))
 
