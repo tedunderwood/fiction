@@ -91,7 +91,7 @@ tokenizer = BertTokenizer.from_pretrained(OUTPUT_DIR + 'vocab.txt', do_lower_cas
 
 processor = BinaryClassificationProcessor()
 eval_examples = processor.get_dev_examples(DATA_DIR)
-label_list = processor.get_labels() # [0, 1] for binary classification
+label_list = processor.get_labels(OUTPUT_MODE) # [0, 1] for binary classification
 num_labels = len(label_list)
 eval_examples_len = len(eval_examples)
 

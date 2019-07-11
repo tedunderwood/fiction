@@ -63,12 +63,14 @@ else:
 CONFIG_NAME = "config.json"
 WEIGHTS_NAME = "pytorch_model.bin"
 
-num_labels = 2
-
 processor = BinaryClassificationProcessor()
 train_examples = processor.get_train_examples(DATA_DIR)
 train_examples_len = len(train_examples)
 print("Train examples count: ", train_examples_len)
+
+label_list = processor.get_labels(OUTPUT_MODE) # [0, 1] for binary classification / [None] for reg.
+num_labels = len(label_list)
+print('num_labels: ', num_labels)
 
 with open(OUTPUT_DIR + "train_features.pkl", "rb") as f:
     train_features = pickle.load(f)

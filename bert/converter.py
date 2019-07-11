@@ -57,7 +57,7 @@ processor = BinaryClassificationProcessor()
 train_examples = processor.get_train_examples(DATA_DIR)
 train_examples_len = len(train_examples)
 
-label_list = processor.get_labels() # [0, 1] for binary classification
+label_list = processor.get_labels(OUTPUT_MODE) # [0, 1] for binary classification / [None] for reg.
 num_labels = len(label_list)
 print('num_labels: ', num_labels)
 

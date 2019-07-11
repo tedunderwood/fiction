@@ -75,9 +75,15 @@ class BinaryClassificationProcessor(DataProcessor):
         return self._create_examples(
             self._read_tsv(os.path.join(data_dir, "dev.tsv")), "dev")
 
-    def get_labels(self):
-        """See base class."""
-        return ["0", "1"]
+    def get_labels(self, output_type):
+        """See base class.
+        Note that I (TU) have edited this to permit
+        regression."""
+
+        if output_type = 'regression':
+            return [None]
+        else:
+            return ["0", "1"]
 
     def _create_examples(self, lines, set_type):
         """Creates examples for the training and dev sets."""
