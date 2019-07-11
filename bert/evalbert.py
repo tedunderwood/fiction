@@ -157,6 +157,7 @@ for input_ids, input_mask, segment_ids, label_ids in tqdm(eval_dataloader, desc=
 
 eval_loss = eval_loss / nb_eval_steps
 preds = preds[0]
+
 if OUTPUT_MODE == "classification":
     if butregress:
         preds = preds[ : , 1]
@@ -165,11 +166,14 @@ if OUTPUT_MODE == "classification":
 elif OUTPUT_MODE == "regression":
     preds = np.squeeze(preds)
 
-result = compute_metrics(TASK_NAME, all_label_ids.numpy(), preds)
 with open(REPORTS_DIR + 'predictions.tsv', mode = 'w', encoding = 'utf-8') as f:
 	for alabel, apred in zip(all_label_ids.numpy(), preds):
 		f.write(str(alabel) + '\t' + str(apred) + '\n')
 
+if butregress:
+    preds = np.array(np.round(preds), dtype = 'int8')
+
+result = compute_metrics(TASK_NAME, all_label_ids.numpy(), preds)
 result['eval_loss'] = eval_loss
 
 output_eval_file = os.path.join(REPORTS_DIR, "eval_results.txt")
