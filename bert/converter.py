@@ -40,11 +40,8 @@ CACHE_DIR = 'cache/'
 MAX_SEQ_LENGTH = 128
 
 RANDOM_SEED = 42
-OUTPUT_MODE = 'classification'
 
 CONFIG_NAME = "config.json"
-
-output_mode = OUTPUT_MODE
 
 # Load pre-trained model tokenizer (vocabulary)
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
