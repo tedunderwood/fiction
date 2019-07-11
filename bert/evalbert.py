@@ -56,7 +56,9 @@ NUM_TRAIN_EPOCHS = 1
 RANDOM_SEED = 42
 GRADIENT_ACCUMULATION_STEPS = 1
 WARMUP_PROPORTION = 0.1
-OUTPUT_MODE = 'regression'
+OUTPUT_MODE = 'classification'
+
+butregress = True
 
 CONFIG_NAME = "config.json"
 WEIGHTS_NAME = "pytorch_model.bin"
@@ -156,7 +158,10 @@ for input_ids, input_mask, segment_ids, label_ids in tqdm(eval_dataloader, desc=
 eval_loss = eval_loss / nb_eval_steps
 preds = preds[0]
 if OUTPUT_MODE == "classification":
-    preds = np.argmax(preds, axis=1)
+    if butregress:
+        preds = preds[ : , 1]
+    else:
+        preds = np.argmax(preds, axis=1)
 elif OUTPUT_MODE == "regression":
     preds = np.squeeze(preds)
 
