@@ -36,8 +36,14 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # The name of the task to train.I'm going to name this 'yelp'.
 TASK_NAME = sys.argv[1]
 
-# The output directory where the fine-tuned model and checkpoints will be written.
-OUTPUT_DIR = f'outputs/{TASK_NAME}/'
+if sys.argv[2] == 'reg':
+    OUTPUT_MODE = 'regression'
+    # The output directory where the model predictions and checkpoints will be written.
+    OUTPUT_DIR = 'outputs/' + TASK_NAME + '_reg/'
+else:
+    OUTPUT_MODE = 'classification'
+    # The output directory where the model predictions and checkpoints will be written.
+    OUTPUT_DIR = 'outputs/' + TASK_NAME + '/'
 
 # The input data dir. Should contain the .tsv files (or other data files) for the task.
 DATA_DIR = f'data/{TASK_NAME}/'
@@ -56,9 +62,8 @@ NUM_TRAIN_EPOCHS = 1
 RANDOM_SEED = 42
 GRADIENT_ACCUMULATION_STEPS = 1
 WARMUP_PROPORTION = 0.1
-OUTPUT_MODE = 'classification'
 
-butregress = True
+butregress = False
 
 CONFIG_NAME = "config.json"
 WEIGHTS_NAME = "pytorch_model.bin"
