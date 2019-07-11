@@ -40,10 +40,14 @@ if sys.argv[2] == 'reg':
     OUTPUT_MODE = 'regression'
     # The output directory where the model predictions and checkpoints will be written.
     OUTPUT_DIR = 'outputs/' + TASK_NAME + '_reg/'
+    # The directory where the evaluation reports will be written to.
+    REPORTS_DIR = 'reports/' + TASK_NAME + '_reg/'
 else:
     OUTPUT_MODE = 'classification'
     # The output directory where the model predictions and checkpoints will be written.
     OUTPUT_DIR = 'outputs/' + TASK_NAME + '/'
+    # The directory where the evaluation reports will be written to.
+    REPORTS_DIR = 'reports/' + TASK_NAME + '/'
 
 # The input data dir. Should contain the .tsv files (or other data files) for the task.
 DATA_DIR = f'data/{TASK_NAME}/'
@@ -67,9 +71,6 @@ butregress = False
 
 CONFIG_NAME = "config.json"
 WEIGHTS_NAME = "pytorch_model.bin"
-
-# The directory where the evaluation reports will be written to.
-REPORTS_DIR = 'reports/' + TASK_NAME + '/'
 
 def get_eval_report(task_name, labels, preds):
     mcc = matthews_corrcoef(labels, preds)
@@ -120,14 +121,8 @@ eval_data = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_la
 eval_sampler = SequentialSampler(eval_data)
 eval_dataloader = DataLoader(eval_data, sampler=eval_sampler, batch_size=EVAL_BATCH_SIZE)
 
-eval_data = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_label_ids)
-
-# Run prediction for full data
-eval_sampler = SequentialSampler(eval_data)
-eval_dataloader = DataLoader(eval_data, sampler=eval_sampler, batch_size=EVAL_BATCH_SIZE)
-
 model = BertForSequenceClassification.from_pretrained(OUTPUT_DIR, cache_dir=CACHE_DIR, num_labels=len(label_list))
-#model = BertForSequenceClassification.from_pretrained(OUTPUT_DIR + 'first.tar.gz', num_labels = len(label_list))
+
 model.to(device)
 
 model.eval()
@@ -164,10 +159,7 @@ eval_loss = eval_loss / nb_eval_steps
 preds = preds[0]
 
 if OUTPUT_MODE == "classification":
-    if butregress:
-        preds = preds[ : , 1]
-    else:
-        preds = np.argmax(preds, axis=1)
+    preds = np.argmax(preds, axis=1)
 elif OUTPUT_MODE == "regression":
     preds = np.squeeze(preds)
 
@@ -175,8 +167,12 @@ with open(REPORTS_DIR + 'predictions.tsv', mode = 'w', encoding = 'utf-8') as f:
 	for alabel, apred in zip(all_label_ids.numpy(), preds):
 		f.write(str(alabel) + '\t' + str(apred) + '\n')
 
-if butregress:
-    preds = np.array(np.round(preds), dtype = 'int8')
+if OUTPUT_MODE == 'regression':
+    preds4result = np.round(preds)
+    labels4result = np.array(all_label_ids.numpy(), dtype = 'int8')
+else:
+    labels4result = all_label_ids.numpy()
+    preds4result = preds
 
 result = compute_metrics(TASK_NAME, all_label_ids.numpy(), preds)
 result['eval_loss'] = eval_loss
@@ -187,3 +183,5 @@ with open(output_eval_file, "w") as writer:
     for key in (result.keys()):
         logger.info("  %s = %s", key, str(result[key]))
         writer.write("%s = %s\n" % (key, str(result[key])))
+
+
