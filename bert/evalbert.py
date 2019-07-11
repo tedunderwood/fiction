@@ -56,7 +56,7 @@ NUM_TRAIN_EPOCHS = 1
 RANDOM_SEED = 42
 GRADIENT_ACCUMULATION_STEPS = 1
 WARMUP_PROPORTION = 0.1
-OUTPUT_MODE = 'classification'
+OUTPUT_MODE = 'regression'
 
 CONFIG_NAME = "config.json"
 WEIGHTS_NAME = "pytorch_model.bin"
