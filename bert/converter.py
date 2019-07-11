@@ -28,13 +28,16 @@ BERT_MODEL = 'bert-base-uncased'
 
 # The name of the task to train.
 TASK_NAME = sys.argv[1]
+
 if sys.argv[2] == 'reg':
     OUTPUT_MODE = 'regression'
+    OUTPUT_DIR = 'outputs/' + TASK_NAME + '_reg/'
 else:
     OUTPUT_MODE = 'classification'
+    OUTPUT_DIR = 'outputs/' + TASK_NAME + '/'
 
 # The output directory where the model predictions and checkpoints will be written.
-OUTPUT_DIR = f'outputs/{TASK_NAME}/'
+
 DATA_DIR = f'data/{TASK_NAME}/'
 
 CACHE_DIR = 'cache/'
