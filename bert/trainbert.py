@@ -46,7 +46,7 @@ MAX_SEQ_LENGTH = 128
 TRAIN_BATCH_SIZE = 24
 EVAL_BATCH_SIZE = 8
 LEARNING_RATE = 2e-5
-NUM_TRAIN_EPOCHS = 1
+NUM_TRAIN_EPOCHS = int(sys.argv[3])
 RANDOM_SEED = 42
 GRADIENT_ACCUMULATION_STEPS = 1
 WARMUP_PROPORTION = 0.1
@@ -82,10 +82,17 @@ num_train_optimization_steps = ceil(
     train_examples_len / TRAIN_BATCH_SIZE / GRADIENT_ACCUMULATION_STEPS) * NUM_TRAIN_EPOCHS
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+n_gpu = torch.cuda.device_count()
+
+print('n_gpu:', n_gpu)
+
+torch.cuda.manual_seed_all(RANDOM_SEED)
 
 model = BertForSequenceClassification.from_pretrained('bert-base-uncased', cache_dir='cache', num_labels = num_labels)
 
 model.to(device)
+if n_gpu > 1:
+    model = torch.nn.DataParallel(model)
 
 param_optimizer = list(model.named_parameters())
 no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
@@ -137,6 +144,9 @@ for _ in trange(int(NUM_TRAIN_EPOCHS), desc="Epoch"):
         elif OUTPUT_MODE == "regression":
             loss_fct = MSELoss()
             loss = loss_fct(logits.view(-1), label_ids.view(-1))
+
+        if n_gpu > 1:
+            loss = loss.mean()
 
         if GRADIENT_ACCUMULATION_STEPS > 1:
             loss = loss / GRADIENT_ACCUMULATION_STEPS
