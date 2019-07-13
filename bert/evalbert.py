@@ -42,12 +42,24 @@ if sys.argv[2] == 'reg':
     OUTPUT_DIR = 'outputs/' + TASK_NAME + '_reg/'
     # The directory where the evaluation reports will be written to.
     REPORTS_DIR = 'reports/' + TASK_NAME + '_reg/'
-else:
+    report_logits = False
+elif sys.argv[2] == 'cla':
     OUTPUT_MODE = 'classification'
     # The output directory where the model predictions and checkpoints will be written.
     OUTPUT_DIR = 'outputs/' + TASK_NAME + '/'
     # The directory where the evaluation reports will be written to.
     REPORTS_DIR = 'reports/' + TASK_NAME + '/'
+    report_logits = False
+elif sys.argv[2] == 'cla-logit':
+    OUTPUT_MODE = 'classification'
+    OUTPUT_DIR = 'outputs/' + TASK_NAME + '/'
+    # The directory where the evaluation reports will be written to.
+    REPORTS_DIR = 'reports/' + TASK_NAME + '/'
+    report_logits = True
+else:
+    print('Unexpected output mode.')
+    sys.exit(0)
+
 
 # The input data dir. Should contain the .tsv files (or other data files) for the task.
 DATA_DIR = f'data/{TASK_NAME}/'
@@ -159,7 +171,10 @@ eval_loss = eval_loss / nb_eval_steps
 preds = preds[0]
 
 if OUTPUT_MODE == "classification":
-    preds = np.argmax(preds, axis=1)
+    if not report_logits:
+        preds = np.argmax(preds, axis=1)
+    else:
+        preds = np.array([x[1] for x in preds])
 elif OUTPUT_MODE == "regression":
     preds = np.squeeze(preds)
 
@@ -170,11 +185,17 @@ with open(REPORTS_DIR + 'predictions.tsv', mode = 'w', encoding = 'utf-8') as f:
 if OUTPUT_MODE == 'regression':
     preds4result = np.round(preds)
     labels4result = np.array(all_label_ids.numpy(), dtype = 'int8')
-else:
+elif not report_logits:
     labels4result = all_label_ids.numpy()
     preds4result = preds
+else:
+    labels4result = all_label_ids.numpy()
+    preds4result = np.zeros(len(all_label_ids.numpy()))
+    for i, x in enumerate(all_label_ids.numpy()):
+        if x >= 0:
+            preds4result[i] = 1
 
-result = compute_metrics(TASK_NAME, all_label_ids.numpy(), preds)
+result = compute_metrics(TASK_NAME, labels4result, preds4result)
 result['eval_loss'] = eval_loss
 
 output_eval_file = os.path.join(REPORTS_DIR, "eval_results.txt")
