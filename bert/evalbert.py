@@ -178,7 +178,12 @@ if OUTPUT_MODE == "classification":
 elif OUTPUT_MODE == "regression":
     preds = np.squeeze(preds)
 
-with open(REPORTS_DIR + 'predictions.tsv', mode = 'w', encoding = 'utf-8') as f:
+if not report_logits:
+    reports_path = REPORTS_DIR + 'predictions.tsv'
+else:
+    reports_path = REPORTS_DIR + 'logits.tsv'
+
+with open(reports_path, mode = 'w', encoding = 'utf-8') as f:
 	for alabel, apred in zip(all_label_ids.numpy(), preds):
 		f.write(str(alabel) + '\t' + str(apred) + '\n')
 
