@@ -2,7 +2,7 @@
 Adapted from code by Thilina Rajapakse
 '''
 
-import torch, sys
+import torch, sys, os
 import numpy as np
 import pickle
 
@@ -18,7 +18,6 @@ from multiprocessing import Pool, cpu_count
 import convert_examples_to_features
 
 from tqdm import tqdm, trange
-import os
 from pytorch_pretrained_bert import BertTokenizer, BertModel, BertForMaskedLM, BertForSequenceClassification
 from pytorch_pretrained_bert.optimization import BertAdam, WarmupLinearSchedule
 
@@ -46,12 +45,6 @@ if sys.argv[2] == 'reg':
 elif sys.argv[2] == 'cla':
     OUTPUT_MODE = 'classification'
     # The output directory where the model predictions and checkpoints will be written.
-    OUTPUT_DIR = 'outputs/' + TASK_NAME + '/'
-    # The directory where the evaluation reports will be written to.
-    REPORTS_DIR = 'reports/' + TASK_NAME + '/'
-    report_logits = False
-elif sys.argv[2] == 'cla-logit':
-    OUTPUT_MODE = 'classification'
     OUTPUT_DIR = 'outputs/' + TASK_NAME + '/'
     # The directory where the evaluation reports will be written to.
     REPORTS_DIR = 'reports/' + TASK_NAME + '/'
@@ -171,11 +164,13 @@ eval_loss = eval_loss / nb_eval_steps
 preds = preds[0]
 
 if OUTPUT_MODE == "classification":
-    preds = np.argmax(preds, axis=1)
     logits = np.array([x[1] for x in preds])
+    preds = np.argmax(preds, axis=1)
 elif OUTPUT_MODE == "regression":
     preds = np.squeeze(preds)
 
+if not os.path.exists(REPORTS_DIR):
+    os.makedirs(REPORTS_DIR)
 
 reports_path = REPORTS_DIR + 'predictions.tsv'
 logits_path = REPORTS_DIR + 'logits.tsv'
