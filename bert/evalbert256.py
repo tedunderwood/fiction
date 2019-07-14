@@ -43,7 +43,7 @@ if sys.argv[2] == 'reg':
     # The directory where the evaluation reports will be written to.
     REPORTS_DIR = 'reports/' + TASK_NAME + '_reg/'
     report_logits = False
-else:
+elif sys.arv[2] == 'cla':
     OUTPUT_MODE = 'classification'
     # The output directory where the model predictions and checkpoints will be written.
     OUTPUT_DIR = 'outputs/' + TASK_NAME + '/'
