@@ -171,34 +171,29 @@ eval_loss = eval_loss / nb_eval_steps
 preds = preds[0]
 
 if OUTPUT_MODE == "classification":
-    if not report_logits:
-        preds = np.argmax(preds, axis=1)
-    else:
-        preds = np.array([x[1] for x in preds])
+    preds = np.argmax(preds, axis=1)
+    logits = np.array([x[1] for x in preds])
 elif OUTPUT_MODE == "regression":
     preds = np.squeeze(preds)
 
-if not report_logits:
-    reports_path = REPORTS_DIR + 'predictions.tsv'
-else:
-    reports_path = REPORTS_DIR + 'logits.tsv'
+
+reports_path = REPORTS_DIR + 'predictions.tsv'
+logits_path = REPORTS_DIR + 'logits.tsv'
 
 with open(reports_path, mode = 'w', encoding = 'utf-8') as f:
 	for alabel, apred in zip(all_label_ids.numpy(), preds):
 		f.write(str(alabel) + '\t' + str(apred) + '\n')
+if report_logits:
+    with open(logits_path, mode = 'w', encoding = 'utf-8') as f:
+        for alabel, alogit in zip(all_label_ids.numpy(), logits):
+            f.write(str(alabel) + '\t' + str(alogit) + '\n')
 
 if OUTPUT_MODE == 'regression':
     preds4result = np.round(preds)
     labels4result = np.array(all_label_ids.numpy(), dtype = 'int8')
-elif not report_logits:
-    labels4result = all_label_ids.numpy()
-    preds4result = preds
 else:
     labels4result = all_label_ids.numpy()
-    preds4result = np.zeros(len(all_label_ids.numpy()))
-    for i, x in enumerate(all_label_ids.numpy()):
-        if x >= 0:
-            preds4result[i] = 1
+    preds4result = preds
 
 result = compute_metrics(TASK_NAME, labels4result, preds4result)
 result['eval_loss'] = eval_loss
