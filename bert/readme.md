@@ -49,7 +49,7 @@ Comparisons to BoW models
 
 The really rigorous modeling of genre using bag-of-words methods took place [in a separate directory.](https://github.com/tedunderwood/fiction/tree/master/variation) There I have [a notebook](https://github.com/tedunderwood/fiction/blob/master/variation/make_validation_splits.ipynb) that does a better job of explaining how I construct balanced training, test, and validation sets, and repeat the process to model random variation. This is the process that produced the boxplots.
 
-But I also needed to produce a lot of more casual models to see how bag-of-words methods suffer when forced to use a smaller window. I did that in this directory, inside the notebook **logistic_regression_touchstones.ipynb.**
+But I also needed to produce a lot of more casual models to see how bag-of-words methods suffer when forced to use a smaller window. I did that in this directory, inside the notebook **logistic_regression_baselines.ipynb.**
 
 
 
