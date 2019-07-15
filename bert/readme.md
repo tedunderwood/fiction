@@ -2,6 +2,7 @@ BERT scripts
 ============
 
 Scripts for testing BERT and comparing it to bag-of-words models. Related to a blog post:
+[https://tedunderwood.com/2019/07/15/do-humanists-need-bert/](https://tedunderwood.com/2019/07/15/do-humanists-need-bert/)
 
 The BERT code
 -------------
