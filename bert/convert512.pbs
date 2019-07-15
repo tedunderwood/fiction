@@ -1,0 +1,9 @@
+#!/bin/bash
+#PBS -l walltime=4:00:00
+#PBS -l nodes=1:ppn=12
+#PBS -N makebertdata
+#PBS -q secondary
+#PBS -m be
+cd $PBS_O_WORKDIR
+source activate py37
+python3 converter512.py sf512max cla

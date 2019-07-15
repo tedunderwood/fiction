@@ -1,0 +1,9 @@
+#!/bin/bash
+#PBS -l walltime=4:00:00
+#PBS -l nodes=1:ppn=12:K80
+#PBS -N trainbert_sf512max
+#PBS -q secondary
+#PBS -m be
+cd $PBS_O_WORKDIR
+source activate py37
+python3 trainbert512.py sf512max cla 2
