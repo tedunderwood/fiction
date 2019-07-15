@@ -30,6 +30,27 @@ I passed the trial code (or TASK_NAME) to the Python script as a command-line ar
 
 You will also notice that the code described above has the number "512" embedded in filenames. As I tinkered, I discovered that BERT does a lot better with genre if it can see longer chunks. I could have passed this parameter also as a command-line argument, but instead I spun off a separate series of scripts to model the longer 512-word chunks of text.
 
-In simplifying the HuggingFace code, Rajapakse took out the parts that permit running on multiple GPUs; regression is also only partly implemented in his version. I put those back. I didn't in the end use the regression feature; instead I edited the evaluation script so that it outputs raw logits as well as binary predictions. Running on multiple GPUs does significantly speed things up. I used a TeslaK40M for much of this, but for training on 512-word chunks with a batch size of 24 I needed K80s. The batch scripts I submit can specify particular hardware.
+In simplifying the HuggingFace code, Rajapakse took out the parts that permit running on multiple GPUs; regression is also only partly implemented in his version. I put those back. I didn't in the end use the regression feature much; instead I edited the evaluation script so that it outputs raw logits as well as binary predictions. Running on multiple GPUs does significantly speed things up. I used a TeslaK40M for much of this, but for training on 512-word chunks with a batch size of 24, I had to specify K80s. The batch scripts I submit can specify particular hardware.
+
+The optimal settings for genre seemed to be 512-word chunks, with a batch size of 24, and 2 epochs of training. I kept learning rate, warmup, etc. set to the defaults provided by HuggingFace. More tuning is probably possible, although at some point one would need to construct a separate validation set to confirm that we're not overfitting the parameters.
+
+Interpreting BERT results
+-------------------------
+
+The code I borrowed does print a report that lists numbers of true positives, false positives, and so on. But since I was working with long documents, I wasn't really concerned with BERT's raw predictions about individual text chunks. Instead I needed to know how good the predictions would be if we aggregated them at the volume level.
+
+To figure this out I used **interpret_bert.ipynb**. This notebook pairs BERT's predictions with a metadata file that got spun off back in step 1 above, called, for instance, **bertmeta/dev_rows_{TASK_NAME}.tsv**. This metadata file lists the index of each chunk but also the **docid** (usually, volume-level ID) associated with a larger document.
+
+The **interpret_bert** notebook can then group predictions by volume and evaluate accuracy at the volume level. I tried doing this by averaging logits, as well as binary voting. I think in most cases binary voting is preferable; I'm not sure whether the logits are scaled in a way that produces a reliable mean.
+
+
+Comparisons to BoW models
+-------------------------
+
+The really rigorous modeling of genre using bag-of-words methods took place [in a separate directory.](https://github.com/tedunderwood/fiction/tree/master/variation) There I have [a notebook](https://github.com/tedunderwood/fiction/blob/master/variation/make_validation_splits.ipynb) that does a better job of explaining how I construct balanced training, test, and validation sets, and repeat the process to model random variation. This is the process that produced the boxplots.
+
+But I also needed to produce a lot of more casual models to see how bag-of-words methods suffer when forced to use a smaller window. I did that in this directory, inside the notebook **logistic_regression_touchstones.ipynb.**
+
+
 
 
