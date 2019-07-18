@@ -1,7 +1,7 @@
 Sampling variation for predictive models
 ========================================
 
-This is a simple repository that slightly improves my 2015 article ["The Life Cycles of Genres"](http://culturalanalytics.org/2016/05/the-life-cycles-of-genres/) by more carefully measuring the effect of sampling variation on predictive accuracy. It documents figure 2 in a response article submitted to *Critical Inquiry* and tentatively titled "An Internal Critique of Cultural Analytics."
+This is a simple repository that slightly improves my 2015 article ["The Life Cycles of Genres"](http://culturalanalytics.org/2016/05/the-life-cycles-of-genres/) by more carefully measuring the effect of sampling variation on predictive accuracy. It documents figure 2 in a response article submitted to *Critical Inquiry* and tentatively titled "The Theoretical Stakes of Controversies over Computation."
 
 In the original article, I make clear that I have different numbers of examples for each genre, and also make clear that there's a relationship between sample size and accuracy. But I don't go to great lengths to create apples-to-apples comparisons in every case, partly because absolute predictive accuracy is not the central point of the argument. (The article is more concerned with comparisons carried out by applying one model to a different set of data.)
 
