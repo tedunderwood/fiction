@@ -13,6 +13,6 @@ The code here uses the data and metadata from the 2015 article. But the modeling
 2. Separating the training and test sets from a third set used only for validation. (This becomes necessary once I'm optimizing parameters using grid search.)
 3. Running the process many times, so we can estimate variation.
 
-The script that matters most for this process is **make_validation_splits.ipynb**.  I produced the relevant results by running:
+The script that matters most for this process is **make_validation_splits.ipynb**.  It defines a split between a test-and-training set and a validation set. Then it calls versatiletrainer2.py, which optimizes a model of the test-and-training set through cross-validation. The model is written to disk, and tested on the validation set. We repeat the process thirty times for each genre.
 
-That notebook creates results files included here as ```BoWMystery_models.tsv,``` etc, which in turn are used by boxplot.R to create the visualization used in the *Critical Inquiry* article. The point estimates also used in the visualization are taken from "The Life Cycles of Genres."
+That notebook creates results files included here as ```BoWMystery_models.tsv,``` etc, which in turn are used by boxplot.R to create the visualization used in the *Critical Inquiry* article. The point estimates also plotted in the visualization are taken from "The Life Cycles of Genres," 2015.
